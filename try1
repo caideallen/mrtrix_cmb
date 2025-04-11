@@ -1,0 +1,17 @@
+source activate mrtrix3
+module load fsl/6.0.7
+module load ants/2.4.0
+
+cd ~
+cd DICOMS_1/10030
+#compress to image file
+mrconvert DTI32/ 10030.nii
+mrconvert 10030.nii 10030.mif
+# format for preprocessing
+mrconvert DTI32/10030-vox.mif -vox 2 -coord 3 '0:1:32'
+dwidenoise 10030-vox.mif v2vox.mif -noise v2_denoised.mif
+mrcalc v2_denoised.mif v2vox.mif -subtract v2_res.mif
+#fsl shit
+dwifslpreproc v2vox.mif v2preproc.mif -rpe_none -pe_dir AP -readout_time 0.1 -eddy_options " --slm=linear "
+dwi2mask v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_mask.nii -datatype float32 -strides -1,+2,+3
+dwibiascorrect ants v2preproc.mif v2preproc_unbiased.mif
