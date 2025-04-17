@@ -24,18 +24,30 @@ for i in $(seq 10030 10072); do
   dwi2mask v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_mask.nii -datatype float32 -strides -1,+2,+3
   dwibiascorrect ants v2preproc.mif v2preproc_unbiased.mif
 
-#ANTS and fixels
-dwi2response
-dwi2mask
-dwi2fod csd
-fod2fixel
-fod2fixel
-fixelcorrespondence fixel_space/v2FD.mif fixel_mask v2_FDpr
+          # bias corection using ANTS
+          ## wait until I get template and analyze the group, need to create a normalized folder
+          dwinormalise group /home/lsfeldma/dwinormalise/dwi_input /home/lsfeldma/dwinormalise/mask_input /home/lsfeldma/dwinormalise/dwi_output /home/lsfeldma/dwinormalise/fa_template.mif /home/lsfeldma/dwinormalise/fa_template_wm_mask.mif
 
-#tractography to FOD templates
+# FBA
+dwi2response tournier v2preproc.mif wm_response.txt
+dwi2mask v2preproc.mif v2_tempmask.mif
+dwi2fod csd v2preproc.mif wm_response.txt v2fod.mif
+fod2fixel -mask v2_tempmask.mif -fmls_peak_value 0.10 v2fod.mif fixel_mask
+fod2fixel -mask v2_tempmask.mif v2fod.mif fixel_space -afd v2FD.mif
+          
+          ##ISSUE need templates maybe?
+          fixelcorrespondence fixel_space/v2FD.mif fixel_mask v2_FDpr 
+
+#tractography
 tckgen -angle 22.5 -maxlen 250 -minlen 10 -power 1.0 v2fod.mif -seed_image v2_tempmask.mif -mask v2_tempmask.mif -select 20000000 -cutoff 0.10 tracks_20_million.tck
+tcksift tracks_20_million.tck v2fod.mif tracks_2_million.sift.tck -term_number 20000000
 
- 
+# shit IDK if I'm doing yet 
+fixelconnectivity fixel_mask/ tracks_2_million.sift.tck matrix/
+
+      # normalize ## repeat code?? ##
+      dwinormalise group /home/lsfeldma/dwinormalise/dwi_input /home/lsfeldma/dwinormalise/mask_input /home/lsfeldma/dwinormalise/dwi_output /home/lsfeldma/dwinormalise/fa_template.mif /home/lsfeldma/dwinormalise/fa_template_wm_mask.mif
+       
 
   echo "Finished processing subject $i"
 done
