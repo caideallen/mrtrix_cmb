@@ -12,4 +12,78 @@ find "$BASE_DIR" -type d -name "DTI32*" | while read -r dir; do
     mv "$dir" "$parent_dir/DTI32"
 done
 
-echo "Renaming completed!"
+echo "DTI rename completed!"
+
+    ## for eWIP
+# Base directory
+BASE_DIR="/home/cbayouth/DICOMS_2"
+
+# Find directories matching the pattern and rename them
+find "$BASE_DIR" -type d -name "eWIP*" | while read -r dir; do
+    # Get the parent directory of the current directory
+    parent_dir=$(dirname "$dir")
+    
+    # Rename the directory to "eWIP"
+    mv "$dir" "$parent_dir/eWIP"
+done
+
+echo "ewip Renaming completed!"
+
+    ## for dWIP
+# Base directory
+BASE_DIR="/home/cbayouth/DICOMS_2"
+
+# Find directories matching the pattern and rename them
+find "$BASE_DIR" -type d -name "dWIP*" | while read -r dir; do
+    # Get the parent directory of the current directory
+    parent_dir=$(dirname "$dir")
+    
+    # Rename the directory to "dWIP"
+    mv "$dir" "$parent_dir/dWIP"
+done
+
+echo "dWIP Renaming completed!"
+
+    ## for faWIP
+# Base directory
+BASE_DIR="/home/cbayouth/DICOMS_2"
+
+# Find directories matching the pattern and rename them
+find "$BASE_DIR" -type d -name "faWIP*" | while read -r dir; do
+    # Get the parent directory of the current directory
+    parent_dir=$(dirname "$dir")
+    
+    # Rename the directory to "faWIP"
+    mv "$dir" "$parent_dir/faWIP"
+done
+
+echo "faWIP Renaming completed!"
+
+## Possible fuckery deleting shit
+
+#!/bin/bash
+
+# Base directory
+BASE_DIR="/home/cbayouth/DICOMS_2"
+
+# List of allowed folder names
+ALLOWED=("eWIP" "DTI32" "faWIP" "dWIP")
+
+# Loop through all participant folders in the base directory
+find "$BASE_DIR" -mindepth 1 -maxdepth 1 -type d | while read -r participant_folder; do
+    echo "Checking participant folder: $participant_folder"
+
+    # Loop through all subfolders in the participant folder
+    find "$participant_folder" -mindepth 1 -maxdepth 1 -type d | while read -r subfolder; do
+        # Extract the name of the subfolder
+        subfolder_name=$(basename "$subfolder")
+
+        # Check if the folder name is NOT in the allowed list
+        if [[ ! " ${ALLOWED[@]} " =~ " ${subfolder_name} " ]]; then
+            echo "Deleting folder: $subfolder"
+            rm -rf "$subfolder"
+        fi
+    done
+done
+
+echo "Cleanup completed!"
