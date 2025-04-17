@@ -15,9 +15,6 @@ done
 echo "DTI rename completed!"
 
     ## for eWIP
-# Base directory
-BASE_DIR="/home/cbayouth/DICOMS_2"
-
 # Find directories matching the pattern and rename them
 find "$BASE_DIR" -type d -name "eWIP*" | while read -r dir; do
     # Get the parent directory of the current directory
@@ -27,11 +24,9 @@ find "$BASE_DIR" -type d -name "eWIP*" | while read -r dir; do
     mv "$dir" "$parent_dir/eWIP"
 done
 
-echo "ewip Renaming completed!"
+echo "eWIP Renaming completed!"
 
     ## for dWIP
-# Base directory
-BASE_DIR="/home/cbayouth/DICOMS_2"
 
 # Find directories matching the pattern and rename them
 find "$BASE_DIR" -type d -name "dWIP*" | while read -r dir; do
@@ -45,8 +40,6 @@ done
 echo "dWIP Renaming completed!"
 
     ## for faWIP
-# Base directory
-BASE_DIR="/home/cbayouth/DICOMS_2"
 
 # Find directories matching the pattern and rename them
 find "$BASE_DIR" -type d -name "faWIP*" | while read -r dir; do
@@ -60,11 +53,6 @@ done
 echo "faWIP Renaming completed!"
 
 ## Possible fuckery deleting shit
-
-#!/bin/bash
-
-# Base directory
-BASE_DIR="/home/cbayouth/DICOMS_2"
 
 # List of allowed folder names
 ALLOWED=("eWIP" "DTI32" "faWIP" "dWIP")
