@@ -26,6 +26,16 @@ for i in $(seq 10030 10072); do
 
 #ANTS and fixels
 dwi2response
+dwi2mask
+dwi2fod csd
+fod2fixel
+fod2fixel
+fixelcorrespondence fixel_space/v2FD.mif fixel_mask v2_FDpr
+
+#tractography to FOD templates
+tckgen -angle 22.5 -maxlen 250 -minlen 10 -power 1.0 v2fod.mif -seed_image v2_tempmask.mif -mask v2_tempmask.mif -select 20000000 -cutoff 0.10 tracks_20_million.tck
+
+ 
 
   echo "Finished processing subject $i"
 done
