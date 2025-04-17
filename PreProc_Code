@@ -1,3 +1,4 @@
+ml mamba
 source activate mrtrix3
 module load fsl/6.0.7
 
