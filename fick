@@ -1,0 +1,18 @@
+# Loop from 10030 to 10072
+for i in $(seq 10030 10072); do
+  echo "Processing subject $i"
+  
+  # Navigate to the subject directory
+  cd ~/DICOMS_1/$i
+  
+  # Compress to image file
+  mrconvert DTI32/ $i.nii
+  mrconvert $i.nii $i.mif
+  
+  # Format for preprocessing
+  mrconvert DTI32/$i-vox.mif -vox 2 -coord 3 '0:1:32'
+  dwidenoise $i-vox.mif v2vox.mif -noise v2_denoised.mif
+  mrcalc v2_denoised.mif v2vox.mif -subtract v2_res.mif
+  
+  echo "Finished processing subject $i"
+done
