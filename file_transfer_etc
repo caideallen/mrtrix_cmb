@@ -1,0 +1,5 @@
+## to sol from co-located -- switch for vice versa
+scp -r cbayouth@sol.asu.edu:/home/cbayouth/FOLDER_NAME /home/cbayouth/
+
+# check storage space
+du -sh FOLDER_NAME
