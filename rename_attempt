@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Base directory
+BASE_DIR="/home/cbayouth/DICOMS_2"
+
+# Find directories matching the pattern and rename them
+find "$BASE_DIR" -type d -name "DTI32*" | while read -r dir; do
+    # Get the parent directory of the current directory
+    parent_dir=$(dirname "$dir")
+    
+    # Rename the directory to "DTI32"
+    mv "$dir" "$parent_dir/DTI32"
+done
+
+echo "Renaming completed!"
