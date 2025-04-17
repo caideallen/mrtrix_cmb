@@ -10,7 +10,7 @@ for i in $(seq 10077 10113); do
   mrconvert $i.nii $i.mif -force
   
   # Format for preprocessing
-  mrconvert DTI32/$i-vox.mif -vox 2 -coord 3 '0:1:32'
+  mrconvert DTI32/ $i-vox.mif -vox 2 -coord 3 '0:1:32'
   dwidenoise $i-vox.mif v2vox.mif -noise v2_denoised.mif
   mrcalc v2_denoised.mif v2vox.mif -subtract v2_res.mif
   
