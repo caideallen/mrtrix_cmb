@@ -7,7 +7,7 @@ for i in $(seq 10073 10113); do
   echo "Processing subject $i"
   
   # Navigate to the subject directory
-  cd ~/DICOMS_2/$i
+  cd ~/DICOMS_3/$i
     
   #compress to image file
   mrconvert DTI32/ $i.nii -force
