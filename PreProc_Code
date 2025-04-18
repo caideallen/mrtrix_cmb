@@ -1,8 +1,8 @@
-ml mamba
+ ml mamba
 source activate mrtrix3
 module load fsl/6.0.7
 
-# Loop from 10073 to 10113
+# Loop from 10103 to 10113
 for i in $(seq 10073 10113); do
   echo "Processing subject $i"
   
@@ -10,11 +10,11 @@ for i in $(seq 10073 10113); do
   cd ~/DICOMS_2/$i
     
   #compress to image file
-  mrconvert DTI32/ $i.nii
-  mrconvert $i.nii $i.mif  
+  mrconvert DTI32/ $i.nii -force
+  mrconvert $i.nii $i.mif -force
 
   # format for preprocessing
-  mrconvert DTI32/$i-vox.mif -vox 2 -coord 3 '0:1:32'
+  mrconvert DTI32/ $i-vox.mif -vox 2 -coord 3 '0:1:32'
   dwidenoise $i-vox.mif v2vox.mif -noise v2_denoised.mif
   mrcalc v2_denoised.mif v2vox.mif -subtract v2_res.mif
 
