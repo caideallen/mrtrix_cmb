@@ -1,18 +1,33 @@
-# Loop from 10077 to 10113
-for i in $(seq 10077 10113); do
+ ml mamba
+source activate mrtrix3
+module load fsl/6.0.7
+
+# Loop from 10114 to 10150
+for i in $(seq 10073 10113); do
   echo "Processing subject $i"
   
   # Navigate to the subject directory
   cd ~/DICOMS_2/$i
-  
-  # Compress to image file
+    
+  #compress to image file
   mrconvert DTI32/ $i.nii -force
   mrconvert $i.nii $i.mif -force
-  
-  # Format for preprocessing
+
+  # format for preprocessing
   mrconvert DTI32/ $i-vox.mif -vox 2 -coord 3 '0:1:32'
   dwidenoise $i-vox.mif v2vox.mif -noise v2_denoised.mif
   mrcalc v2_denoised.mif v2vox.mif -subtract v2_res.mif
-  
+
+  #fsl shit
+  dwifslpreproc v2vox.mif v2preproc.mif -rpe_none -pe_dir AP -readout_time 0.1 -eddy_options " --slm=linear "
+  dwi2mask v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_mask.nii -datatype float32 -strides -1,+2,+3
+
+# FBA
+dwi2response tournier v2preproc.mif wm_response.txt
+dwi2mask v2preproc.mif v2_tempmask.mif
+dwi2fod csd v2preproc.mif wm_response.txt v2fod.mif
+fod2fixel -mask v2_tempmask.mif -fmls_peak_value 0.10 v2fod.mif fixel_mask
+fod2fixel -mask v2_tempmask.mif v2fod.mif fixel_space -afd v2FD.mif
+
   echo "Finished processing subject $i"
 done
