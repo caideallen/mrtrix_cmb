@@ -3,7 +3,7 @@ source activate mrtrix3
 module load fsl/6.0.7
 
 # Loop from 10114 to 10150
-for i in $(seq 10073 10113); do
+for i in $(seq 10114 10150); do
   echo "Processing subject $i"
   
   # Navigate to the subject directory
