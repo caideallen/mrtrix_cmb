@@ -10,8 +10,8 @@ for i in $(seq 10073 10113); do
   cd ~/DICOMS_3/$i
     
   #compress to image file
-  mrconvert DTI32/ $i.nii -force
-  mrconvert $i.nii $i.mif -force
+  mrconvert DTI32/ $i.nii
+  mrconvert $i.nii $i.mif
 
   # format for preprocessing
   mrconvert DTI32/ $i-vox.mif -vox 2 -coord 3 '0:1:32'
