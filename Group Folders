@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# v2preproc shit
+SOURCE_BASE="/home/cbayouth/DICOMS_1"
+DESTINATION_BASE="/home/cbayouth/group/v2preproc"
+
+# Create the destination folder if it doesn't exist
+mkdir -p "$DESTINATION_BASE"
+
+# Loop through the range of IDs (10002 to 10072)
+for i in {10002..10072}; do
+    # Construct the source file path
+    SOURCE_FILE="$SOURCE_BASE/$i/v2preproc.mif"
+
+    # Construct the destination file path with the new name
+    DESTINATION_FILE="$DESTINATION_BASE/${i}_v2preproc.mif"
+
+    # Check if the source file exists before copying
+    if [[ -f "$SOURCE_FILE" ]]; then
+        # Copy and rename the file
+        cp "$SOURCE_FILE" "$DESTINATION_FILE"
+        echo "Copied: $SOURCE_FILE to $DESTINATION_FILE"
+    else
+        echo "Source file does not exist: $SOURCE_FILE"
+    fi
+done
+
+# eddymask shit
+SOURCE_BASE="/home/cbayouth/DICOMS_1"
+DESTINATION_BASE="/home/cbayouth/group/eddymask"
+
+# Create the destination folder if it doesn't exist
+mkdir -p "$DESTINATION_BASE"
+
+# Loop through the range of IDs (10002 to 10072)
+for i in {10002..10072}; do
+    # Construct the source file path
+    SOURCE_FILE="$SOURCE_BASE/$i/eddymask.nii"
+
+    # Construct the destination file path with the new name
+    DESTINATION_FILE="$DESTINATION_BASE/${i}_eddymask.nii"
+
+    # Check if the source file exists before copying
+    if [[ -f "$SOURCE_FILE" ]]; then
+        # Copy and rename the file
+        cp "$SOURCE_FILE" "$DESTINATION_FILE"
+        echo "Copied: $SOURCE_FILE to $DESTINATION_FILE"
+    else
+        echo "Source file does not exist: $SOURCE_FILE"
+    fi
+done
+
+# v2fod shit
+SOURCE_BASE="/home/cbayouth/DICOMS_1"
+DESTINATION_BASE="/home/cbayouth/group/v2fod"
+
+# Create the destination folder if it doesn't exist
+mkdir -p "$DESTINATION_BASE"
+
+# Loop through the range of IDs (10002 to 10072)
+for i in {10002..10072}; do
+    # Construct the source file path
+    SOURCE_FILE="$SOURCE_BASE/$i/v2fod.mif"
+
+    # Construct the destination file path with the new name
+    DESTINATION_FILE="$DESTINATION_BASE/${i}_v2fod.mif"
+
+    # Check if the source file exists before copying
+    if [[ -f "$SOURCE_FILE" ]]; then
+        # Copy and rename the file
+        cp "$SOURCE_FILE" "$DESTINATION_FILE"
+        echo "Copied: $SOURCE_FILE to $DESTINATION_FILE"
+    else
+        echo "Source file does not exist: $SOURCE_FILE"
+    fi
+done
+
+
+
