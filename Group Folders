@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # v2preproc shit
-SOURCE_BASE="/home/cbayouth/DICOMS_1"
+SOURCE_BASE="/home/cbayouth/DICOMS_4"
 DESTINATION_BASE="/home/cbayouth/group/v2preproc"
 
 # Create the destination folder if it doesn't exist
 mkdir -p "$DESTINATION_BASE"
 
 # Loop through the range of IDs (10002 to 10072)
-for i in {10002..10072}; do
+for i in {10005..10072}; do
     # Construct the source file path
     SOURCE_FILE="$SOURCE_BASE/$i/v2preproc.mif"
 
@@ -35,7 +35,7 @@ mkdir -p "$DESTINATION_BASE"
 # Loop through the range of IDs (10002 to 10072)
 for i in {10002..10072}; do
     # Construct the source file path
-    SOURCE_FILE="$SOURCE_BASE/$i/eddymask.nii"
+    SOURCE_FILE="$SOURCE_BASE/$i/eddy_mask.nii"
 
     # Construct the destination file path with the new name
     DESTINATION_FILE="$DESTINATION_BASE/${i}_eddymask.nii"
