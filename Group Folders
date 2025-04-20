@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # v2preproc shit
-SOURCE_BASE="/home/cbayouth/DICOMS_4"
+SOURCE_BASE="/home/cbayouth/DICOMS_3"
 DESTINATION_BASE="/home/cbayouth/group/v2preproc"
 
 # Create the destination folder if it doesn't exist
 mkdir -p "$DESTINATION_BASE"
 
-# Loop through the range of IDs (10002 to 10072)
-for i in {10005..10072}; do
+# Loop through the range of IDs
+for i in {10114..10150}; do
     # Construct the source file path
     SOURCE_FILE="$SOURCE_BASE/$i/v2preproc.mif"
 
@@ -26,14 +26,14 @@ for i in {10005..10072}; do
 done
 
 # eddymask shit
-SOURCE_BASE="/home/cbayouth/DICOMS_1"
+SOURCE_BASE="/home/cbayouth/DICOMS_3"
 DESTINATION_BASE="/home/cbayouth/group/eddymask"
 
 # Create the destination folder if it doesn't exist
 mkdir -p "$DESTINATION_BASE"
 
-# Loop through the range of IDs (10002 to 10072)
-for i in {10002..10072}; do
+# Loop through the range of IDs 
+for i in {10114..10150}; do
     # Construct the source file path
     SOURCE_FILE="$SOURCE_BASE/$i/eddy_mask.nii"
 
@@ -51,14 +51,14 @@ for i in {10002..10072}; do
 done
 
 # v2fod shit
-SOURCE_BASE="/home/cbayouth/DICOMS_1"
+SOURCE_BASE="/home/cbayouth/DICOMS_3"
 DESTINATION_BASE="/home/cbayouth/group/v2fod"
 
 # Create the destination folder if it doesn't exist
 mkdir -p "$DESTINATION_BASE"
 
-# Loop through the range of IDs (10002 to 10072)
-for i in {10002..10072}; do
+# Loop through the range of IDs 
+for i in {10114..10150}; do
     # Construct the source file path
     SOURCE_FILE="$SOURCE_BASE/$i/v2fod.mif"
 
