@@ -2,7 +2,7 @@
 
 # v2preproc shit
 SOURCE_BASE="/home/cbayouth/DICOMS_5"
-DESTINATION_BASE="/home/cbayouth/group/v2preproc"
+DESTINATION_BASE="/home/cbayouth/group/v2_tempmask"
 
 # Create the destination folder if it doesn't exist
 mkdir -p "$DESTINATION_BASE"
@@ -10,10 +10,10 @@ mkdir -p "$DESTINATION_BASE"
 # Loop through the range of IDs
 for i in {11043..11107}; do
     # Construct the source file path
-    SOURCE_FILE="$SOURCE_BASE/$i/v2preproc.mif"
+    SOURCE_FILE="$SOURCE_BASE/$i/v2_tempmask.mif"
 
     # Construct the destination file path with the new name
-    DESTINATION_FILE="$DESTINATION_BASE/${i}_v2preproc.mif"
+    DESTINATION_FILE="$DESTINATION_BASE/${i}_v2_tempmask.mif"
 
     # Check if the source file exists before copying
     if [[ -f "$SOURCE_FILE" ]]; then
