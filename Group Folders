@@ -2,7 +2,7 @@
 
 # v2preproc shit
 SOURCE_BASE="/home/cbayouth/DICOMS_5"
-DESTINATION_BASE="cbayouth@sol.asu.edu:/scratch/cbayouth/group/v2preproc"
+DESTINATION_BASE="/home/cbayouth/group/v2preproc_1"
 
 # Create the destination folder if it doesn't exist
 mkdir -p "$DESTINATION_BASE"
@@ -24,6 +24,7 @@ for i in {11043..11107}; do
         echo "Source file does not exist: $SOURCE_FILE"
     fi
 done
+
 
 # eddymask shit
 SOURCE_BASE="/home/cbayouth/DICOMS_5"
