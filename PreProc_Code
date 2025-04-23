@@ -23,6 +23,7 @@ for i in $(seq 10073 10113); do
   dwi2mask v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_mask.nii -datatype float32 -strides -1,+2,+3
 ### bias corection using ANTS? ###
 
+#
 
 # FBA
 dwi2response tournier v2preproc.mif wm_response.txt
@@ -47,10 +48,12 @@ fixelconnectivity fixel_mask/ tracks_2_million.sift.tck matrix/
       dwinormalise group /home/lsfeldma/dwinormalise/dwi_input /home/lsfeldma/dwinormalise/mask_input /home/lsfeldma/dwinormalise/dwi_output /home/lsfeldma/dwinormalise/fa_template.mif /home/lsfeldma/dwinormalise/fa_template_wm_mask.mif
        
 
-
-
-# Loop from 10002 to 10004
-for i in $(seq 10002 10004); do
+ ml mamba
+source activate mrtrix3
+module load fsl/6.0.7
+cd /scratch/cbayouth/group/
+# Loop from 11044 to 11107
+for i in $(seq 11044 11107); do
   echo "Processing subject $i for tractography"
   
   # Run tckgen with the updated paths
