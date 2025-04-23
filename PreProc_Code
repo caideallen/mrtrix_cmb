@@ -49,7 +49,26 @@ fixelconnectivity fixel_mask/ tracks_2_million.sift.tck matrix/
 
 
 
+# Loop from 10002 to 10004
+for i in $(seq 10002 10004); do
+  echo "Processing subject $i for tractography"
+  
+  # Run tckgen with the updated paths
+  tckgen -angle 22.5 -maxlen 250 -minlen 10 -power 1.0 \
+    /scratch/cbayouth/group/v2fod/${i}_v2fod.mif \
+    -seed_image /scratch/cbayouth/group/v2_tempmask/${i}_v2_tempmask.mif \
+    -mask /scratch/cbayouth/group/v2_tempmask/${i}_v2_tempmask.mif \
+    -select 20000000 -cutoff 0.10 \
+    /scratch/cbayouth/group/tracks_20mil/${i}_20_million.tck
 
+  # Run tcksift with the updated paths
+  tcksift /scratch/cbayouth/group/tracks_20mil/${i}_20_million.tck \
+    /scratch/cbayouth/group/v2fod/${i}_v2fod.mif \
+    /scratch/cbayouth/group/tracks_2mil.sift/${i}_2_million.sift.tck \
+    -term_number 2000000
+
+  echo "Finished processing subject $i for tractography"
+done
 
 
 
