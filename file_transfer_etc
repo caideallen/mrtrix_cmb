@@ -3,3 +3,32 @@ scp -r cbayouth@sol.asu.edu:/home/cbayouth/DICOMS_2 /home/cbayouth/
 
 # check storage space
 du -sh FOLDER_NAME
+
+#!/bin/bash
+
+# Define source and destination directories
+SOURCE_DIR="/scratch/cbayouth/groups/v2preproc_1/"
+DEST_DIR="/scratch/cbayouth/groups/v2preproc/"
+
+# Check if the source directory exists
+if [ ! -d "$SOURCE_DIR" ]; then
+  echo "Source directory does not exist: $SOURCE_DIR"
+  exit 1
+fi
+
+# Create the destination directory if it doesn't exist
+if [ ! -d "$DEST_DIR" ]; then
+  echo "Destination directory does not exist. Creating: $DEST_DIR"
+fi
+
+# Move all files from source to destination
+echo "Moving files from $SOURCE_DIR to $DEST_DIR"
+mv "$SOURCE_DIR"* "$DEST_DIR"
+
+# Check if the operation was successful
+if [ $? -eq 0 ]; then
+  echo "All files moved successfully."
+else
+  echo "An error occurred while moving files."
+  exit 1
+fi
