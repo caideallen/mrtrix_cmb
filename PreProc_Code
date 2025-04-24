@@ -33,23 +33,10 @@ fod2fixel -mask v2_tempmask.mif v2fod.mif fixel_space -afd v2FD.mif
   echo "Finished processing subject $i"
 done
 
-
-# tractography
-tckgen -angle 22.5 -maxlen 250 -minlen 10 -power 1.0 $i_v2fod.mif -seed_image $i_v2_tempmask.mif -mask $i_v2_tempmask.mif -select 20000000 -cutoff 0.10 $i_tracks_20_million.tck
-tcksift $i_tracks_20_million.tck $i_v2fod.mif $i_tracks_2_million.sift.tck -term_number 20000000
-
-# shit IDK if I'm doing yet 
-fixelconnectivity fixel_mask/ tracks_2_million.sift.tck matrix/
-
-      # normalize ## repeat code?? ##
-      dwinormalise group /home/lsfeldma/dwinormalise/dwi_input /home/lsfeldma/dwinormalise/mask_input /home/lsfeldma/dwinormalise/dwi_output /home/lsfeldma/dwinormalise/fa_template.mif /home/lsfeldma/dwinormalise/fa_template_wm_mask.mif
-  
 cd /scratch/cbayouth/group/     
-
  ml mamba
 source activate mrtrix3
 ml fsl
-
 
 # Loop from 10076 to 10150
 for i in $(seq 10076 10150); do
