@@ -1,8 +1,9 @@
- ml mamba
+# load enviorments
+ml mamba
 source activate mrtrix3
-module load fsl/6.0.7
+ml fsl
 
-# Loop from 10103 to 10113
+# Preproc sequence loop
 for i in $(seq 10073 10113); do
   echo "Processing subject $i"
   
@@ -21,9 +22,6 @@ for i in $(seq 10073 10113); do
   #fsl shit
   dwifslpreproc v2vox.mif v2preproc.mif -rpe_none -pe_dir AP -readout_time 0.1 -eddy_options " --slm=linear "
   dwi2mask v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_mask.nii -datatype float32 -strides -1,+2,+3
-### bias corection using ANTS? ###
-
-#
 
 # FBA
 dwi2response tournier v2preproc.mif wm_response.txt
@@ -31,7 +29,6 @@ dwi2mask v2preproc.mif v2_tempmask.mif
 dwi2fod csd v2preproc.mif wm_response.txt v2fod.mif
 fod2fixel -mask v2_tempmask.mif -fmls_peak_value 0.10 v2fod.mif fixel_mask
 fod2fixel -mask v2_tempmask.mif v2fod.mif fixel_space -afd v2FD.mif
-### fixelcorrespondence? ###
 
   echo "Finished processing subject $i"
 done
@@ -46,15 +43,16 @@ fixelconnectivity fixel_mask/ tracks_2_million.sift.tck matrix/
 
       # normalize ## repeat code?? ##
       dwinormalise group /home/lsfeldma/dwinormalise/dwi_input /home/lsfeldma/dwinormalise/mask_input /home/lsfeldma/dwinormalise/dwi_output /home/lsfeldma/dwinormalise/fa_template.mif /home/lsfeldma/dwinormalise/fa_template_wm_mask.mif
-       
+  
+cd /scratch/cbayouth/group/     
 
  ml mamba
 source activate mrtrix3
-module load fsl/6.0.7
-cd /scratch/cbayouth/group/
+ml fsl
 
-# Loop from 11048 to 11107
-for i in $(seq 11048 11107); do
+
+# Loop from 10076 to 10150
+for i in $(seq 10076 10150); do
   echo "Processing subject $i for tractography"
   
   # Run tckgen with the updated paths
