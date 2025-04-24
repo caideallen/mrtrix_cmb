@@ -52,8 +52,9 @@ fixelconnectivity fixel_mask/ tracks_2_million.sift.tck matrix/
 source activate mrtrix3
 module load fsl/6.0.7
 cd /scratch/cbayouth/group/
-# Loop from 11044 to 11107
-for i in $(seq 11044 11107); do
+
+# Loop from 11048 to 11107
+for i in $(seq 11048 11107); do
   echo "Processing subject $i for tractography"
   
   # Run tckgen with the updated paths
