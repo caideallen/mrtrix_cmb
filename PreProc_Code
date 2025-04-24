@@ -38,8 +38,8 @@ cd /scratch/cbayouth/group/
 source activate mrtrix3
 ml fsl
 
-# Loop from 10076 to 10150
-for i in $(seq 10076 10150); do
+# Loop from 11001 to 11042
+for i in $(seq 11001 11042); do
   echo "Processing subject $i for tractography"
   
   # Run tckgen with the updated paths
