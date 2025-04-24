@@ -1,0 +1,36 @@
+ #compress to image file
+  mrconvert DTI32/ $i.nii -force
+  mrconvert $i.nii $i.mif -force
+
+  # format for preprocessing
+  mrconvert DTI32/ $i-vox.mif -vox 2 -coord 3 '0:1:32'
+  dwidenoise $i-vox.mif v2vox.mif -noise v2_denoised.mif
+  mrcalc v2_denoised.mif v2vox.mif -subtract v2_res.mif
+
+  #fsl shit
+  dwifslpreproc v2vox.mif v2preproc.mif -rpe_none -pe_dir AP -readout_time 0.1 -eddy_options " --slm=linear "
+  dwi2mask v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_mask.nii -datatype float32 -strides -1,+2,+3
+
+# FBA
+dwi2response tournier v2preproc.mif wm_response.txt
+dwi2mask v2preproc.mif v2_tempmask.mif
+dwi2fod csd v2preproc.mif wm_response.txt v2fod.mif
+fod2fixel -mask v2_tempmask.mif -fmls_peak_value 0.10 v2fod.mif fixel_mask
+fod2fixel -mask v2_tempmask.mif v2fod.mif fixel_space -afd v2FD.mif
+
+# tractography
+tckgen -angle 22.5 -maxlen 250 -minlen 10 -power 1.0 $i_v2fod.mif -seed_image $i_v2_tempmask.mif -mask $i_v2_tempmask.mif -select 20000000 -cutoff 0.10 $i_tracks_20_million.tck
+tcksift $i_tracks_20_million.tck $i_v2fod.mif $i_tracks_2_million.sift.tck -term_number 20000000
+
+# bias corection using ANTS ## exit out of mrtric
+module load ants/2.4.0
+dwibiascorrect ants v2preproc.mif v2preproc_unbiased.mif
+
+dwibiascorrect ants v2preproc.mif v2preproc_unbiased.mif
+
+# dwi input, mask input
+dwinormalise group /scratch/cbayouth/group/v2preproc /scratch/cbayouth/group/eddymask /scratch/cbayouth/group/dwi_output /scratch/cbayouth/group/fa_template.mif /scratch/cbayouth/group/fa_template_wm_mask.mif
+
+          
+##ISSUE need templates maybe?
+fixelcorrespondence fixel_space/v2FD.mif fixel_mask v2_FDpr 
