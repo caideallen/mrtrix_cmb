@@ -31,6 +31,8 @@ dwibiascorrect ants v2preproc.mif v2preproc_unbiased.mif
 # dwi input, mask input
 dwinormalise group /scratch/cbayouth/group/v2preproc /scratch/cbayouth/group/eddymask /scratch/cbayouth/group/dwi_output /scratch/cbayouth/group/fa_template.mif /scratch/cbayouth/group/fa_template_wm_mask.mif
 
+dwinormalise group /home/lsfeldma/dwinormalise/dwi_input /home/lsfeldma/dwinormalise/mask_input /home/lsfeldma/dwinormalise/dwi_output /home/lsfeldma/dwinormalise/fa_template.mif /home/lsfeldma/dwinormalise/fa_template_wm_mask.mif
+  
           
 ##ISSUE need templates maybe?
 fixelcorrespondence fixel_space/v2FD.mif fixel_mask v2_FDpr 
