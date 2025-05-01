@@ -33,6 +33,7 @@ fod2fixel -mask v2_tempmask.mif v2fod.mif fixel_space -afd v2FD.mif
   echo "Finished processing subject $i"
 done
 
+# tck in scratch
 cd /scratch/cbayouth/group/     
  ml mamba
 source activate mrtrix3
@@ -59,7 +60,8 @@ for i in $(seq 11001 11042); do
   echo "Finished processing subject $i for tractography"
 done
 
-
+# group templates
+dwinormalise group /scratch/cbayouth/group/v2preproc /scratch/cbayouth/group/eddymask /scratch/cbayouth/group/dwi_output /scratch/cbayouth/group/fa_template.mif /scratch/cbayouth/group/fa_template_wm_mask.mif
 
 
 
