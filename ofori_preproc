@@ -1,6 +1,6 @@
  #compress to image file
-  mrconvert DTI32/ $i.nii -force
-  mrconvert $i.nii $i.mif -force
+  mrconvert DTI32/ $i.nii
+  mrconvert $i.nii $i.mif
 
   # format for preprocessing
   mrconvert DTI32/ $i-vox.mif -vox 2 -coord 3 '0:1:32'
@@ -22,7 +22,7 @@ fod2fixel -mask v2_tempmask.mif v2fod.mif fixel_space -afd v2FD.mif
 tckgen -angle 22.5 -maxlen 250 -minlen 10 -power 1.0 $i_v2fod.mif -seed_image $i_v2_tempmask.mif -mask $i_v2_tempmask.mif -select 20000000 -cutoff 0.10 $i_tracks_20_million.tck
 tcksift $i_tracks_20_million.tck $i_v2fod.mif $i_tracks_2_million.sift.tck -term_number 20000000
 
-# bias corection using ANTS ## exit out of mrtric
+# bias corection using ANTS ## exit out of mrtrix dummy
 module load ants/2.4.0
 dwibiascorrect ants v2preproc.mif v2preproc_unbiased.mif
 
