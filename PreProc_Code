@@ -64,7 +64,10 @@ done
 dwinormalise group /scratch/cbayouth/group/v2preproc /scratch/cbayouth/group/eddymask /scratch/cbayouth/group/dwi_output /scratch/cbayouth/group/fa_template.mif /scratch/cbayouth/group/fa_template_wm_mask.mif
 
 
-
+# Loop from 11001 to 11042
+for i in $(seq 11001 11042); do
+  echo "Processing subject $i for tract map"
+tckmap tracks_2mil.sift -template v2preproc/10002_v2preproc.mif tdi_map/10002_tdi_map.mif
 
 
 
