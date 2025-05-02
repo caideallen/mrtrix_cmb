@@ -63,6 +63,8 @@ done
 # group templates
 dwinormalise group /scratch/cbayouth/group/v2preproc /scratch/cbayouth/group/eddymask /scratch/cbayouth/group/dwi_output /scratch/cbayouth/group/fa_template.mif /scratch/cbayouth/group/fa_template_wm_mask.mif
 
+# create population template
+population_template v2fod/ template.mif -mask_dir masks/
 
 # Loop from 11001 to 11042
 for i in $(seq 11001 11042); do
