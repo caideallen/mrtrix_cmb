@@ -65,13 +65,20 @@ dwinormalise group /scratch/cbayouth/group/v2preproc /scratch/cbayouth/group/edd
 
 # create population template
 population_template v2fod/ template.mif -mask_dir masks/
-
+fod2fixel template.mif template_fixel_dir -afd template_FD.mif
+# For each subject
+fixelcorrespondence fixel_space/v2FD.mif fixel_mask v2_FDpr
+ 
 # Loop from 11001 to 11042
 for i in $(seq 11001 11042); do
   echo "Processing subject $i for tract map"
+
+## Working on this 
+
+## what Ed gave me
 tckmap tracks_2mil.sift -template v2preproc/10002_v2preproc.mif tdi_map/10002_tdi_map.mif
-
-
+## what I need?
+tckmap tracks_2mil.sift/10002_2_million.sift.tck -template v2preproc/10002_v2preproc.mif tdi_map/10002_tdi_map.mif
 
 
 
