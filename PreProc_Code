@@ -52,9 +52,9 @@ for i in $(seq 11001 11042); do
     /scratch/cbayouth/group/tracks_20mil/${i}_20_million.tck
 
   # Run tcksift with the updated paths
-  tcksift /scratch/cbayouth/group/tracks_20mil/${i}_20_million.tck \
-    /scratch/cbayouth/group/v2fod/${i}_v2fod.mif \
-    /scratch/cbayouth/group/tracks_2mil.sift/${i}_2_million.sift.tck \
+  tcksift /scratch/cbayouth/group/tracks_20mil/10117_20_million.tck \
+    /scratch/cbayouth/group/v2fod/10117_v2fod.mif \
+    /scratch/cbayouth/group/tracks_2mil.sift/10117_2_million.sift.tck \
     -term_number 2000000
 
   echo "Finished processing subject $i for tractography"
@@ -69,16 +69,17 @@ fod2fixel template.mif template_fixel_dir -afd template_FD.mif
 # For each subject
 fixelcorrespondence fixel_space/v2FD.mif fixel_mask v2_FDpr
  
-# Loop from 11001 to 11042
-for i in $(seq 11001 11042); do
-  echo "Processing subject $i for tract map"
+# Loop from 10003 to 10150
+for i in $(seq 10003 10150); do
+tckmap tracks_2mil.sift/${i}_2_million.sift.tck -template v2preproc/${i}_v2preproc.mif tdi_map/${i}_tdi_map.mif
+done
 
 ## Working on this 
 
 ## what Ed gave me
 tckmap tracks_2mil.sift -template v2preproc/10002_v2preproc.mif tdi_map/10002_tdi_map.mif
 ## what I need?
-tckmap tracks_2mil.sift/10002_2_million.sift.tck -template v2preproc/10002_v2preproc.mif tdi_map/10002_tdi_map.mif
+tckmap tracks_2mil.sift/10117_2_million.sift.tck -template v2preproc/10117_v2preproc.mif tdi_map/10117_tdi_map.mif
 
 
 
