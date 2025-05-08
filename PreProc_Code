@@ -65,6 +65,7 @@ dwinormalise group /scratch/cbayouth/group/v2preproc /scratch/cbayouth/group/edd
 
 # create population template
 population_template v2fod/ template.mif -mask_dir masks/
+population_template v2fod/ template.mif -mask_dir masks/ -nl_warp
 fod2fixel template.mif template_fixel_dir -afd template_FD.mif
 # For each subject
 fixelcorrespondence fixel_space/v2FD.mif fixel_mask v2_FDpr
