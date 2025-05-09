@@ -141,3 +141,51 @@ for id in "${ids[@]}"; do
         echo "File not found: $src_file"
     fi
 done
+
+#!/bin/bash
+
+#ASD
+
+# Source and destination directories
+src_dir="/scratch/cbayouth/group/v2fod/"
+dest_dir="/scratch/cbayouth/group/ASD/v2fod/"
+
+# List of IDs
+ids=( 10001 10002 10003 10004 10005 10007 10008 10010 10012 10020 10021 10022 10023 10024 10025 10026 10027 10033 10035 10037 10038 10040 10043 10047 10050 10051 10053 10055 10059 10061 10062 100[...] )
+
+# Loop through each ID and move the corresponding file
+for id in "${ids[@]}"; do
+    src_file="${src_dir}${id}_v2fod.mif"
+    dest_file="${dest_dir}${id}_v2fod.mif"
+    
+    # Check if the source file exists
+    if [ -f "$src_file" ]; then
+        mv "$src_file" "$dest_file"
+        echo "Moved: $src_file to $dest_file"
+    else
+        echo "File not found: $src_file"
+    fi
+done
+
+### NT
+
+# Source and destination directories
+src_dir="/scratch/cbayouth/group/v2fod/"
+dest_dir="/scratch/cbayouth/group/control/v2fod/"
+
+# List of IDs
+ids=( 10006 10009 10011 10013 10014 10015 10016 10017 10018 10019 10028 10029 10030 10031 10032 10034 10036 10041 10042 10044 10045 10046 10048 10049 10052 10054 10056 10057 10058 10060 10063 100[...] )
+
+# Loop through each ID and move the corresponding file
+for id in "${ids[@]}"; do
+    src_file="${src_dir}${id}_v2fod.mif"
+    dest_file="${dest_dir}${id}_v2fod.mif"
+    
+    # Check if the source file exists
+    if [ -f "$src_file" ]; then
+        mv "$src_file" "$dest_file"
+        echo "Moved: $src_file to $dest_file"
+    else
+        echo "File not found: $src_file"
+    fi
+done
