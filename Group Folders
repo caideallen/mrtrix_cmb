@@ -76,5 +76,25 @@ for i in {11043..11107}; do
     fi
 done
 
+#!/bin/bash
+
+# Define source and destination directories
+SRC_DIR="/scratch/cbayouth/group/v2preproc"
+DEST_DIR="/scratch/cbayouth/group/ASD/v2preproc"
+
+# Read the ID list
+while read ID; do
+    SRC_FILE="${SRC_DIR}/${ID}_v2preproc.mif"
+    DEST_FILE="${DEST_DIR}/${ID}_v2preproc.mif"
+
+    if [[ -f "$SRC_FILE" ]]; then
+        mv "$SRC_FILE" "$DEST_FILE"
+        echo "Moved $SRC_FILE to $DEST_FILE"
+    else
+        echo "File not found: $SRC_FILE"
+    fi
+done < id_list.txt
+
+
 
 
