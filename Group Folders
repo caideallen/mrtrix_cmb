@@ -142,7 +142,7 @@ for id in "${ids[@]}"; do
     fi
 done
 
-#!/bin/bash
+## v2fod ##
 
 #ASD
 
