@@ -95,8 +95,7 @@ while read ID; do
     fi
 done < id_list.txt
 
-
-#!/bin/bash
+#ASD
 
 # Source and destination directories
 src_dir="/scratch/cbayouth/group/v2preproc/"
@@ -251,3 +250,26 @@ for id in "${ids[@]}"; do
     fi
 done
 
+### NT
+# Source and destination directories
+src_dir="/scratch/cbayouth/group/v2preproc/"
+dest_dir="/scratch/cbayouth/group/ASD/v2preproc/"
+
+# List of IDs
+ids=(
+
+)
+
+# Loop through each ID and move the corresponding file
+for id in "${ids[@]}"; do
+    src_file="${src_dir}${id}_v2preproc.mif"
+    dest_file="${dest_dir}${id}_v2preproc.mif"
+    
+    # Check if the source file exists
+    if [ -f "$src_file" ]; then
+        mv "$src_file" "$dest_file"
+        echo "Moved: $src_file to $dest_file"
+    else
+        echo "File not found: $src_file"
+    fi
+done
