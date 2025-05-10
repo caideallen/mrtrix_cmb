@@ -60,6 +60,12 @@ for i in $(seq 11001 11042); do
   echo "Finished processing subject $i for tractography"
 done
 
+
+# poptemplate FODs dont kill urself
+mkdir -p ../template/fod_input
+mkdir ../template/mask_input
+population_template ../template/fod_input -mask_dir ../template/mask_input ../template/wmfod_template.mif -voxel_size 1.25
+
 # group templates
 dwinormalise group /scratch/cbayouth/group/v2preproc /scratch/cbayouth/group/eddymask /scratch/cbayouth/group/dwi_output /scratch/cbayouth/group/fa_template.mif /scratch/cbayouth/group/fa_template_wm_mask.mif
 
