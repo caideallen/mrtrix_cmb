@@ -36,7 +36,8 @@ done
 
 # Loop from 10002 to 10150
 for i in $(seq 10002 10150); do
- 
+
+dwi2response tournier v2preproc/$i_v2preproc.mif v2preproc/$i_wm_response.txt
 mrgrid v2preproc/$i_v2preproc.mif regrid -vox 1.25 grid/$i_v2preproc-upsampled.mif
 dwi2mask grid/$i_v2preproc-upsampled.mif dwimask/$i_dwi_mask_upsampled.mif
 dwi2fod csd grid/$i_v2preproc_upsampled.mif wmfod/wm_response.txt wmfod/$i_wmfod.mif
