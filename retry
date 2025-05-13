@@ -11,7 +11,7 @@ dwibiascorrect ants v2preproc/${i}_v2preproc.mif ants/${i}_v2preproc_unbiased.mi
 done
 
 ## group normalization
-dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ dwinormalise/ASD_fa_template.mif /dwinormalise/ASD_fa_template_wm_mask.mif
+dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ dwinormalise/control_fa_template.mif /dwinormalise/control_fa_template_wm_mask.mif
 
 ## preproc try again
 #guys
