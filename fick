@@ -39,7 +39,7 @@ for i in $(seq 10002 10150); do
  
 mrgrid v2preproc/$i_v2preproc.mif regrid -vox 1.25 grid/$i_v2preproc-upsampled.mif
 dwi2mask grid/$i_v2preproc-upsampled.mif dwimask/$i_dwi_mask_upsampled.mif
-dwiextract grid/$i_v2preproc-upsampled.mif - \| dwi2fod msmt_csd - grid/$i_group_average_response.txt wmfod/$i_wmfod.mif -mask dwimask/$i_dwi_mask_upsampled.mif
+dwi2fod csd grid/$i_v2preproc_upsampled.mif wmfod/wm_response.txt wmfod/$i_wmfod.mif
 echo "Finished processing subject $i"
 done
 
