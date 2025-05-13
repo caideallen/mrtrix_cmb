@@ -1,10 +1,33 @@
+# load modules
 ml mamba
 source activate mrtrix3
 ml ants
+ml fsl
 
-for i in $(seq 10003 10150); do
-    echo "Processing sucject: $i"
-    
+## bias correction 
+for i in $(seq 11001 11105); do
+    echo "Processing sucject: $i"  
 dwibiascorrect ants v2preproc/${i}_v2preproc.mif ants/${i}_v2preproc_unbiased.mif
+done
 
+## group normalization
+dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ dwinormalise/ASD_fa_template.mif /dwinormalise/ASD_fa_template_wm_mask.mif
+
+## preproc try again
+#guys
+for ID in $(seq 10003 10150); do
+    echo "Processing ID: $ID"
+    
+    dwi2response tournier ants/${ID}_v2preproc_unbiased.mif v2preproc/wmresponse/${ID}_wm_response.txt -f
+done 
+#girls
+for ID in $(seq 11001 11105); do
+    echo "Processing ID: $ID"
+    dwi2response tournier ants/${ID}_v2preproc_unbiased.mif v2preproc/wmresponse/${ID}_wm_response.txt -f
+done 
+
+responsemean v2preproc/wmresponse/
+    mrgrid ants/${ID}_v2preproc_unbiased.mif  regrid -vox 1.25 grid/${ID}_v2preproc_upsampled.mif -f
+    dwi2mask grid/${ID}_v2preproc_upsampled.mif dwimask/${ID}_dwi_mask_upsampled.mif -f
+  
 done
