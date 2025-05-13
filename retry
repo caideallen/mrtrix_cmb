@@ -1,0 +1,10 @@
+ml mamba
+source activate mrtrix3
+ml ants
+
+for ID in $(seq 10003 10150); do
+    echo "Processing sucject: $i"
+    
+dwibiascorrect ants v2preproc/${i}_v2preproc.mif ants/${i}_v2preproc_unbiased.mif
+
+done
