@@ -5,7 +5,7 @@ ml ants
 ml fsl
 
 ## bias correction 
-for i in $(seq 11001 11105); do
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Processing sucject: $i"  
 dwibiascorrect ants v2preproc/${i}_v2preproc.mif ants/${i}_v2preproc_unbiased.mif
 done
@@ -14,31 +14,20 @@ done
 dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ dwinormalise/control_fa_template.mif /dwinormalise/control_fa_template_wm_mask.mif
 
 ## preproc try again
-#guys
-for ID in $(seq 10002 10150); do
-    echo "Processing ID: $ID"
-    dwi2response tournier ants/${ID}_v2preproc_unbiased.mif v2preproc/wmresponse/${ID}_wm_response.txt -f
-done 
-#girls
-for ID in $(seq 11001 11105); do
-    echo "Processing ID: $ID"
-    dwi2response tournier ants/${ID}_v2preproc_unbiased.mif v2preproc/wmresponse/${ID}_wm_response.txt -f
-done 
 
-##dwimask
-#guys
-for ID in $(seq 10002 10150); do
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Processing ID: $ID"
+    dwi2response tournier ants/${ID}_v2preproc_unbiased.mif v2preproc/wmresponse/${ID}_wm_response.txt -f
     mrgrid ants/${ID}_v2preproc_unbiased.mif  regrid -vox 1.25 grid/${ID}_v2preproc_upsampled.mif
-    dwi2mask grid/${ID}_v2preproc_upsampled.mif dwimask/${ID}_dwi_mask_upsampled.mif 
-done
-#girls
-for ID in $(seq 11001 11105); do
-echo "Processing ID: $ID"
-    mrgrid ants/${ID}_v2preproc_unbiased.mif  regrid -vox 1.25 grid/${ID}_v2preproc_upsampled.mif 
-    dwi2mask grid/${ID}_v2preproc_upsampled.mif dwimask/${ID}_dwi_mask_upsampled.mif 
+    dwi2mask grid/${ID}_v2preproc_upsampled.mif dwimask/${ID}_dwi_mask_upsampled.mif     
 done
 
-responsemean v2preproc/wmrespomse/*_wm_response.txt ../group_average_response.txt
+#ASD group
+responsemean v2preproc/wmrespomse/*_wm_response.txt ../ASD_average_response.txt
+#control group 
+responsemean v2preproc/wmrespomse/*_wm_response.txt ../control_average_response.txt
 
-responsemean */response.txt ../group_average_response.txt
+# step 9
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+    echo "Processing ID: $ID"
+dwiextract grid/${ID}_v2preproc_upsampled.mif - \| dwi2fod msmt_csd - ASD_average_response.txt wmfod/${ID}_wmfod.mif -mask IN/dwi_mask_upsampled.mif
