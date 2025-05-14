@@ -27,7 +27,7 @@ responsemean v2preproc/wmresponse/*_wm_response.txt ASD_average_response.txt
 #control group 
 responsemean v2preproc/wmresponse/*_wm_response.txt control_average_response.txt
 
-# step 9
+# step 9 WIP
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Processing ID: $ID"
 dwiextract grid/${ID}_v2preproc_upsampled.mif - \| dwi2fod msmt_csd - ASD_average_response.txt wmfod/${ID}_wmfod.mif -mask IN/dwi_mask_upsampled.mif
