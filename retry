@@ -39,7 +39,6 @@ echo "Processing ID: $ID"
     dwi2mask grid/${ID}_v2preproc_upsampled.mif dwimask/${ID}_dwi_mask_upsampled.mif 
 done
 
-responsemean v2preproc/wmresponse/
+responsemean group/*_wm_response.txt ../group_average_response.txt
 
-  
-done
+responsemean */response.txt ../group_average_response.txt
