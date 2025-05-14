@@ -15,9 +15,8 @@ dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ dwinormal
 
 ## preproc try again
 #guys
-for ID in $(seq 10003 10150); do
+for ID in $(seq 10002 10150); do
     echo "Processing ID: $ID"
-    
     dwi2response tournier ants/${ID}_v2preproc_unbiased.mif v2preproc/wmresponse/${ID}_wm_response.txt -f
 done 
 #girls
