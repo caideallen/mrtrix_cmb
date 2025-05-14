@@ -23,9 +23,9 @@ for ID in $(seq 10002 10150) $(seq 11001 11105); do
 done
 
 #ASD group
-responsemean v2preproc/wmrespomse/*_wm_response.txt ../ASD_average_response.txt
+responsemean v2preproc/wmrespomse/*_wm_response.txt ASD_average_response.txt
 #control group 
-responsemean v2preproc/wmrespomse/*_wm_response.txt ../control_average_response.txt
+responsemean v2preproc/wmrespomse/*_wm_response.txt control_average_response.txt
 
 # step 9
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
