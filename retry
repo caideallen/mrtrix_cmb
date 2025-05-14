@@ -25,8 +25,21 @@ for ID in $(seq 11001 11105); do
     dwi2response tournier ants/${ID}_v2preproc_unbiased.mif v2preproc/wmresponse/${ID}_wm_response.txt -f
 done 
 
+##dwimask
+#guys
+for ID in $(seq 10002 10150); do
+    echo "Processing ID: $ID"
+    mrgrid ants/${ID}_v2preproc_unbiased.mif  regrid -vox 1.25 grid/${ID}_v2preproc_upsampled.mif
+    dwi2mask grid/${ID}_v2preproc_upsampled.mif dwimask/${ID}_dwi_mask_upsampled.mif 
+done
+#girls
+for ID in $(seq 11001 11105); do
+echo "Processing ID: $ID"
+    mrgrid ants/${ID}_v2preproc_unbiased.mif  regrid -vox 1.25 grid/${ID}_v2preproc_upsampled.mif 
+    dwi2mask grid/${ID}_v2preproc_upsampled.mif dwimask/${ID}_dwi_mask_upsampled.mif 
+done
+
 responsemean v2preproc/wmresponse/
-    mrgrid ants/${ID}_v2preproc_unbiased.mif  regrid -vox 1.25 grid/${ID}_v2preproc_upsampled.mif -f
-    dwi2mask grid/${ID}_v2preproc_upsampled.mif dwimask/${ID}_dwi_mask_upsampled.mif -f
+
   
 done
