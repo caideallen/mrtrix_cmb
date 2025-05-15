@@ -35,7 +35,7 @@ dwi2fod csd grid/${ID}_v2preproc_upsampled.mif v2preproc/wmresponse/${ID}_wm_res
 done
 
 # FOD template creation
-population_template grid/ /template/mask_input/ wmfod_template.mif -voxel_size 1.25
+population_template grid/ template/mask_input/ wmfod_template.mif -voxel_size 1.25
 
 
 # warp to template space
