@@ -34,8 +34,9 @@ dwi2fod csd grid/${ID}_v2preproc_upsampled.mif control_average_response.txt wmfo
 dwi2fod csd grid/${ID}_v2preproc_upsampled.mif v2preproc/wmresponse/${ID}_wm_response.txt wmfod2/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask_upsampled.mif
 done
 
-dwi2fod msmt_csd grid/$10002_v2preproc_upsampled.mif ASD_average_response.txt wmfod/10002_wmfod.mif -mask dwimask/10002_dwi_mask_upsampled.mif
+# FOD template creation
+population_template grid/ /template/mask_input/ wmfod_template.mif -voxel_size 1.25
 
 
-
-dwiextract grid/${ID}_v2preproc_upsampled.mif - \| dwi2fod msmt_csd ASD_average_response.txt wmfod/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask_upsampled.mif
+# warp to template space
+mrtransform IN/dwi_mask_upsampled.mif -warp IN/subject2template_warp.mif -interp nearest -datatype bit IN/dwi_mask_in_template_space.mif
