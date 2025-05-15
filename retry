@@ -35,8 +35,14 @@ dwi2fod csd grid/${ID}_v2preproc_upsampled.mif v2preproc/wmresponse/${ID}_wm_res
 done
 
 # FOD template creation
-population_template grid/ template/mask_input/ wmfod_template.mif -voxel_size 1.25
+for ID in $(seq 10006 10150) $(seq 11001 11105); do
+    echo "Processing ID: $ID"
+ln -sr wmfod/${ID}_wmfod.mif template/fod_input/PRE.mif
+ln -sr dwimask/dwi_mask_upsampled.mif template/mask_input/PRE.mif
+done
 
+population_template grid/ template/mask_input/ wmfod_template.mif -voxel_size 1.25
+population_template grid/ template.mif -mask_dir masks/ -nl_update_smooth 5 -nl_disp_smooth 2 -nl_grad_step 0.25
 
 # warp to template space
 mrtransform IN/dwi_mask_upsampled.mif -warp IN/subject2template_warp.mif -interp nearest -datatype bit IN/dwi_mask_in_template_space.mif
