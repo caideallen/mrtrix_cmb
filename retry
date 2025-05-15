@@ -41,6 +41,8 @@ ln -sr wmfod/${ID}_wmfod.mif template/fod_input/${ID}PRE.mif
 ln -sr dwimask/${ID}_dwi_mask_upsampled.mif template/mask_input/${ID}PRE.mif
 done
 
+population_template template/fod_input -mask_dir template/mask_input template/wmfod_template.mif -voxel_size 1.25
+
 population_template grid/ template/mask_input/ wmfod_template.mif -voxel_size 1.25
 population_template grid/ template.mif -mask_dir masks/ -nl_update_smooth 5 -nl_disp_smooth 2 -nl_grad_step 0.25
 
