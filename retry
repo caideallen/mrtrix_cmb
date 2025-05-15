@@ -28,6 +28,14 @@ responsemean v2preproc/wmresponse/*_wm_response.txt ASD_average_response.txt
 responsemean v2preproc/wmresponse/*_wm_response.txt control_average_response.txt
 
 # step 9 WIP
-for ID in $(seq 10002 10150) $(seq 11001 11105); do
+for ID in $(seq 10006 10150) $(seq 11001 11105); do
     echo "Processing ID: $ID"
-dwiextract grid/${ID}_v2preproc_upsampled.mif - \| dwi2fod msmt_csd - ASD_average_response.txt wmfod/${ID}_wmfod.mif -mask IN/dwi_mask_upsampled.mif
+dwi2fod csd grid/${ID}_v2preproc_upsampled.mif control_average_response.txt wmfod/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask_upsampled.mif
+dwi2fod csd grid/${ID}_v2preproc_upsampled.mif v2preproc/wmresponse/${ID}_wm_response.txt wmfod2/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask_upsampled.mif
+done
+
+dwi2fod msmt_csd grid/$10002_v2preproc_upsampled.mif ASD_average_response.txt wmfod/10002_wmfod.mif -mask dwimask/10002_dwi_mask_upsampled.mif
+
+
+
+dwiextract grid/${ID}_v2preproc_upsampled.mif - \| dwi2fod msmt_csd ASD_average_response.txt wmfod/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask_upsampled.mif
