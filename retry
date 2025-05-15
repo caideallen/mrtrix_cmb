@@ -1,8 +1,23 @@
+ml mamba
+source activate mrtrix3
+ml fsl
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+    echo "Processing ID: $ID"
+    dwi2mask ants/${ID}_v2preproc_unbiased.mif dwimask/${ID}_dwi_mask.mif     
+done
+# step 9 WIP
+for ID in $(seq 10006 10150) $(seq 11001 11105); do
+    echo "Processing ID: $ID"
+dwi2fod csd ants/${ID}_v2preproc_unbiased.mif control_average_response.txt wmfod/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask.mif
+done
+
+
 # load modules
 ml mamba
 source activate mrtrix3
 ml ants
 ml fsl
+
 
 ## bias correction 
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
@@ -11,15 +26,14 @@ dwibiascorrect ants v2preproc/${i}_v2preproc.mif ants/${i}_v2preproc_unbiased.mi
 done
 
 ## group normalization
-dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ dwinormalise/control_fa_template.mif /dwinormalise/control_fa_template_wm_mask.mif
+dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ dwinormalise/control_fa_template.mif /dwinormalise/control_fa_template_wm_mask.mif -force
 
 ## preproc try again
 
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Processing ID: $ID"
-    dwi2response tournier ants/${ID}_v2preproc_unbiased.mif v2preproc/wmresponse/${ID}_wm_response.txt -f
-    mrgrid ants/${ID}_v2preproc_unbiased.mif  regrid -vox 1.25 grid/${ID}_v2preproc_upsampled.mif
-    dwi2mask grid/${ID}_v2preproc_upsampled.mif dwimask/${ID}_dwi_mask_upsampled.mif     
+    dwi2response tournier ants/${ID}_v2preproc_unbiased.mif v2preproc/wmresponse/${ID}_wm_response.txt 
+    dwi2mask ants/${ID}_v2preproc_unbiased.mif dwimask/${ID}_dwi_mask.mif     
 done
 
 #ASD group
@@ -30,8 +44,7 @@ responsemean v2preproc/wmresponse/*_wm_response.txt control_average_response.txt
 # step 9 WIP
 for ID in $(seq 10006 10150) $(seq 11001 11105); do
     echo "Processing ID: $ID"
-dwi2fod csd grid/${ID}_v2preproc_upsampled.mif control_average_response.txt wmfod/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask_upsampled.mif
-dwi2fod csd grid/${ID}_v2preproc_upsampled.mif v2preproc/wmresponse/${ID}_wm_response.txt wmfod2/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask_upsampled.mif
+dwi2fod csd ants/${ID}_v2preproc_unbiased.mif control_average_response.txt wmfod/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask.mif
 done
 
 # FOD template creation
