@@ -40,17 +40,29 @@ population_template wmfod -mask_dir dwimask template3/wmfod_template.mif
 
 ## all together now avg response 9 and 10
 responsemean wmresponse_group/*_wm_response.txt group_average_response.txt
-for ID in $(seq 10006 10150) $(seq 11001 11105); do
-    echo "Processing ID: $ID"
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+    echo "Processing wmfod: $ID"
 dwi2fod csd ants/${ID}_v2preproc_unbiased.mif group_average_response.txt wmfod/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask.mif
 done
 population_template wmfod -mask_dir dwimask template2/wmfod_template_vox_125.mif -voxel_size 1.25
 population_template wmfod -mask_dir dwimask template3/wmfod_template.mif 
 
-# Step 11 through 15 tw
-for ID in $(seq 10006 10150) $(seq 11001 11105); do
-    echo "Processing ID: $ID"
+# Step 11 and 12
+mkdir template3/maskintemp
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+    echo "Register to template: $ID"
 mrregister wmfod/${ID}_wmfod.mif -mask1 dwimask/${ID}_dwi_mask.mif template3/wmfod_template.mif -nl_warp template3/sub2temp/${ID}_subject2template_warp.mif template3/temp2sub/${ID}_template2subject_warp.mif
+    echo "Mask to template: $ID"
+mrtransform dwimask/${ID}_dwi_mask.mif -warp template3/sub2temp/${ID}_subject2template_warp.mif -interp nearest -datatype bit template3/maskintemp/${ID}_dwi_mask_in_template_space.mif
+done
+mrmath template3/maskintemp/*_dwi_mask_in_template_space.mif min /template3/template_mask.mif -datatype bit
 
-# warp to template space
-mrtransform IN/dwi_mask_upsampled.mif -warp IN/subject2template_warp.mif -interp nearest -datatype bit IN/dwi_mask_in_template_space.mif
+# step 13
+mkdir template3/fixel_mask
+fod2fixel -mask template3/template_mask.mif -fmls_peak_value 0.10 template3/wmfod_template.mif template3/fixel_mask
+
+# step 14
+mkdir template3/fodintemp
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+    echo "Warp FOD to template: $ID"
+mrtransform wmfod/${ID}_wmfod.mif -warp template3/sub2temp/${ID}_subject2template_warp.mif -reorient_fod no template3/fodintemp/${ID}_fod_in_template_space_NOT_REORIENTED.mif
