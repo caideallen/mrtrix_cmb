@@ -28,24 +28,29 @@ responsemean v2preproc/wmresponse/*_wm_response.txt ASD_average_response.txt
 responsemean v2preproc/wmresponse/*_wm_response.txt control_average_response.txt
 
 # step 9 WIP
-for ID in $(seq 10006 10150) $(seq 11001 11105); do
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Processing ID: $ID"
 dwi2fod csd ants/${ID}_v2preproc_unbiased.mif control_average_response.txt wmfod/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask.mif
 done
 
-# FOD template creation
-for ID in $(seq 10003 10150) $(seq 11001 11105); do
-    echo "Processing ID: $ID"
-ln -sr wmfod/${ID}_wmfod.mif template/fod_input/${ID}PRE.mif
-ln -sr dwimask/${ID}_dwi_mask_upsampled.mif template/mask_input/${ID}PRE.mif
-done
 
 #step 10
 population_template wmfod -mask_dir dwimask template2/wmfod_template_vox_125.mif -voxel_size 1.25
 population_template wmfod -mask_dir dwimask template3/wmfod_template.mif 
 
-population_template grid/ template/mask_input/ wmfod_template.mif -voxel_size 1.25
-population_template grid/ template.mif -mask_dir masks/ -nl_update_smooth 5 -nl_disp_smooth 2 -nl_grad_step 0.25
+## all together now avg response 9 and 10
+responsemean wmresponse_group/*_wm_response.txt group_average_response.txt
+for ID in $(seq 10006 10150) $(seq 11001 11105); do
+    echo "Processing ID: $ID"
+dwi2fod csd ants/${ID}_v2preproc_unbiased.mif group_average_response.txt wmfod/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask.mif
+done
+population_template wmfod -mask_dir dwimask template2/wmfod_template_vox_125.mif -voxel_size 1.25
+population_template wmfod -mask_dir dwimask template3/wmfod_template.mif 
+
+# Step 11 through 15 tw
+for ID in $(seq 10006 10150) $(seq 11001 11105); do
+    echo "Processing ID: $ID"
+mrregister wmfod/${ID}_wmfod.mif -mask1 dwimask/${ID}_dwi_mask.mif template3/wmfod_template.mif -nl_warp template3/sub2temp/${ID}_subject2template_warp.mif template3/temp2sub/${ID}_template2subject_warp.mif
 
 # warp to template space
 mrtransform IN/dwi_mask_upsampled.mif -warp IN/subject2template_warp.mif -interp nearest -datatype bit IN/dwi_mask_in_template_space.mif
