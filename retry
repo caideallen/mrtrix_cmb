@@ -1,17 +1,3 @@
-ml mamba
-source activate mrtrix3
-ml fsl
-for ID in $(seq 10002 10150) $(seq 11001 11105); do
-    echo "Processing ID: $ID"
-    dwi2mask ants/${ID}_v2preproc_unbiased.mif dwimask/${ID}_dwi_mask.mif     
-done
-# step 9 WIP
-for ID in $(seq 10006 10150) $(seq 11001 11105); do
-    echo "Processing ID: $ID"
-dwi2fod csd ants/${ID}_v2preproc_unbiased.mif control_average_response.txt wmfod/${ID}_wmfod.mif -mask dwimask/${ID}_dwi_mask.mif
-done
-
-
 # load modules
 ml mamba
 source activate mrtrix3
