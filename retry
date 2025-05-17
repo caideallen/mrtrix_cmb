@@ -66,3 +66,5 @@ mkdir template3/fodintemp
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Warp FOD to template: $ID"
 mrtransform wmfod/${ID}_wmfod.mif -warp template3/sub2temp/${ID}_subject2template_warp.mif -reorient_fod no template3/fodintemp/${ID}_fod_in_template_space_NOT_REORIENTED.mif
+
+population_template wmfod/ template2/template_mask.mif -mask_dir dwimasks/ -nl_update_smooth 5 -nl_disp_smooth 2 -nl_grad_step 0.25
