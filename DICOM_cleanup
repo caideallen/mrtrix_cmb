@@ -1,3 +1,7 @@
+for i in $(seq 10003 10149); do
+  mv "${i}wmfod.mif" "${i}_wmfod.mif"
+done
+
 #!/bin/bash
 
 # Base directory
