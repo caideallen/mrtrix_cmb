@@ -35,8 +35,8 @@ done
 
 
 #step 10
-population_template wmfod -mask_dir dwimask template2/wmfod_template_vox_125.mif -voxel_size 1.25
-population_template wmfod -mask_dir dwimask template3/wmfod_template.mif 
+population_template wmfod2 -mask_dir dwimask template2/wmfod_template_vox_125.mif -voxel_size 1.25
+population_template wmfod2 -mask_dir dwimask template3/wmfod_template_125_affinelmax0.mif -affine_lmax 0,0,0,0,0,0
 
 ## all together now avg response 9 and 10
 responsemean wmresponse/*_wm_response.txt group_average_response_2.txt
