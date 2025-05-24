@@ -47,14 +47,14 @@ population_template wmfod2 -mask_dir dwimask template2/wmfod_template_vox_125.mi
 population_template wmfod_men -mask_dir dwimask_men template3/wmfod_template.mif 
 
 # Step 11 and 12
-mkdir template3/maskintemp
+mkdir template2/maskintemp
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Register to template: $ID"
 mrregister wmfod2/${ID}_wmfod.mif -mask1 dwimask/${ID}_dwi_mask.mif template2/wmfod_template.mif -nl_warp template3/sub2temp/${ID}_subject2template_warp.mif template2/temp2sub/${ID}_template2subject_warp.mif
     echo "Mask to template: $ID"
 mrtransform dwimask/${ID}_dwi_mask.mif -warp template2/sub2temp/${ID}_subject2template_warp.mif -interp nearest -datatype bit template2/maskintemp/${ID}_dwi_mask_in_template_space.mif
 done
-mrmath template3/maskintemp/*_dwi_mask_in_template_space.mif min /template3/template_mask.mif -datatype bit
+mrmath template2/maskintemp/*_dwi_mask_in_template_space.mif min /template2/template_mask.mif -datatype bit
 
 # step 13
 mkdir template2/fixel_mask
