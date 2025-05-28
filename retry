@@ -43,7 +43,7 @@ mrmath template2/maskintemp/*_dwi_mask_in_template_space.mif min /template2/temp
 mkdir template3/maskintemp
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Register to template: $ID"
-mrregister wmfod2/${ID}_wmfod.mif -mask1 dwimask/${ID}_dwi_mask.mif template3/wmfod_template_vox_2.mif -nl_warp template3/nl_up_smooth/${ID}_subject2template_warp.mif template3/nl_up_smooth/${ID}_template2subject_warp.mif
+mrregister -nl_update_smooth 3.0 wmfod2/${ID}_wmfod.mif -mask1 dwimask/${ID}_dwi_mask.mif template3/wmfod_template_vox_2.mif -nl_warp template3/nl_up_smooth/${ID}_subject2template_warp.mif template3/nl_up_smooth/${ID}_template2subject_warp.mif
     echo "Mask to template: $ID"
 mrtransform dwimask/${ID}_dwi_mask.mif -warp template3/nl_up_smooth/${ID}_subject2template_warp.mif -interp nearest -datatype bit template3/nl_up_smooth/${ID}_dwi_mask_in_template_space.mif
 done
