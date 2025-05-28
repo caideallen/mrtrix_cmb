@@ -43,23 +43,25 @@ mrmath template2/maskintemp/*_dwi_mask_in_template_space.mif min /template2/temp
 mkdir template3/maskintemp
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Register to template: $ID"
-mrregister wmfod2/${ID}_wmfod.mif -mask1 dwimask/${ID}_dwi_mask.mif template3/wmfod_template.mif -nl_warp template3/sub2temp/${ID}_subject2template_warp.mif template2/temp2sub/${ID}_template2subject_warp.mif
+mrregister wmfod2/${ID}_wmfod.mif -mask1 dwimask/${ID}_dwi_mask.mif template3/wmfod_template.mif -nl_warp template3/nl_up_smooth/${ID}_subject2template_warp.mif template3/nl_up_smooth/${ID}_template2subject_warp.mif
     echo "Mask to template: $ID"
-mrtransform dwimask/${ID}_dwi_mask.mif -warp template2/sub2temp/${ID}_subject2template_warp.mif -interp nearest -datatype bit template2/maskintemp/${ID}_dwi_mask_in_template_space.mif
+mrtransform dwimask/${ID}_dwi_mask.mif -warp template3/nl_up_smooth/${ID}_subject2template_warp.mif -interp nearest -datatype bit template3/nl_up_smooth/${ID}_dwi_mask_in_template_space.mif
 done
-mrmath template2/maskintemp/*_dwi_mask_in_template_space.mif min /template2/template_mask.mif -datatype bit
+mrmath template3/nl_up_smooth/*_dwi_mask_in_template_space.mif min /template3/template_mask.mif -datatype bit
 # step 13
-mkdir template2/fixel_mask
-fod2fixel -mask template2/template_mask.mif -fmls_peak_value 0.10 template2/wmfod_template.mif template2/fixel_mask
+mkdir template3/fixel_mask
+fod2fixel -mask template3/template_mask.mif -fmls_peak_value 0.10 template3/wmfod_template.mif template3/fixel_mask
 
 # step 14 15
 mkdir template2/fodintemp
 mkdir template2/fixelintemp
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Warp FOD to template: $ID"
-mrtransform wmfod2/${ID}_wmfod.mif -warp template2/sub2temp/${ID}_subject2template_warp.mif -reorient_fod no template2/fodintemp/${ID}_fod_in_template_space_NOT_REORIENTED.mif
-fod2fixel -mask2 template2/template_mask.mif template2/fodintemp/${ID}_fod_in_template_space_NOT_REORIENTED.mif template2/fixelintemp/${ID}_fixel_in_template_space_NOT_REORIENTED -afd fd.mif
+mrtransform wmfod2/${ID}_wmfod.mif -warp template3/sub2temp/${ID}_subject2template_warp.mif -reorient_fod no template3/fodintemp/${ID}_fod_in_template_space_NOT_REORIENTED.mif
+fod2fixel -mask2 template3/template_mask.mif template3/fodintemp/${ID}_fod_in_template_space_NOT_REORIENTED.mif template3/fixelintemp/${ID}_fixel_in_template_space_NOT_REORIENTED -afd fd.mif
 done
+
+mrtransform dwimask/11105_dwi_mask.mif -warp template2/nl_up_smooth/11105_subject2template_warp.mif -interp nearest -datatype bit template3/nl_up_smooth/11105_dwi_mask_in_template_space.mif
 
 
 
