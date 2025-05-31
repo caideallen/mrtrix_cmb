@@ -1,0 +1,14 @@
+mrtransform dwimask/10102_dwi_mask.mif -warp template3/sub-temp/10102_subject2template_warp.mif -interp nearest -datatype bit template3/maskintemp_2/10102_dwi_mask_in_template_space.mif
+
+
+    ## list of evil babies
+10102
+10107
+11018
+11026
+11035
+11052
+11063
+11064
+11067
+11074
