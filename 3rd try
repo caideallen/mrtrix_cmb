@@ -8,7 +8,6 @@ mrtransform dwimask/${ID}_dwi_mask.mif -warp template3/sub-temp/${ID}_subject2te
 done
 mrmath template3/maskintemp/*_dwi_mask_in_template_space.mif min template3/template_mask_try3.mif -datatype bit
 # step 13
-mkdir template3/fixel_mask
 fod2fixel -mask template3/template_mask_try3.mif -fmls_peak_value 0.10 template3/wmfod_template_vox_2.mif template3/fixel_mask
 
 #try to see if it works step 14 and 15
