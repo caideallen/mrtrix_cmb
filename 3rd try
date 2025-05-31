@@ -13,9 +13,8 @@ fod2fixel -mask template3/template_mask_try3.mif -fmls_peak_value 0.10 template3
 
 #try to see if it works step 14 and 15
 mrtransform wmfod2/10002_wmfod.mif -warp template3/sub-temp/10002_subject2template_warp.mif -reorient_fod no template3/fodintemp/10002_fod_in_template_space_NOT_REORIENTED.mif
-fod2fixel -mask template3/template_mask_try3.mif template3/fodintemp/10002_fod_in_template_space_NOT_REORIENTED.mif template3/fixelintemp/10002_fixel_in_template_space_NOT_REORIENTED -afd template3/fd/10002_fd.mif
+fod2fixel -mask template3/template_mask_try3.mif template3/fodintemp/10002_fod_in_template_space_NOT_REORIENTED.mif template3/fixelintemp/10002_fixel_in_template_space_NOT_REORIENTED -afd 10002_fd.mif
 
 # it did so do it as a group
 for ID in $(seq 10003 10150) $(seq 11001 11105); do
 mrtransform wmfod2/${ID}_wmfod.mif -warp template3/sub-temp/${ID}_subject2template_warp.mif -reorient_fod no template3/fodintemp/${ID}_fod_in_template_space_NOT_REORIENTED.mif
-fod2fixel -mask template3/template_mask_try3.mif template3/fodintemp/${ID}_fod_in_template_space_NOT_REORIENTED.mif template3/fixelintemp/${ID}_fixel_in_template_space_NOT_REORIENTED -afd template3/fd/${ID}_fd.mif
