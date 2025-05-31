@@ -13,5 +13,5 @@ fod2fixel -mask template3/template_mask_try3.mif -fmls_peak_value 0.10 template3
 
 #try to see if it works
 
-mrtransform wmfod2/10002_wmfod.mif -warp sub-temp/10002_subject2template_warp.mif -reorient_fod no fodintemp/10002_fod_in_template_space_NOT_REORIENTED.mif
+mrtransform wmfod2/10002_wmfod.mif -warp template3/sub-temp/10002_subject2template_warp.mif -reorient_fod no fodintemp/10002_fod_in_template_space_NOT_REORIENTED.mif
 fod2fixel -mask template3/template_mask_try3.mif fodintemp/10002_fod_in_template_space_NOT_REORIENTED.mif fixelintemp/10002_fixel_in_template_space_NOT_REORIENTED -afd fd/10002_fd.mif
