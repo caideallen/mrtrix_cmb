@@ -1,5 +1,6 @@
 mkdir template3/sub-temp
 mkdir template3/maskintemp
+# step 11 12
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Register to template: $ID"
 mrregister -nl_update_smooth 2.5 wmfod2/${ID}_wmfod.mif -mask1 dwimask/${ID}_dwi_mask.mif template3/wmfod_template_vox_2.mif -nl_warp template3/sub-temp/${ID}_subject2template_warp.mif template3/sub-temp/${ID}_template2subject_warp.mif
@@ -10,7 +11,7 @@ mrmath template3/maskintemp/*_dwi_mask_in_template_space.mif min template3/templ
 # step 13
 fod2fixel -mask template3/template_mask_try3.mif -fmls_peak_value 0.10 template3/wmfod_template_vox_2.mif template3/fixel_mask
 
-# it did so do it as a group
+# step 14 15
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
 mrtransform wmfod2/${ID}_wmfod.mif -warp template3/sub-temp/${ID}_subject2template_warp.mif -reorient_fod no template3/fodintemp/${ID}_fod_in_template_space_NOT_REORIENTED.mif
 fod2fixel -mask template3/template_mask_try3.mif template3/fodintemp/10002_fod_in_template_space_NOT_REORIENTED.mif template3/fixelintemp/10002_fixel_in_template_space_NOT_REORIENTED -afd 10002_fd.mif
