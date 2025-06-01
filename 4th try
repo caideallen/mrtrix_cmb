@@ -5,7 +5,7 @@ fod2fixel -mask template3/template_mask_try4.mif -fmls_peak_value 0.10 template3
 # step 14 15
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
 mrtransform wmfod2/${ID}_wmfod.mif -warp template3/sub-temp/${ID}_subject2template_warp.mif -reorient_fod no template3/fodintemp/${ID}_fod_in_template_space_NOT_REORIENTED.mif
-fod2fixel -mask template3/template_mask_try4.mif template3/fodintemp/${ID}_fod_in_template_space_NOT_REORIENTED.mif template3/fixelintemp/${ID}_fixel_in_template_space_NOT_REORIENTED -afd template3/fd/${ID}_fd.mif
+fod2fixel -mask template3/template_mask_try4.mif template3/fodintemp/${ID}_fod_in_template_space_NOT_REORIENTED.mif template3/fixelintemp/${ID}_fixel_in_template_space_NOT_REORIENTED -afd ${ID}_fd.mif
 done
 
 Step 16 17 18
