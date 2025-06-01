@@ -1,6 +1,6 @@
 for id in $(seq 10002 10150) $(seq 11001 11105); do
-  src="fixel_reorient/${id}_fixel_in_template_space/${id}_fd.mif"
-  dst="fixel_reorient/${id}_fixel_in_template_space/PRE.mif"
+  src="fc/${id}_fc/${id}.mif"
+  dst="fc/${id}_fc/IN.mif"
   if [ -f "$src" ]; then
     mv "$src" "$dst"
   else
