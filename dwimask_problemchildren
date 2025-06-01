@@ -1,7 +1,17 @@
 mrregister  wmfod2/10102_wmfod.mif -mask1 dwimask/10102_dwi_mask.mif template3/wmfod_template_vox_2.mif -nl_warp template3/maskintemp_2/10102_subject2template_warp.mif template3/maskintemp_2/10102_template2subject_warp.mif -force
 mrtransform dwimask/10102_dwi_mask.mif -warp template3/maskintemp_2/10102_subject2template_warp.mif -interp nearest -datatype bit template3/maskintemp_2/10102_dwi_mask_in_template_space.mif -force
 
-for ID in 10107 11018 11026 11035 11052 11063 11064 11067 11074
+for id in 10107 11018 11026 11035 11052 11063 11064 11067 11074; do
+  rm -r "log_fc/${id}_fc"
+rm -r "fc/${id}_fc"
+rm -r "fixelintemp/${id}_fc"
+done
+
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+  rm log_fc/${ID}_fc/${ID}.mif
+done
+
+for ID in 10102 10107 11018 11026 11035 11052 11063 11064 11067 11074
 
 subjects=(
   10107
