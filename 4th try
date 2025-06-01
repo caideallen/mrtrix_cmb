@@ -26,9 +26,6 @@ echo "$ID calculating FC"
 warp2metric sub-temp/${ID}_subject2template_warp.mif -fc fixel_mask fc/${ID}_fc ${ID}.mif
 done
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
-  rm log_fc/${ID}_fc/${ID}.mif
-done
-for ID in $(seq 10002 10150) $(seq 11001 11105); do
 echo "$ID log_FC calc"
 for_each * : fc/${ID}_fc/${ID}.mif -log log_fc/${ID}.mif
 done
