@@ -12,22 +12,25 @@ done
 
 #Step 16 reorienting subj fixels in template space
 cd template3
-for ID in $(seq 10003 10150) $(seq 11001 11105); do
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
 fixelreorient fixelintemp/${ID}_fixel_in_template_space_NOT_REORIENTED sub-temp/${ID}_subject2template_warp.mif fixel_reorient/${ID}_fixel_in_template_space
 done
 #Step 17 assigning subj fixels to template
-for ID in $(seq 10003 10150) $(seq 11001 11105); do
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
 echo "$ID fixels to template"
 fixelcorrespondence fixel_reorient/${ID}_fixel_in_template_space/${ID}_fd.mif fixel_mask fd/${ID}_fd PRE.mif
 done
 #Step 18 calculating fiber crossection metrics
-for ID in $(seq 10003 10150) $(seq 11001 11105); do
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
 echo "$ID calculating FC"
 warp2metric sub-temp/${ID}_subject2template_warp.mif -fc fixel_mask fc/${ID}_fc ${ID}.mif
 done
-for ID in $(seq 10003 10150) $(seq 11001 11105); do
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+  rm log_fc/${ID}_fc/${ID}.mif
+done
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
 echo "$ID log_FC calc"
-for_each * : mrcalc ../template/fc/IN.mif -log log_fc/${ID}.mif
+for_each * : fc/${ID}_fc/${ID}.mif -log log_fc/${ID}.mif
 done
 
 
