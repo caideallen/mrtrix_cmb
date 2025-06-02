@@ -1,10 +1,9 @@
+mkdir fc/output
 for id in $(seq 10002 10150) $(seq 11001 11105); do
-  src="fc/${id}_fc/${id}.mif"
-  dst="fc/${id}_fc/IN.mif"
+  src="fc/${id}_fc/IN.mif"
+  dst="fc/output/${id}_fc.mif"
   if [ -f "$src" ]; then
-    mv "$src" "$dst"
-  else
-    echo "File not found: $src"
+    cp "$src" "$dst"
   fi
 done
 
