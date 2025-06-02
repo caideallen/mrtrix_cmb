@@ -18,16 +18,17 @@ done
 #Step 17 assigning subj fixels to template
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
 echo "$ID fixels to template"
-fixelcorrespondence fixel_reorient/${ID}_fixel_in_template_space/${ID}_fd.mif fixel_mask fd/${ID}_fd PRE.mif
+fixelcorrespondence fixel_reorient/${ID}_fixel_in_template_space/PRE.mif fixel_mask fd/${ID}_fd PRE.mif
 done
 #Step 18 calculating fiber crossection metrics
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
 echo "$ID calculating FC"
 warp2metric sub-temp/${ID}_subject2template_warp.mif -fc fixel_mask fc/${ID}_fc ${ID}.mif
 done
+## Keep getting "-bash: fc/${ID}_fc/IN.mif: Permission denied" for this
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
 echo "$ID log_FC calc"
-for_each * : fc/${ID}_fc/${ID}.mif -log log_fc/${ID}.mif
+fc/${ID}_fc/IN.mif -log log_fc/${ID}_fc/IN.mif
 done
 
 
@@ -35,5 +36,5 @@ done
 
 #trying it first
 fixelreorient fixelintemp/10002_fixel_in_template_space_NOT_REORIENTED sub-temp/10002_subject2template_warp.mif fixel_reorient/10002_fixel_in_template_space
-fixelcorrespondence fixel_reorient/10002_fixel_in_template_space/10002_fd.mif fixel_mask fd/${ID}_fd ${ID}.mif
-warp2metric sub-temp/10002_subject2template_warp.mif -fc fixel_mask fc/10002_fc $10002.mif
+fixelcorrespondence fixel_reorient/10002_fixel_in_template_space/PRE.mif fixel_mask fd/10002_fd 10002.mif
+warp2metric sub-temp/10002_subject2template_warp.mif -fc fixel_mask fc/10002_fc 10002.mif
