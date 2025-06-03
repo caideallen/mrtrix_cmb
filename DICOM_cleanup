@@ -1,4 +1,4 @@
-:%s|/scratch/cbayouth/group/template3/||g
+%s/\/scratch\/cbayouth\/group\/template3\///g
 
 mkdir fc/output
 for id in $(seq 10002 10150) $(seq 11001 11105); do
