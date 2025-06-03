@@ -1,6 +1,9 @@
 mrmath template3/maskintemp/*_dwi_mask_in_template_space-10.mif min template3/template_mask_try4.mif -datatype bit
 # fixel mask
-fod2fixel -mask template3/template_mask_try4.mif -fmls_peak_value 0.10 template3/wmfod_template_vox_2.mif template3/fixel_mask
+fod2fixel -mask template3/template_mask_try4.mif -fmls_peak_value 0.1 template3/wmfod_template_vox_2.mif template3/fixel_mask2
+
+#retry fixel mask?
+fod2fixel -mask template3/template_mask_try4.mif -fmls_peak_value 0.075 template3/wmfod_template_vox_2.mif template3/fixel_mask2
 
 # step 14 15
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
