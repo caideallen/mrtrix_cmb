@@ -4,10 +4,27 @@ for id in $(seq 10002 10150) $(seq 11001 11105); do
   dst="fc/output/${id}_fc.mif"
   if [ -f "$src" ]; then
     cp "$src" "$dst"
-  fi
 done
 
+mkdir fd/output
+for id in $(seq 10002 10150) $(seq 11001 11105); do
+  src="fd/${id}_fd/PRE.mif"
+  dst="fd/output/${id}_fd.mif"
+  if [ -f "$src" ]; then
+    cp "$src" "$dst"
+fi
+done
 
+mkdir fixel_reorient/output
+for id in $(seq 10002 10150) $(seq 11001 11105); do
+  src="fixel_reorient/${id}_fixel_in_template_space/PRE.mif"
+  dst="fixel_reorient/output/${id}_fixel_in_template_space.mif"
+  if [ -f "$src" ]; then
+    cp "$src" "$dst"
+else
+echo "file not found $src"
+  fi
+done
 
 
 for i in $(seq 10003 10149); do
