@@ -8,6 +8,22 @@ for id in $(seq 10002 10150) $(seq 11001 11105); do
     cp "$src" "$dst"
 done
 
+mkdir fc2/output
+for id in $(seq 10002 10150) $(seq 11001 11105); do
+  src="fc2/${id}_fc/${id}.mif"
+  dst="fc2/output/${id}_fc.mif"
+  if [ -f "$src" ]; then
+    cp "$src" "$dst"
+fi
+done
+
+mkdir fdc2/output
+for id in $(seq 10002 10150) $(seq 11001 11105); do
+  src="fdc2/${id}_fdc/${id}.mif"
+  dst="fc/output/${id}_fc.mif"
+  if [ -f "$src" ]; then
+    cp "$src" "$dst"
+done
 mkdir fd/output
 for id in $(seq 10002 10150) $(seq 11001 11105); do
   src="fd/${id}_fd/PRE.mif"
