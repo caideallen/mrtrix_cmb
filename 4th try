@@ -26,7 +26,7 @@ done
 #Step 18 calculating fiber crossection metrics
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
 echo "$ID calculating FC"
-warp2metric sub-temp/${ID}_subject2template_warp.mif -fc fixel_mask fc/${ID}_fc ${ID}.mif
+warp2metric sub-temp/${ID}_subject2template_warp.mif -fc fixel_mask fc2/${ID}_fc ${ID}.mif -force
 done
 ## Keep getting "-bash: fc/${ID}_fc/IN.mif: Permission denied" for this
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
@@ -44,19 +44,12 @@ for id in $(seq 10002 10150) $(seq 11001 11105); do
 fi
 done
 
-mkdir ../template/fdc
+mkdir ../template/fdc2
 
-for id in $(seq 10002 10150) $(seq 11001 11105); do
-cp ../template/fc/index.mif ../template/fdc
-cp ../template/fc/directions.mif ../template/fdc
+
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+mrcalc fd/output/${ID}_fd.mif fc2/output/${ID}_fc.mif -mult fdc/${ID}_fdc.mif
 done
-
-for id in $(seq 10002 10150) $(seq 11001 11105); do
-mrcalc fd/output/${ID}_fd.mif ./fc/outpit/${ID}_fc.mif -mult ../fdc/${ID}_.mif
-
-
-## try it
-mrcalc fd/output/10002_fd.mif ./fc/output/1002_fc.mif -mult ../fdc/10002_fdc.mif
 
 ## Step 20 21
 tckgen -angle 22.5 -maxlen 250 -minlen 10 -power 1.0 wmfod_template_vox_2.mif -seed_image template_mask_try4.mif -mask template_mask_try4.mif -select 20000000 -cutoff 0.10 tracks_20_million.tck
@@ -64,8 +57,10 @@ tcksift tracks_20_million.tck wmfod_template_vox_2.mif tracks_2_million_sift.tck
 ## Step 22
 fixelconnectivity fixel_mask/ tracks_2_million_sift.tck matrix/
 
-fixelcfestats fd/output/ caide_design_matrix.txt caide_contrast_matrix.txt template3/fixel_mask.mif stats_fd/
-
+#fd stats
+fixelcfestats ./fixel_mask ./fd/output/file_names3.txt design2.txt contrast.txt matrix2/ stats_fd2/
+#fdc stats
+fixelcfestats ./fixel_mask file_names_fdc.txt design2.txt contrast.txt matrix2/ stats_fdc/
 
 #trying it first
 fixelreorient fixelintemp/10002_fixel_in_template_space_NOT_REORIENTED sub-temp/10002_subject2template_warp.mif fixel_reorient/10002_fixel_in_template_space
