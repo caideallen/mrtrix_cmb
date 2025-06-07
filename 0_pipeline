@@ -1,1 +1,42 @@
+# load enviorments
+ml mamba
+source activate mrtrix3
+ml fsl
+
+# Preproc sequence loop
+for ID in $(seq 10001 10150); do
+  echo "Processing subject $ID"
+
+ # Navigate to the subject directory
+  cd ~/DICOMS/${ID}
+
+  #compress to image file
+  mrconvert DTI32/ ${ID}.nii -force
+  mrconvert ${ID}.nii ${ID}.mif -force
+
+  # format DICOMs into mif file voxel size 2
+  mrconvert DTI32/ ${ID}_vox.mif -vox 2 -coord 3 '0:1:32'
+  #denoise images
+  dwidenoise ${ID}_vox.mif v2vox.mif -noise v2_denoised.mif
+  # calculate resifuals
+  mrcalc v2_denoised.mif v2vox.mif -subtract v2_res.mif
+  
+  # fsl preprocessing
+  dwifslpreproc v2vox.mif ${ID}_v2preproc.mif -rpe_none -pe_dir AP -readout_time 0.1 -eddy_options " --slm=linear "
+  dwi2mask ${ID}_v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_mask.nii -datatype float32 -strides -1,+2,+3
+
+  done
+
+module unload fsl
+ml ANTs
+# bias correction for all subjects
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+    echo "Processing sucject: ${ID}"  
+dwibiascorrect ants v2preproc/${ID}_v2preproc.mif ants/${ID}_v2preproc_unbiased.mif
+done
+## you dont need fsl yet but you will
+module unload ants
+ml fsl
+
+
 
