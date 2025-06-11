@@ -1,0 +1,11 @@
+## trying two different mask inputs
+mkdir 0_dwifix
+dwinormalise group ants/ 0_dwifix/eddymask/ / 0_dwifix/try1_fa_template.mif 0_dwifix/try1_fa_template_wm_mask.mif 
+
+mkdir 0_dwifix/dwimask_t2/
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+dwimask ../DICOMS/${ID}/v2preproc.mif 0_dwifix/dwimask_t2/${ID}_dwimask_tempmask.mif
+done
+dwinormalise group ants/ 0_dwifix/dwimask_t2/ 0_dwifix/try2_fa_template.mif 0_dwifix/try2_fa_template_wm_mask.mif 
+
+
