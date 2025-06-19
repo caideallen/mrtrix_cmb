@@ -65,58 +65,111 @@ dwinormalise group ants/ 0_dwifix/dwimask_t2/ 0_dwifix/try2_fa_template.mif 0_dw
 10059_dwi_mask.mif  10119_dwi_mask.mif  11030_dwi_mask.mif  11105_dwi_mask.mif
 10060_dwi_mask.mif  10120_dwi_mask.mif  11031_dwi_mask.mif
 
-10002_dwi_mask.mif  10061_dwi_mask.mif  10121_dwi_mask.mif  11032_dwi_mask.mif
-10003_dwi_mask.mif  10062_dwi_mask.mif  10122_dwi_mask.mif  11033_dwi_mask.mif
-10004_dwi_mask.mif  10063_dwi_mask.mif  10123_dwi_mask.mif  11034_dwi_mask.mif
-10005_dwi_mask.mif  10064_dwi_mask.mif  10124_dwi_mask.mif  11035_dwi_mask.mif
-10006_dwi_mask.mif  10065_dwi_mask.mif  10125_dwi_mask.mif  11036_dwi_mask.mif
-10007_dwi_mask.mif  10066_dwi_mask.mif  10126_dwi_mask.mif  11037_dwi_mask.mif
-10008_dwi_mask.mif  10067_dwi_mask.mif  10127_dwi_mask.mif  11038_dwi_mask.mif
-10009_dwi_mask.mif  10068_dwi_mask.mif  10128_dwi_mask.mif  11039_dwi_mask.mif
-10010_dwi_mask.mif  10069_dwi_mask.mif  10129_dwi_mask.mif  11040_dwi_mask.mif
-10011_dwi_mask.mif  10070_dwi_mask.mif  10133_dwi_mask.mif  11041_dwi_mask.mif
-10012_dwi_mask.mif  10072_dwi_mask.mif  10134_dwi_mask.mif  11042_dwi_mask.mif
-10013_dwi_mask.mif  10074_dwi_mask.mif  10135_dwi_mask.mif  11043_dwi_mask.mif
-10014_dwi_mask.mif  10076_dwi_mask.mif  10136_dwi_mask.mif  11044_dwi_mask.mif
-10015_dwi_mask.mif  10078_dwi_mask.mif  10137_dwi_mask.mif  11045_dwi_mask.mif
-10016_dwi_mask.mif  10079_dwi_mask.mif  10138_dwi_mask.mif  11046_dwi_mask.mif
-10017_dwi_mask.mif  10080_dwi_mask.mif  10140_dwi_mask.mif  11047_dwi_mask.mif
-10018_dwi_mask.mif  10082_dwi_mask.mif  10142_dwi_mask.mif  11048_dwi_mask.mif
-10019_dwi_mask.mif  10083_dwi_mask.mif  10144_dwi_mask.mif  11049_dwi_mask.mif
-10020_dwi_mask.mif  10085_dwi_mask.mif  10145_dwi_mask.mif  11050_dwi_mask.mif
-10021_dwi_mask.mif  10086_dwi_mask.mif  10147_dwi_mask.mif  11051_dwi_mask.mif
-10023_dwi_mask.mif  10087_dwi_mask.mif  10148_dwi_mask.mif  11052_dwi_mask.mif
-10024_dwi_mask.mif  10088_dwi_mask.mif  10149_dwi_mask.mif  11054_dwi_mask.mif
-10025_dwi_mask.mif  10090_dwi_mask.mif  10150_dwi_mask.mif  11055_dwi_mask.mif
-10026_dwi_mask.mif  10091_dwi_mask.mif  11001_dwi_mask.mif  11058_dwi_mask.mif
-10027_dwi_mask.mif  10092_dwi_mask.mif  11002_dwi_mask.mif  11059_dwi_mask.mif
-10029_dwi_mask.mif  10093_dwi_mask.mif  11003_dwi_mask.mif  11061_dwi_mask.mif
-10030_dwi_mask.mif  10094_dwi_mask.mif  11004_dwi_mask.mif  11062_dwi_mask.mif
-10031_dwi_mask.mif  10095_dwi_mask.mif  11005_dwi_mask.mif  11063_dwi_mask.mif
-10032_dwi_mask.mif  10096_dwi_mask.mif  11006_dwi_mask.mif  11064_dwi_mask.mif
-10033_dwi_mask.mif  10097_dwi_mask.mif  11007_dwi_mask.mif  11065_dwi_mask.mif
-10034_dwi_mask.mif  10098_dwi_mask.mif  11008_dwi_mask.mif  11066_dwi_mask.mif
-10035_dwi_mask.mif  10099_dwi_mask.mif  11009_dwi_mask.mif  11067_dwi_mask.mif
-10036_dwi_mask.mif  10100_dwi_mask.mif  11010_dwi_mask.mif  11068_dwi_mask.mif
-10037_dwi_mask.mif  10101_dwi_mask.mif  11011_dwi_mask.mif  11069_dwi_mask.mif
-10038_dwi_mask.mif  10102_dwi_mask.mif  11012_dwi_mask.mif  11070_dwi_mask.mif
-10040_dwi_mask.mif  10103_dwi_mask.mif  11013_dwi_mask.mif  11071_dwi_mask.mif
-10041_dwi_mask.mif  10104_dwi_mask.mif  11014_dwi_mask.mif  11074_dwi_mask.mif
-10042_dwi_mask.mif  10105_dwi_mask.mif  11015_dwi_mask.mif  11076_dwi_mask.mif
-10043_dwi_mask.mif  10106_dwi_mask.mif  11016_dwi_mask.mif  11078_dwi_mask.mif
-10044_dwi_mask.mif  10107_dwi_mask.mif  11017_dwi_mask.mif  11080_dwi_mask.mif
-10045_dwi_mask.mif  10108_dwi_mask.mif  11018_dwi_mask.mif  11081_dwi_mask.mif
-10046_dwi_mask.mif  10109_dwi_mask.mif  11019_dwi_mask.mif  11082_dwi_mask.mif
-10048_dwi_mask.mif  10110_dwi_mask.mif  11020_dwi_mask.mif  11084_dwi_mask.mif
-10049_dwi_mask.mif  10111_dwi_mask.mif  11021_dwi_mask.mif  11085_dwi_mask.mif
-10050_dwi_mask.mif  10112_dwi_mask.mif  11022_dwi_mask.mif  11086_dwi_mask.mif
-10051_dwi_mask.mif  10113_dwi_mask.mif  11024_dwi_mask.mif  11087_dwi_mask.mif
-10053_dwi_mask.mif  10114_dwi_mask.mif  11025_dwi_mask.mif  11090_dwi_mask.mif
-10054_dwi_mask.mif  10115_dwi_mask.mif  11026_dwi_mask.mif  11091_dwi_mask.mif
-10055_dwi_mask.mif  10116_dwi_mask.mif  11027_dwi_mask.mif  11092_dwi_mask.mif
-10057_dwi_mask.mif  10117_dwi_mask.mif  11028_dwi_mask.mif  11093_dwi_mask.mif
-10058_dwi_mask.mif  10118_dwi_mask.mif  11029_dwi_mask.mif  11096_dwi_mask.mif
-10059_dwi_mask.mif  10119_dwi_mask.mif  11030_dwi_mask.mif  11105_dwi_mask.mif
-10060_dwi_mask.mif  10120_dwi_mask.mif  11031_dwi_mask.mif
+10002_v2preproc_unbiased.mif  10121_v2preproc_unbiased.mif
+10003_v2preproc_unbiased.mif  10122_v2preproc_unbiased.mif
+10004_v2preproc_unbiased.mif  10123_v2preproc_unbiased.mif
+10005_v2preproc_unbiased.mif  10124_v2preproc_unbiased.mif
+10006_v2preproc_unbiased.mif  10125_v2preproc_unbiased.mif
+10007_v2preproc_unbiased.mif  10126_v2preproc_unbiased.mif
+10008_v2preproc_unbiased.mif  10127_v2preproc_unbiased.mif
+10009_v2preproc_unbiased.mif  10128_v2preproc_unbiased.mif
+10010_v2preproc_unbiased.mif  10129_v2preproc_unbiased.mif
+10011_v2preproc_unbiased.mif  10133_v2preproc_unbiased.mif
+10012_v2preproc_unbiased.mif  10134_v2preproc_unbiased.mif
+10013_v2preproc_unbiased.mif  10135_v2preproc_unbiased.mif
+10014_v2preproc_unbiased.mif  10136_v2preproc_unbiased.mif
+10015_v2preproc_unbiased.mif  10137_v2preproc_unbiased.mif
+10016_v2preproc_unbiased.mif  10138_v2preproc_unbiased.mif
+10017_v2preproc_unbiased.mif  10140_v2preproc_unbiased.mif
+10018_v2preproc_unbiased.mif  10142_v2preproc_unbiased.mif
+10019_v2preproc_unbiased.mif  10144_v2preproc_unbiased.mif
+10020_v2preproc_unbiased.mif  10145_v2preproc_unbiased.mif
+10021_v2preproc_unbiased.mif  10147_v2preproc_unbiased.mif
+10023_v2preproc_unbiased.mif  10148_v2preproc_unbiased.mif
+10024_v2preproc_unbiased.mif  10149_v2preproc_unbiased.mif
+10025_v2preproc_unbiased.mif  11001_v2preproc_unbiased.mif
+10026_v2preproc_unbiased.mif  11002_v2preproc_unbiased.mif
+10027_v2preproc_unbiased.mif  11003_v2preproc_unbiased.mif
+10029_v2preproc_unbiased.mif  11004_v2preproc_unbiased.mif
+10030_v2preproc_unbiased.mif  11005_v2preproc_unbiased.mif
+10031_v2preproc_unbiased.mif  11006_v2preproc_unbiased.mif
+10032_v2preproc_unbiased.mif  11007_v2preproc_unbiased.mif
+10033_v2preproc_unbiased.mif  11008_v2preproc_unbiased.mif
+10034_v2preproc_unbiased.mif  11009_v2preproc_unbiased.mif
+10035_v2preproc_unbiased.mif  11010_v2preproc_unbiased.mif
+10036_v2preproc_unbiased.mif  11011_v2preproc_unbiased.mif
+10037_v2preproc_unbiased.mif  11012_v2preproc_unbiased.mif
+10038_v2preproc_unbiased.mif  11013_v2preproc_unbiased.mif
+10040_v2preproc_unbiased.mif  11014_v2preproc_unbiased.mif
+10041_v2preproc_unbiased.mif  11015_v2preproc_unbiased.mif
+10042_v2preproc_unbiased.mif  11016_v2preproc_unbiased.mif
+10043_v2preproc_unbiased.mif  11017_v2preproc_unbiased.mif
+10044_v2preproc_unbiased.mif  11018_v2preproc_unbiased.mif
+10045_v2preproc_unbiased.mif  11019_v2preproc_unbiased.mif
+10046_v2preproc_unbiased.mif  11020_v2preproc_unbiased.mif
+10048_v2preproc_unbiased.mif  11021_v2preproc_unbiased.mif
+10049_v2preproc_unbiased.mif  11022_v2preproc_unbiased.mif
+10050_v2preproc_unbiased.mif  11024_v2preproc_unbiased.mif
+10051_v2preproc_unbiased.mif  11025_v2preproc_unbiased.mif
+10053_v2preproc_unbiased.mif  11026_v2preproc_unbiased.mif
+10055_v2preproc_unbiased.mif  11027_v2preproc_unbiased.mif
+10057_v2preproc_unbiased.mif  11028_v2preproc_unbiased.mif
+10058_v2preproc_unbiased.mif  11029_v2preproc_unbiased.mif
+10059_v2preproc_unbiased.mif  11030_v2preproc_unbiased.mif
+10060_v2preproc_unbiased.mif  11031_v2preproc_unbiased.mif
+10061_v2preproc_unbiased.mif  11032_v2preproc_unbiased.mif
+10062_v2preproc_unbiased.mif  11033_v2preproc_unbiased.mif
+10063_v2preproc_unbiased.mif  11034_v2preproc_unbiased.mif
+10064_v2preproc_unbiased.mif  11035_v2preproc_unbiased.mif
+10065_v2preproc_unbiased.mif  11036_v2preproc_unbiased.mif
+10066_v2preproc_unbiased.mif  11037_v2preproc_unbiased.mif
+10067_v2preproc_unbiased.mif  11038_v2preproc_unbiased.mif
+10068_v2preproc_unbiased.mif  11039_v2preproc_unbiased.mif
+10069_v2preproc_unbiased.mif  11040_v2preproc_unbiased.mif
+10070_v2preproc_unbiased.mif  11041_v2preproc_unbiased.mif
+10072_v2preproc_unbiased.mif  11042_v2preproc_unbiased.mif
+10074_v2preproc_unbiased.mif  11043_v2preproc_unbiased.mif
+10076_v2preproc_unbiased.mif  11044_v2preproc_unbiased.mif
+10078_v2preproc_unbiased.mif  11045_v2preproc_unbiased.mif
+10079_v2preproc_unbiased.mif  11046_v2preproc_unbiased.mif
+10080_v2preproc_unbiased.mif  11047_v2preproc_unbiased.mif
+10082_v2preproc_unbiased.mif  11048_v2preproc_unbiased.mif
+10083_v2preproc_unbiased.mif  11049_v2preproc_unbiased.mif
+10085_v2preproc_unbiased.mif  11050_v2preproc_unbiased.mif
+10086_v2preproc_unbiased.mif  11051_v2preproc_unbiased.mif
+10087_v2preproc_unbiased.mif  11052_v2preproc_unbiased.mif
+10088_v2preproc_unbiased.mif  11054_v2preproc_unbiased.mif
+10090_v2preproc_unbiased.mif  11055_v2preproc_unbiased.mif
+10091_v2preproc_unbiased.mif  11058_v2preproc_unbiased.mif
+10092_v2preproc_unbiased.mif  11059_v2preproc_unbiased.mif
+10093_v2preproc_unbiased.mif  11061_v2preproc_unbiased.mif
+10094_v2preproc_unbiased.mif  11062_v2preproc_unbiased.mif
+10095_v2preproc_unbiased.mif  11063_v2preproc_unbiased.mif
+10096_v2preproc_unbiased.mif  11064_v2preproc_unbiased.mif
+10097_v2preproc_unbiased.mif  11065_v2preproc_unbiased.mif
+10098_v2preproc_unbiased.mif  11066_v2preproc_unbiased.mif
+10099_v2preproc_unbiased.mif  11067_v2preproc_unbiased.mif
+10100_v2preproc_unbiased.mif  11068_v2preproc_unbiased.mif
+10101_v2preproc_unbiased.mif  11069_v2preproc_unbiased.mif
+10102_v2preproc_unbiased.mif  11070_v2preproc_unbiased.mif
+10103_v2preproc_unbiased.mif  11071_v2preproc_unbiased.mif
+10104_v2preproc_unbiased.mif  11074_v2preproc_unbiased.mif
+10105_v2preproc_unbiased.mif  11076_v2preproc_unbiased.mif
+10106_v2preproc_unbiased.mif  11078_v2preproc_unbiased.mif
+10107_v2preproc_unbiased.mif  11080_v2preproc_unbiased.mif
+10108_v2preproc_unbiased.mif  11081_v2preproc_unbiased.mif
+10109_v2preproc_unbiased.mif  11082_v2preproc_unbiased.mif
+10110_v2preproc_unbiased.mif  11084_v2preproc_unbiased.mif
+10111_v2preproc_unbiased.mif  11085_v2preproc_unbiased.mif
+10112_v2preproc_unbiased.mif  11086_v2preproc_unbiased.mif
+10113_v2preproc_unbiased.mif  11087_v2preproc_unbiased.mif
+10114_v2preproc_unbiased.mif  11090_v2preproc_unbiased.mif
+10115_v2preproc_unbiased.mif  11091_v2preproc_unbiased.mif
+10116_v2preproc_unbiased.mif  11092_v2preproc_unbiased.mif
+10117_v2preproc_unbiased.mif  11093_v2preproc_unbiased.mif
+10118_v2preproc_unbiased.mif  11096_v2preproc_unbiased.mif
+10119_v2preproc_unbiased.mif  11105_v2preproc_unbiased.mif
+10120_v2preproc_unbiased.mif
+
 
 
