@@ -10,7 +10,7 @@ dwi2mask ../DICOMS/${ID}/v2preproc.mif 0_dwifix/dwimask_t2/${ID}_dwimask_tempmas
 done
 dwinormalise group ants/ 0_dwifix/dwimask_t2/ 0_dwifix/try2_fa_template.mif 0_dwifix/try2_fa_template_wm_mask.mif 
 
-
+List 1
 10002_dwi_mask.mif  10061_dwi_mask.mif  10121_dwi_mask.mif  11032_dwi_mask.mif
 10003_dwi_mask.mif  10062_dwi_mask.mif  10122_dwi_mask.mif  11033_dwi_mask.mif
 10004_dwi_mask.mif  10063_dwi_mask.mif  10123_dwi_mask.mif  11034_dwi_mask.mif
@@ -65,6 +65,7 @@ dwinormalise group ants/ 0_dwifix/dwimask_t2/ 0_dwifix/try2_fa_template.mif 0_dw
 10059_dwi_mask.mif  10119_dwi_mask.mif  11030_dwi_mask.mif  11105_dwi_mask.mif
 10060_dwi_mask.mif  10120_dwi_mask.mif  11031_dwi_mask.mif
 
+List 2
 10002_v2preproc_unbiased.mif  10121_v2preproc_unbiased.mif
 10003_v2preproc_unbiased.mif  10122_v2preproc_unbiased.mif
 10004_v2preproc_unbiased.mif  10123_v2preproc_unbiased.mif
