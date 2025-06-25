@@ -15,7 +15,7 @@ for ID in $(seq 10001 10150); do
   mrconvert ${ID}.nii ${ID}.mif -force
 
   # format DICOMs into mif file voxel size 2
-  mrconvert DTI32/ ${ID}_vox.mif -vox 2 -coord 3 '0:1:32'
+  mrconvert DTI32/ ${ID}_vox.mif -vox 2 -coord 3 '0:1:32' -grad 
   #denoise images
   dwidenoise ${ID}_vox.mif v2vox.mif -noise v2_denoised.mif
   # calculate resifuals
@@ -23,20 +23,24 @@ for ID in $(seq 10001 10150); do
   
   # fsl preprocessing
   dwifslpreproc v2vox.mif ${ID}_v2preproc.mif -rpe_none -pe_dir AP -readout_time 0.1 -eddy_options " --slm=linear "
+  #this badboy is causing clipping issues PFC etc, probably due to denoising 
   dwi2mask ${ID}_v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_mask.nii -datatype float32 -strides -1,+2,+3
 
   done
 
 module unload fsl
 ml ANTs
-# bias correction for all subjects
+# bias correction for all subjects which is causing contrast issues
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Processing sucject: ${ID}"  
+# this deals with the shimming. bright white areas
 dwibiascorrect ants v2preproc/${ID}_v2preproc.mif ants/${ID}_v2preproc_unbiased.mif
 done
 ## you dont need fsl yet but you will
 module unload ants
 ml fsl
+# this might be screwy if its normalizing based off the mask. Probably causing more of the contrast issues
+dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ fa_template.mif fa_template_wm_mask.mif 
 
 
 
