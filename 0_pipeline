@@ -43,4 +43,11 @@ ml fsl
 dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ fa_template.mif fa_template_wm_mask.mif 
 
 
+dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ fa_template.mif fa_template_wm_mask.mif
+## preproc try again
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+    echo "Processing ID: $ID"
+    dwi2response tournier ants/${ID}_v2preproc_unbiased.mif v2preproc/wmresponse/${ID}_wm_response.txt 
+    dwi2mask ants/${ID}_v2preproc_unbiased.mif dwimask/${ID}_dwi_mask.mif     
+done
 
