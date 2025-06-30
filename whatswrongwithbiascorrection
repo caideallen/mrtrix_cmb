@@ -20,8 +20,9 @@ mamba env create -n mrtrix3_DOWN --file /scratch/cbayouth/mrtrix3.yaml
 
 
 mamba create -n myENV -c conda-forge python=3.11
+source activate my ENV
+mamba install -c MRtrix3 mrtrix3
 
-mamba create -n mrtrixDOWN -c conda-forge -c python=3.11 mrtrix3
 
 
 mamba info --envs
