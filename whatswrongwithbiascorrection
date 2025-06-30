@@ -10,6 +10,7 @@ dwi2mask ../DICOMS/${ID}/v2preproc.mif 0_dwifix/dwimask_t2/${ID}_dwimask_tempmas
 done
 dwinormalise group ants/ 0_dwifix/dwimask_t2/ 0_dwifix/try2_fa_template.mif 0_dwifix/try2_fa_template_wm_mask.mif 
 
+/packages/envs/mrtrix3
 
 mamba info --envs
 
