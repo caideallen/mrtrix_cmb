@@ -29,22 +29,22 @@ for ID in $(seq 10001 10150); do
   done
 
 module unload fsl
-ml ANTs
+ml ants
 # bias correction for all subjects which is causing contrast issues
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Processing sucject: ${ID}"  
 # this deals with the shimming. bright white areas
 dwibiascorrect ants v2preproc/${ID}_v2preproc.mif ants/${ID}_v2preproc_unbiased.mif
 done
+dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ fa_template.mif fa_template_wm_mask.mif 
+
 ## you dont need fsl yet but you will
 module unload ants
 ml fsl
 # this might be screwy if its normalizing based off the mask. Probably causing more of the contrast issues
 dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ fa_template.mif fa_template_wm_mask.mif 
 
-
-dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ fa_template.mif fa_template_wm_mask.mif
-## preproc try again
+## 
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Processing ID: $ID"
     dwi2response tournier ants/${ID}_v2preproc_unbiased.mif v2preproc/wmresponse/${ID}_wm_response.txt 
