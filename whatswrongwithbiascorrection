@@ -12,6 +12,15 @@ dwinormalise group ants/ 0_dwifix/dwimask_t2/ 0_dwifix/try2_fa_template.mif 0_dw
 
 /packages/envs/mrtrix3
 
+$ module load mamba/latest
+$ source activate mrtrix3
+$ mamba env export -n <public_environment_name> > /scratch/cbayouth/mrtrix3_down.yaml
+$ source deactivate
+$ mamba env create -n <your_environment_name> --file /your/path/to/<public_environment_name>.yaml
+
+mamba create -n mrtrixDOWN -c conda-forge -c python=3.11 mrtrix3
+
+
 mamba info --envs
 
 List 1
