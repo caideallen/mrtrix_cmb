@@ -8,11 +8,10 @@ for ID in $(seq 10001 10150); do
   echo "Processing subject $ID"
 
  # Navigate to the subject directory
-  cd ~/DICOMS/${ID}
-
+  cd "$ID" || { echo "Directory $ID not found! Skipping."; continue; }
   #compress to image file
-  mrconvert DTI32/ ${ID}.nii -force
-  mrconvert ${ID}.nii ${ID}.mif -force
+  mrconvert DTI32/ ${ID}.nii
+  mrconvert ${ID}.nii ${ID}.mif
 
   # format DICOMs into mif file voxel size 2
   mrconvert DTI32/ ${ID}_vox.mif -vox 2 -coord 3 '0:1:32' -grad 
@@ -25,7 +24,7 @@ for ID in $(seq 10001 10150); do
   dwifslpreproc v2vox.mif ${ID}_v2preproc.mif -rpe_none -pe_dir AP -readout_time 0.1 -eddy_options " --slm=linear "
   #this badboy is causing clipping issues PFC etc, probably due to denoising 
   dwi2mask ${ID}_v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_mask.nii -datatype float32 -strides -1,+2,+3
-
+  cd ..
   done
 
 module unload fsl
@@ -33,9 +32,13 @@ ml ants
 # bias correction for all subjects which is causing contrast issues
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Processing sucject: ${ID}"  
+  cd "$ID" || { echo "Directory $ID not found! Skipping."; continue; }
 # this deals with the shimming. bright white areas
-dwibiascorrect ants v2preproc/${ID}_v2preproc.mif ants/${ID}_v2preproc_unbiased.mif
+dwibiascorrect {ID}_v2preproc.mif ${ID}_v2preproc_unbiased.mif
+cd ..
 done
+
+## FIRST I GOTTA LINK STUFF INTO A FOLDER
 dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ fa_template.mif fa_template_wm_mask.mif 
 
 ## you dont need fsl yet but you will
