@@ -10,7 +10,7 @@ source activate my ENV
 mamba install -c MRtrix3 mrtrix3
 
 -export_grad_fsl bvecs_path bvals_path 
-
+mrconvert 10002_v2preproc_unbiased.mif -export_grad_fsl bvecs_path bvals_path 
 dwibiascorrect ants 10002/10002_v2preproc.mif 10002/10002_v2preproc_unbiased.mif -export_grad_fsl bvecs_path bvals_path 
 dwibiascorrect ants v2preproc.mif 10003_v2preproc_unbiased.mif -nocleanup -bias image
 
