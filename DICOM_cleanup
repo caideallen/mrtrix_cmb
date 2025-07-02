@@ -1,6 +1,6 @@
 for ID in $(seq 10001 10150); do
 rm -r ${ID}/eWIP/
-rm -r ${ID}/edWIP/
+rm -r ${ID}/dWIP/
 rm -r ${ID}/faWIP/
 done
 
