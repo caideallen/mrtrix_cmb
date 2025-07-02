@@ -1,16 +1,14 @@
-## trying two different mask inputs
-mkdir 0_dwifix
-dwinormalise group ants/ 0_dwifix/eddymask/ 0_dwifix/try1_fa_template.mif 0_dwifix/try1_fa_template_wm_mask.mif
-
-
-
-## This worked
+## This worked to get ants going
 mamba create -n myENV -c conda-forge python=3.11
 source activate my ENV
 mamba install -c MRtrix3 mrtrix3
 
--export_grad_fsl bvecs_path bvals_path 
-mrconvert 10002_v2preproc_unbiased.mif -export_grad_fsl bvecs_path bvals_path 
+## Exporting these values #did he want me to do them for the ants files
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+mrconvert ${ID}_10002_v2preproc_unbiased.mif -export_grad_fsl bvecs_path bvals_path 
+done
+mrconvert 10002_v2preproc_unbiased.mif 10002_fslpath.mif -export_grad_fsl bvecs_path bvals_path 
+
 dwibiascorrect ants 10002/10002_v2preproc.mif 10002/10002_v2preproc_unbiased.mif -export_grad_fsl bvecs_path bvals_path 
 dwibiascorrect ants v2preproc.mif 10003_v2preproc_unbiased.mif -nocleanup -bias image
 
