@@ -5,12 +5,12 @@ mamba install -c MRtrix3 mrtrix3
 
 ## Exporting these values #did he want me to do them for the ants files
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
-mrconvert ${ID}_10002_v2preproc_unbiased.mif -export_grad_fsl bvecs_path bvals_path 
+mrconvert ${ID}_v2preproc_unbiased.mif ${ID}_convert.mif -export_grad_mrtrix path -export_grad_fsl bvecs_path bvals_path
 done
 mrconvert 10002_v2preproc_unbiased.mif 10002_fslpath.mif -export_grad_fsl bvecs_path bvals_path 
 
 dwibiascorrect ants 10002/10002_v2preproc.mif 10002/10002_v2preproc_unbiased.mif -export_grad_fsl bvecs_path bvals_path 
-dwibiascorrect ants v2preproc.mif 10003_v2preproc_unbiased.mif -nocleanup -bias image
+dwibiascorrect ants v2preproc.mif 10003_v2preproc_unbiased.mif -nocleanup -bias image -export_grad_mrtrix path -export_grad_fsl bvecs_path bvals_path
 
 ml ants
 # bias correction for all subjects which is causing contrast issues
