@@ -18,7 +18,7 @@ for ID in $(seq 10001 10150); do
   mrconvert DTI32/ ${ID}_vox.mif -vox 2 -coord 3 '0:1:32' -grad 
   #denoise images
   dwidenoise ${ID}_vox.mif v2vox.mif -noise v2_denoised.mif
-  # calculate resifuals
+  # calculate residuals
   mrcalc v2_denoised.mif v2vox.mif -subtract v2_res.mif
   
   # fsl preprocessing
