@@ -32,3 +32,13 @@ else
   echo "An error occurred while moving files."
   exit 1
 fi
+
+# Moving things to ants 2
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+SOURCE_DIR="/DICOMS/${ID}/${ID}_v2preproc_unbiased.mif"
+DEST_DIR="/group/ants2/${ID}_v2preproc_unbiased.mif"
+mv "$SOURCE_DIR"* "$DEST_DIR
+fi
+done
+
+
