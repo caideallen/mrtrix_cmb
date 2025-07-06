@@ -1,105 +1,225 @@
-10002_v2preproc_unbiased.mif: 10121_v2preproc_unbiased.mif
-10003_v2preproc_unbiased.mif  10122_v2preproc_unbiased.mif
-10004_v2preproc_unbiased.mif  10123_v2preproc_unbiased.mif
-10005_v2preproc_unbiased.mif  10124_v2preproc_unbiased.mif
-10006_v2preproc_unbiased.mif  10125_v2preproc_unbiased.mif
-10007_v2preproc_unbiased.mif  10126_v2preproc_unbiased.mif
-10008_v2preproc_unbiased.mif  10127_v2preproc_unbiased.mif
-10009_v2preproc_unbiased.mif  10128_v2preproc_unbiased.mif
-10010_v2preproc_unbiased.mif  10129_v2preproc_unbiased.mif
-10011_v2preproc_unbiased.mif  10133_v2preproc_unbiased.mif
-10012_v2preproc_unbiased.mif  10134_v2preproc_unbiased.mif
-10013_v2preproc_unbiased.mif  10135_v2preproc_unbiased.mif
-10014_v2preproc_unbiased.mif  10136_v2preproc_unbiased.mif
-10015_v2preproc_unbiased.mif  10137_v2preproc_unbiased.mif
-10016_v2preproc_unbiased.mif  10138_v2preproc_unbiased.mif
-10017_v2preproc_unbiased.mif  10140_v2preproc_unbiased.mif
-10018_v2preproc_unbiased.mif  10142_v2preproc_unbiased.mif
-10019_v2preproc_unbiased.mif  10144_v2preproc_unbiased.mif
-10020_v2preproc_unbiased.mif  10145_v2preproc_unbiased.mif
-10021_v2preproc_unbiased.mif  10147_v2preproc_unbiased.mif
-10023_v2preproc_unbiased.mif  10148_v2preproc_unbiased.mif
-10024_v2preproc_unbiased.mif  10149_v2preproc_unbiased.mif
-10025_v2preproc_unbiased.mif  11001_v2preproc_unbiased.mif
-10026_v2preproc_unbiased.mif  11002_v2preproc_unbiased.mif
-10027_v2preproc_unbiased.mif  11003_v2preproc_unbiased.mif
-10029_v2preproc_unbiased.mif  11004_v2preproc_unbiased.mif
-10030_v2preproc_unbiased.mif  11005_v2preproc_unbiased.mif
-10031_v2preproc_unbiased.mif  11006_v2preproc_unbiased.mif
-10032_v2preproc_unbiased.mif  11007_v2preproc_unbiased.mif
-10033_v2preproc_unbiased.mif  11008_v2preproc_unbiased.mif
-10034_v2preproc_unbiased.mif  11009_v2preproc_unbiased.mif
-10035_v2preproc_unbiased.mif  11010_v2preproc_unbiased.mif
-10036_v2preproc_unbiased.mif  11011_v2preproc_unbiased.mif
-10037_v2preproc_unbiased.mif  11012_v2preproc_unbiased.mif
-10038_v2preproc_unbiased.mif  11013_v2preproc_unbiased.mif
-10040_v2preproc_unbiased.mif  11014_v2preproc_unbiased.mif
-10041_v2preproc_unbiased.mif  11015_v2preproc_unbiased.mif
-10042_v2preproc_unbiased.mif  11016_v2preproc_unbiased.mif
-10043_v2preproc_unbiased.mif  11017_v2preproc_unbiased.mif
-10044_v2preproc_unbiased.mif  11018_v2preproc_unbiased.mif
-10045_v2preproc_unbiased.mif  11019_v2preproc_unbiased.mif
-10046_v2preproc_unbiased.mif  11020_v2preproc_unbiased.mif
-10048_v2preproc_unbiased.mif  11021_v2preproc_unbiased.mif
-10049_v2preproc_unbiased.mif  11022_v2preproc_unbiased.mif
-10050_v2preproc_unbiased.mif  11024_v2preproc_unbiased.mif
-10051_v2preproc_unbiased.mif  11025_v2preproc_unbiased.mif
-10053_v2preproc_unbiased.mif  11026_v2preproc_unbiased.mif
-10055_v2preproc_unbiased.mif  11027_v2preproc_unbiased.mif
-10057_v2preproc_unbiased.mif  11028_v2preproc_unbiased.mif
-10058_v2preproc_unbiased.mif  11029_v2preproc_unbiased.mif
-10059_v2preproc_unbiased.mif  11030_v2preproc_unbiased.mif
-10060_v2preproc_unbiased.mif  11031_v2preproc_unbiased.mif
-10061_v2preproc_unbiased.mif  11032_v2preproc_unbiased.mif
-10062_v2preproc_unbiased.mif  11033_v2preproc_unbiased.mif
-10063_v2preproc_unbiased.mif  11034_v2preproc_unbiased.mif
-10064_v2preproc_unbiased.mif  11035_v2preproc_unbiased.mif
-10065_v2preproc_unbiased.mif  11036_v2preproc_unbiased.mif
-10066_v2preproc_unbiased.mif  11037_v2preproc_unbiased.mif
-10067_v2preproc_unbiased.mif  11038_v2preproc_unbiased.mif
-10068_v2preproc_unbiased.mif  11039_v2preproc_unbiased.mif
-10069_v2preproc_unbiased.mif  11040_v2preproc_unbiased.mif
-10070_v2preproc_unbiased.mif  11041_v2preproc_unbiased.mif
-10072_v2preproc_unbiased.mif  11042_v2preproc_unbiased.mif
-10074_v2preproc_unbiased.mif  11043_v2preproc_unbiased.mif
-10076_v2preproc_unbiased.mif  11044_v2preproc_unbiased.mif
-10078_v2preproc_unbiased.mif  11045_v2preproc_unbiased.mif
-10079_v2preproc_unbiased.mif  11046_v2preproc_unbiased.mif
-10080_v2preproc_unbiased.mif  11047_v2preproc_unbiased.mif
-10082_v2preproc_unbiased.mif  11048_v2preproc_unbiased.mif
-10083_v2preproc_unbiased.mif  11049_v2preproc_unbiased.mif
-10085_v2preproc_unbiased.mif  11050_v2preproc_unbiased.mif
-10086_v2preproc_unbiased.mif  11051_v2preproc_unbiased.mif
-10087_v2preproc_unbiased.mif  11052_v2preproc_unbiased.mif
-10088_v2preproc_unbiased.mif  11054_v2preproc_unbiased.mif
-10090_v2preproc_unbiased.mif  11055_v2preproc_unbiased.mif
-10091_v2preproc_unbiased.mif  11058_v2preproc_unbiased.mif
-10092_v2preproc_unbiased.mif  11059_v2preproc_unbiased.mif
-10093_v2preproc_unbiased.mif  11061_v2preproc_unbiased.mif
-10094_v2preproc_unbiased.mif  11062_v2preproc_unbiased.mif
-10095_v2preproc_unbiased.mif  11063_v2preproc_unbiased.mif
-10096_v2preproc_unbiased.mif  11064_v2preproc_unbiased.mif
-10097_v2preproc_unbiased.mif  11065_v2preproc_unbiased.mif
-10098_v2preproc_unbiased.mif  11066_v2preproc_unbiased.mif
-10099_v2preproc_unbiased.mif  11067_v2preproc_unbiased.mif
-10100_v2preproc_unbiased.mif  11068_v2preproc_unbiased.mif
-10101_v2preproc_unbiased.mif  11069_v2preproc_unbiased.mif
-10102_v2preproc_unbiased.mif  11070_v2preproc_unbiased.mif
-10103_v2preproc_unbiased.mif  11071_v2preproc_unbiased.mif
-10104_v2preproc_unbiased.mif  11074_v2preproc_unbiased.mif
-10105_v2preproc_unbiased.mif  11076_v2preproc_unbiased.mif
-10106_v2preproc_unbiased.mif  11078_v2preproc_unbiased.mif
-10107_v2preproc_unbiased.mif  11080_v2preproc_unbiased.mif
-10108_v2preproc_unbiased.mif  11081_v2preproc_unbiased.mif
-10109_v2preproc_unbiased.mif  11082_v2preproc_unbiased.mif
-10110_v2preproc_unbiased.mif  11084_v2preproc_unbiased.mif
-10111_v2preproc_unbiased.mif  11085_v2preproc_unbiased.mif
-10112_v2preproc_unbiased.mif  11086_v2preproc_unbiased.mif
-10113_v2preproc_unbiased.mif  11087_v2preproc_unbiased.mif
-10114_v2preproc_unbiased.mif  11090_v2preproc_unbiased.mif
-10115_v2preproc_unbiased.mif  11091_v2preproc_unbiased.mif
-10116_v2preproc_unbiased.mif  11092_v2preproc_unbiased.mif
-10117_v2preproc_unbiased.mif  11093_v2preproc_unbiased.mif
-10118_v2preproc_unbiased.mif  11096_v2preproc_unbiased.mif
-10119_v2preproc_unbiased.mif  11105_v2preproc_unbiased.mif
-10120_v2preproc_unbiased.mif
+/scratch/cbayouth/DICOMS/10002/
+/scratch/cbayouth/DICOMS/10003/
+/scratch/cbayouth/DICOMS/10004/
+/scratch/cbayouth/DICOMS/10005/
+/scratch/cbayouth/DICOMS/10006/
+/scratch/cbayouth/DICOMS/10007/
+/scratch/cbayouth/DICOMS/10008/
+/scratch/cbayouth/DICOMS/10009/
+/scratch/cbayouth/DICOMS/10010/
+/scratch/cbayouth/DICOMS/10011/
+/scratch/cbayouth/DICOMS/10012/
+/scratch/cbayouth/DICOMS/10013/
+/scratch/cbayouth/DICOMS/10014/
+/scratch/cbayouth/DICOMS/10016/
+/scratch/cbayouth/DICOMS/10017/
+/scratch/cbayouth/DICOMS/10018/
+/scratch/cbayouth/DICOMS/10019/
+/scratch/cbayouth/DICOMS/10020/
+/scratch/cbayouth/DICOMS/10021/
+/scratch/cbayouth/DICOMS/10023/
+/scratch/cbayouth/DICOMS/10024/
+/scratch/cbayouth/DICOMS/10025/
+/scratch/cbayouth/DICOMS/10026/
+/scratch/cbayouth/DICOMS/10027/
+/scratch/cbayouth/DICOMS/10028/
+/scratch/cbayouth/DICOMS/10029/
+/scratch/cbayouth/DICOMS/10030/
+/scratch/cbayouth/DICOMS/10031/
+/scratch/cbayouth/DICOMS/10032/
+/scratch/cbayouth/DICOMS/10033/
+/scratch/cbayouth/DICOMS/10034/
+/scratch/cbayouth/DICOMS/10035/
+/scratch/cbayouth/DICOMS/10036/
+/scratch/cbayouth/DICOMS/10037/
+/scratch/cbayouth/DICOMS/10038/
+/scratch/cbayouth/DICOMS/10040/
+/scratch/cbayouth/DICOMS/10041/
+/scratch/cbayouth/DICOMS/10042/
+/scratch/cbayouth/DICOMS/10043/
+/scratch/cbayouth/DICOMS/10044/
+/scratch/cbayouth/DICOMS/10045/
+/scratch/cbayouth/DICOMS/10046/
+/scratch/cbayouth/DICOMS/10048/
+/scratch/cbayouth/DICOMS/10049/
+/scratch/cbayouth/DICOMS/10050/
+/scratch/cbayouth/DICOMS/10051/
+/scratch/cbayouth/DICOMS/10052/
+/scratch/cbayouth/DICOMS/10053/
+/scratch/cbayouth/DICOMS/10054/
+/scratch/cbayouth/DICOMS/10055/
+/scratch/cbayouth/DICOMS/10056/
+/scratch/cbayouth/DICOMS/10057/
+/scratch/cbayouth/DICOMS/10058/
+/scratch/cbayouth/DICOMS/10059/
+/scratch/cbayouth/DICOMS/10060/
+/scratch/cbayouth/DICOMS/10061/
+/scratch/cbayouth/DICOMS/10062/
+/scratch/cbayouth/DICOMS/10063/
+/scratch/cbayouth/DICOMS/10064/
+/scratch/cbayouth/DICOMS/10065/
+/scratch/cbayouth/DICOMS/10066/
+/scratch/cbayouth/DICOMS/10067/
+/scratch/cbayouth/DICOMS/10068/
+/scratch/cbayouth/DICOMS/10069/
+/scratch/cbayouth/DICOMS/10070/
+/scratch/cbayouth/DICOMS/10071/
+/scratch/cbayouth/DICOMS/10072/
+/scratch/cbayouth/DICOMS/10073/
+/scratch/cbayouth/DICOMS/10074/
+/scratch/cbayouth/DICOMS/10076/
+/scratch/cbayouth/DICOMS/10077/
+/scratch/cbayouth/DICOMS/10078/
+/scratch/cbayouth/DICOMS/10079/
+/scratch/cbayouth/DICOMS/10080/
+/scratch/cbayouth/DICOMS/10081/
+/scratch/cbayouth/DICOMS/10082/
+/scratch/cbayouth/DICOMS/10083/
+/scratch/cbayouth/DICOMS/10085/
+/scratch/cbayouth/DICOMS/10086/
+/scratch/cbayouth/DICOMS/10087/
+/scratch/cbayouth/DICOMS/10088/
+/scratch/cbayouth/DICOMS/10089/
+/scratch/cbayouth/DICOMS/10090/
+/scratch/cbayouth/DICOMS/10091/
+/scratch/cbayouth/DICOMS/10092/
+/scratch/cbayouth/DICOMS/10093/
+/scratch/cbayouth/DICOMS/10094/
+/scratch/cbayouth/DICOMS/10095/
+/scratch/cbayouth/DICOMS/10096/
+/scratch/cbayouth/DICOMS/10097/
+/scratch/cbayouth/DICOMS/10098/
+/scratch/cbayouth/DICOMS/10099/
+/scratch/cbayouth/DICOMS/10100/
+/scratch/cbayouth/DICOMS/10101/
+/scratch/cbayouth/DICOMS/10102/
+/scratch/cbayouth/DICOMS/10103/
+/scratch/cbayouth/DICOMS/10104/
+/scratch/cbayouth/DICOMS/10105/
+/scratch/cbayouth/DICOMS/10106/
+/scratch/cbayouth/DICOMS/10107/
+/scratch/cbayouth/DICOMS/10108/
+/scratch/cbayouth/DICOMS/10109/
+/scratch/cbayouth/DICOMS/10110/
+/scratch/cbayouth/DICOMS/10111/
+/scratch/cbayouth/DICOMS/10112/
+/scratch/cbayouth/DICOMS/10113/
+/scratch/cbayouth/DICOMS/10114/
+/scratch/cbayouth/DICOMS/10115/
+/scratch/cbayouth/DICOMS/10116/
+/scratch/cbayouth/DICOMS/10117/
+/scratch/cbayouth/DICOMS/10118/
+/scratch/cbayouth/DICOMS/10119/
+/scratch/cbayouth/DICOMS/10120/
+/scratch/cbayouth/DICOMS/10121/
+/scratch/cbayouth/DICOMS/10122/
+/scratch/cbayouth/DICOMS/10123/
+/scratch/cbayouth/DICOMS/10124/
+/scratch/cbayouth/DICOMS/10125/
+/scratch/cbayouth/DICOMS/10126/
+/scratch/cbayouth/DICOMS/10127/
+/scratch/cbayouth/DICOMS/10128/
+/scratch/cbayouth/DICOMS/10129/
+/scratch/cbayouth/DICOMS/10133/
+/scratch/cbayouth/DICOMS/10134/
+/scratch/cbayouth/DICOMS/10135/
+/scratch/cbayouth/DICOMS/10136/
+/scratch/cbayouth/DICOMS/10137/
+/scratch/cbayouth/DICOMS/10138/
+/scratch/cbayouth/DICOMS/10139/
+/scratch/cbayouth/DICOMS/10140/
+/scratch/cbayouth/DICOMS/10141/
+/scratch/cbayouth/DICOMS/10142/
+/scratch/cbayouth/DICOMS/10143/
+/scratch/cbayouth/DICOMS/10144/
+/scratch/cbayouth/DICOMS/10145/
+/scratch/cbayouth/DICOMS/10147/
+/scratch/cbayouth/DICOMS/10148/
+/scratch/cbayouth/DICOMS/10149/
+/scratch/cbayouth/DICOMS/10150/
+/scratch/cbayouth/DICOMS/11001/
+/scratch/cbayouth/DICOMS/11002/
+/scratch/cbayouth/DICOMS/11003/
+/scratch/cbayouth/DICOMS/11004/
+/scratch/cbayouth/DICOMS/11005/
+/scratch/cbayouth/DICOMS/11006/
+/scratch/cbayouth/DICOMS/11007/
+/scratch/cbayouth/DICOMS/11008/
+/scratch/cbayouth/DICOMS/11009/
+/scratch/cbayouth/DICOMS/11010/
+/scratch/cbayouth/DICOMS/11011/
+/scratch/cbayouth/DICOMS/11012/
+/scratch/cbayouth/DICOMS/11013/
+/scratch/cbayouth/DICOMS/11014/
+/scratch/cbayouth/DICOMS/11015/
+/scratch/cbayouth/DICOMS/11016/
+/scratch/cbayouth/DICOMS/11017/
+/scratch/cbayouth/DICOMS/11018/
+/scratch/cbayouth/DICOMS/11019/
+/scratch/cbayouth/DICOMS/11020/
+/scratch/cbayouth/DICOMS/11021/
+/scratch/cbayouth/DICOMS/11022/
+/scratch/cbayouth/DICOMS/11024/
+/scratch/cbayouth/DICOMS/11025/
+/scratch/cbayouth/DICOMS/11026/
+/scratch/cbayouth/DICOMS/11027/
+/scratch/cbayouth/DICOMS/11028/
+/scratch/cbayouth/DICOMS/11029/
+/scratch/cbayouth/DICOMS/11030/
+/scratch/cbayouth/DICOMS/11031/
+/scratch/cbayouth/DICOMS/11032/
+/scratch/cbayouth/DICOMS/11033/
+/scratch/cbayouth/DICOMS/11034/
+/scratch/cbayouth/DICOMS/11035/
+/scratch/cbayouth/DICOMS/11036/
+/scratch/cbayouth/DICOMS/11037/
+/scratch/cbayouth/DICOMS/11038/
+/scratch/cbayouth/DICOMS/11039/
+/scratch/cbayouth/DICOMS/11040/
+/scratch/cbayouth/DICOMS/11041/
+/scratch/cbayouth/DICOMS/11042/
+/scratch/cbayouth/DICOMS/11043/
+/scratch/cbayouth/DICOMS/11044/
+/scratch/cbayouth/DICOMS/11045/
+/scratch/cbayouth/DICOMS/11046/
+/scratch/cbayouth/DICOMS/11047/
+/scratch/cbayouth/DICOMS/11048/
+/scratch/cbayouth/DICOMS/11049/
+/scratch/cbayouth/DICOMS/11050/
+/scratch/cbayouth/DICOMS/11051/
+/scratch/cbayouth/DICOMS/11052/
+/scratch/cbayouth/DICOMS/11054/
+/scratch/cbayouth/DICOMS/11055/
+/scratch/cbayouth/DICOMS/11057/
+/scratch/cbayouth/DICOMS/11058/
+/scratch/cbayouth/DICOMS/11059/
+/scratch/cbayouth/DICOMS/11061/
+/scratch/cbayouth/DICOMS/11062/
+/scratch/cbayouth/DICOMS/11063/
+/scratch/cbayouth/DICOMS/11064/
+/scratch/cbayouth/DICOMS/11065/
+/scratch/cbayouth/DICOMS/11066/
+/scratch/cbayouth/DICOMS/11067/
+/scratch/cbayouth/DICOMS/11068/
+/scratch/cbayouth/DICOMS/11069/
+/scratch/cbayouth/DICOMS/11070/
+/scratch/cbayouth/DICOMS/11071/
+/scratch/cbayouth/DICOMS/11074/
+/scratch/cbayouth/DICOMS/11076/
+/scratch/cbayouth/DICOMS/11078/
+/scratch/cbayouth/DICOMS/11080/
+/scratch/cbayouth/DICOMS/11081/
+/scratch/cbayouth/DICOMS/11082/
+/scratch/cbayouth/DICOMS/11084/
+/scratch/cbayouth/DICOMS/11085/
+/scratch/cbayouth/DICOMS/11086/
+/scratch/cbayouth/DICOMS/11087/
+/scratch/cbayouth/DICOMS/11088/
+/scratch/cbayouth/DICOMS/11090/
+/scratch/cbayouth/DICOMS/11091/
+/scratch/cbayouth/DICOMS/11092/
+/scratch/cbayouth/DICOMS/11093/
+/scratch/cbayouth/DICOMS/11095/
+/scratch/cbayouth/DICOMS/11096/
+/scratch/cbayouth/DICOMS/11105/
+/scratch/cbayouth/DICOMS/11107/
