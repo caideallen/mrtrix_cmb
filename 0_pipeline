@@ -14,7 +14,7 @@ for ID in $(seq 10001 10150); do
   mrconvert ${ID}.nii ${ID}.mif
 
   # format DICOMs into mif file voxel size 2
-  mrconvert DTI32/ ${ID}_vox.mif -vox 2 -coord 3 '0:1:32' -grad 
+  mrconvert DTI32/ ${ID}_vox.mif -vox 2 -coord 3 '0:1:32' -grad -export_grad_mrtrix path -export_grad_fsl bvecs_path bvals_path
   #denoise images
   dwidenoise ${ID}_vox.mif v2vox.mif -noise v2_denoised.mif
   # calculate residuals
@@ -23,7 +23,7 @@ for ID in $(seq 10001 10150); do
   # fsl preprocessing
   dwifslpreproc v2vox.mif ${ID}_v2preproc.mif -rpe_none -pe_dir AP -readout_time 0.1 -eddy_options " --slm=linear "
   #this badboy is causing clipping issues PFC etc, probably due to denoising 
-  dwi2mask ${ID}_v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_mask.nii -datatype float32 -strides -1,+2,+3
+  dwi2mask ${ID}_v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_mask.nii -datatype float32 -strides -1,+2,+3 
   cd ..
   done
 
