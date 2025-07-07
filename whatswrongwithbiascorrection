@@ -28,3 +28,11 @@ done
 
 # dwi input, MASK INPUT NEEDED TO BE v2_tempmask.mif
 dwinormalise group /scratch/cbayouth/group/v2preproc /scratch/cbayouth/group/eddymask /scratch/cbayouth/group/dwi_output /scratch/cbayouth/group/fa_template.mif /scratch/cbayouth/group/fa_template_wm_mask.mif
+
+ml ants
+# bias correction for all subjects which is causing contrast issues
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+    echo "Processing sucject: ${ID}"  
+# this deals with the shimming. bright white areas
+dwibiascorrect ants v2preproc/${ID}_v2preproc.mif ants/${ID}_v2preproc_unbiased.mif -export_grad_fsl bvecs_path bvals_path 
+done
