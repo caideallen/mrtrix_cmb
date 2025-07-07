@@ -11,11 +11,8 @@ for ID in $(seq 10002 10150) $(seq 11001 11105); do
   cd ..
 done
 
-
-
-mrconvert 10003_v2preproc_unbiased.mif 10003_convert.mif -export_grad_mrtrix path -export_grad_fsl bvecs_path bvals_path
-mrconvert fa_template_wm_mask.mif convert_wm_mask.mif -export_grad_mrtrix path -export_grad_fsl bvecs_path bvals_path
-mrconvert fa_template.mif convert_template.mif -export_grad_mrtrix path -export_grad_fsl bvecs_path bvals_path
+## normalizing new shit
+dwi2tensor ${ID}/${ID}_v2preproc_unbiased.mif -mask ${ID}/dwi_temp_mask.mif - | tensor2metric - -fa - | mrregister -force ../dwinormalise/fa_template.mif - -mask2 new_subject/dwi_temp_mask.mif -nl_scale 0.5,0.75,1.0 -nl_niter 5,5,15 -nl_warp - /tmp/dummy_file.mif | mrtransform ../dwinormalise/fa_template_wm_mask.mif -template new_subject/dwi_denoised_unringed_preproc_unbiased.mif -warp - - | dwinormalise new_subject/dwi_denoised_unringed_preproc_unbiased.mif - ../dwinormalise/dwi_output/new_subject.mif
 
 dwibiascorrect ants 10002/10002_v2preproc.mif 10002/10002_v2preproc_unbiased.mif -export_grad_fsl bvecs_path bvals_path 
 dwibiascorrect ants v2preproc.mif 10003_v2preproc_unbiased.mif -nocleanup -bias image -export_grad_mrtrix path -export_grad_fsl bvecs_path bvals_path
