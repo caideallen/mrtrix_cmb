@@ -3,16 +3,8 @@ mamba create -n myENV -c conda-forge python=3.11
 source activate my ENV
 mamba install -c MRtrix3 mrtrix3
 
-## Exporting these values #did he want me to do them for the ants files
-for ID in $(seq 10002 10150) $(seq 11001 11105); do
-  cd "$ID" || { echo "Directory $ID not found! Skipping."; continue; }
-  dwibiascorrect ants v2preproc.mif v2preproc_unbiased.mif
-  mrconvert v2preproc_unbiased.mif "${ID}_v2preproc_unbiased.mif" -export_grad_mrtrix grad_mrtrix.txt -export_grad_fsl bvecs.txt bvals.txt
-  cd ..
-done
 
-## normalizing new shit
-dwi2tensor ${ID}/${ID}_v2preproc_unbiased.mif -mask ${ID}/dwi_temp_mask.mif - | tensor2metric - -fa - | mrregister -force ../dwinormalise/fa_template.mif - -mask2 new_subject/dwi_temp_mask.mif -nl_scale 0.5,0.75,1.0 -nl_niter 5,5,15 -nl_warp - /tmp/dummy_file.mif | mrtransform ../dwinormalise/fa_template_wm_mask.mif -template new_subject/dwi_denoised_unringed_preproc_unbiased.mif -warp - - | dwinormalise new_subject/dwi_denoised_unringed_preproc_unbiased.mif - ../dwinormalise/dwi_output/new_subject.mif
+
 
 dwibiascorrect ants 10002/10002_v2preproc.mif 10002/10002_v2preproc_unbiased.mif -export_grad_fsl bvecs_path bvals_path 
 dwibiascorrect ants v2preproc.mif 10003_v2preproc_unbiased.mif -nocleanup -bias image -export_grad_mrtrix path -export_grad_fsl bvecs_path bvals_path
@@ -27,12 +19,10 @@ done
 
 
 # dwi input, MASK INPUT NEEDED TO BE v2_tempmask.mif
-dwinormalise group /scratch/cbayouth/group/v2preproc /scratch/cbayouth/group/eddymask /scratch/cbayouth/group/dwi_output /scratch/cbayouth/group/fa_template.mif /scratch/cbayouth/group/fa_template_wm_mask.mif
+dwinormalise group ants/ 0_dwifix/eddy/ 0_dwifix/dwi_output/ fa_template.mif fa_template_wm_mask.mif
 
-ml ants
-# bias correction for all subjects which is causing contrast issues
-for ID in $(seq 10002 10150) $(seq 11001 11105); do
-    echo "Processing sucject: ${ID}"  
-# this deals with the shimming. bright white areas
-dwibiascorrect ants v2preproc/${ID}_v2preproc.mif ants/${ID}_v2preproc_unbiased.mif -export_grad_fsl bvecs_path bvals_path 
-done
+## normalizing new shit
+dwi2tensor DICOMS/${ID}/${ID}_v2preproc_unbiased.mif -mask ${ID}/eddy_mask.nii - | tensor2metric - -fa - | mrregister -force group/fa_template.mif - -mask2 DICOMS/${ID}/eddy_mask.nii -nl_scale 0.5,0.75,1.0 -nl_niter 5,5,15 -nl_warp - /tmp/dummy_file.mif | mrtransform group/fa_template_wm_mask.mif -template DICOMS/${ID}/${ID}_v2preproc_unbiased.mif  -warp - - | dwinormalise DICOMS/${ID}/${ID}_v2preproc_unbiased.mif  - group/0_dwifix/dwi_output/${ID}_v2preproc_unbiased.mif
+
+dwi2tensor DICOMS/10028/10028_v2preproc_unbiased.mif -mask DICOMS/10028/eddy_mask.nii - | tensor2metric - -fa - | mrregister -force group/fa_template.mif - -mask2 DICOMS/10028/eddy_mask.nii -nl_scale 0.5,0.75,1.0 -nl_niter 5,5,15 -nl_warp - /tmp/dummy_file.mif | mrtransform group/fa_template_wm_mask.mif -template DICOMS/10028/10028_v2preproc_unbiased.mif  -warp - - | dwinormalise DICOMS/10028/10028_v2preproc_unbiased.mif  - group/0_dwifix/dwi_output/10028_v2preproc_unbiased.mif
+
