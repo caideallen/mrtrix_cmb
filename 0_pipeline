@@ -45,7 +45,7 @@ dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ fa_templa
 module unload ants
 ml fsl
 # this might be screwy if its normalizing based off the mask. Probably causing more of the contrast issues
-dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ fa_template.mif fa_template_wm_mask.mif 
+dwinormalise group ants/ template/mask_input/ dwi_output/ fa_template.mif fa_template_wm_mask.mif 
 
 ## 
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
