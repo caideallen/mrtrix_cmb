@@ -42,3 +42,21 @@ fi
 done
 
 
+SOURCE_DIR"/DICOMS/${ID}/${ID}_v2preproc_unbiased.mif"
+DEST_DIR="/scratch/cbayouth/groups/v2preproc/"
+
+# Moving things to ants
+
+for ID in 10028 10054 10089 10107 10139 10150 11018 11074 11107; do
+SOURCE_DIR="/DICOMS/${ID}/${ID}_v2preproc_unbiased.mif"
+DEST_DIR="/group/ants/${ID}_v2preproc_unbiased.mif"
+cp "$SOURCE_DIR"* "$DEST_DIR
+fi
+done
+
+for ID in 10028 10054 10089 10107 10139 10150 11018 11074 11107; do
+SOURCE_DIR="/DICOMS/${ID}/eddy_mask.nii"
+DEST_DIR="/group/eddy/${ID}_eddymask.nii"
+cp "$SOURCE_DIR"* "$DEST_DIR
+fi
+done
