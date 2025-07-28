@@ -1,3 +1,7 @@
+## mrview commands to get a better idea of my images and masks
+mrview -load ants/10002_v2preproc_unbiased.mif -overlay.load eddy/10002_eddymask.nii -overlay.opacity 0.4
+
+
 ## This worked to get ants going
 mamba create -n myENV -c conda-forge python=3.11
 source activate my ENV
