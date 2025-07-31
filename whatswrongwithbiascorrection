@@ -2,6 +2,10 @@
 mrview -load ants/10002_v2preproc_unbiased.mif -overlay.load eddy/10002_eddymask.nii -overlay.opacity 0.4 -plane 0
 
 
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+dwi2mask ants/${ID}_v2preproc_unbiased.mif - | maskfilter - dilate - | mrconvert -  eddy_afterants/${ID}_eddymask_unbiased.nii -datatype float32 -strides -1,+2,+3 
+
+dwi2tensor new_subject/dwi_denoised_unringed_preproc_unbiased.mif -mask new_subject/dwi_temp_mask.mif - | tensor2metric - -fa - | mrregister -force ../dwinormalise/fa_template.mif - -mask2 new_subject/dwi_temp_mask.mif -nl_scale 0.5,0.75,1.0 -nl_niter 5,5,15 -nl_warp - /tmp/dummy_file.mif | mrtransform ../dwinormalise/fa_template_wm_mask.mif -template new_subject/dwi_denoised_unringed_preproc_unbiased.mif -warp - - | dwinormalise new_subject/dwi_denoised_unringed_preproc_unbiased.mif - ../dwinormalise/dwi_output/new_subject.mif
 ## This worked to get ants going
 mamba create -n myENV -c conda-forge python=3.11
 source activate my ENV
