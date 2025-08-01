@@ -4,6 +4,8 @@ mrview -load ants/10002_v2preproc_unbiased.mif -overlay.load eddy/10002_eddymask
 
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
 dwi2mask ants/${ID}_v2preproc_unbiased.mif - | maskfilter - dilate - | mrconvert -  eddy_afterants/${ID}_eddymask_unbiased.nii -datatype float32 -strides -1,+2,+3 
+done
+
 
 dwi2tensor new_subject/dwi_denoised_unringed_preproc_unbiased.mif -mask new_subject/dwi_temp_mask.mif - | tensor2metric - -fa - | mrregister -force ../dwinormalise/fa_template.mif - -mask2 new_subject/dwi_temp_mask.mif -nl_scale 0.5,0.75,1.0 -nl_niter 5,5,15 -nl_warp - /tmp/dummy_file.mif | mrtransform ../dwinormalise/fa_template_wm_mask.mif -template new_subject/dwi_denoised_unringed_preproc_unbiased.mif -warp - - | dwinormalise new_subject/dwi_denoised_unringed_preproc_unbiased.mif - ../dwinormalise/dwi_output/new_subject.mif
 ## This worked to get ants going
@@ -25,9 +27,13 @@ for ID in $(seq 10002 10150) $(seq 11001 11105); do
 dwibiascorrect ants v2preproc/${ID}_v2preproc.mif ants/${ID}_v2preproc_unbiased.mif -export_grad_fsl bvecs_path bvals_path 
 done
 
-
-# dwi input, MASK INPUT NEEDED TO BE v2_tempmask.mif
 dwinormalise group ants/ 0_dwifix/eddy/ dwi_output/ fa_template.mif fa_template_wm_mask.mif
+
+# dwi norm try1
+dwinormalise group ants/ 0_dwifix/eddy/ dwi_output/ fa_template.mif fa_template_wm_mask.mif
+
+## normalizing trying afterants
+dwinormalise group ants/ eddy_afterants/ dwi_output/ fa_template.mif fa_template_wm_mask.mif
 
 ## normalizing new shit
 dwi2tensor DICOMS/${ID}/${ID}_v2preproc_unbiased.mif -mask ${ID}/eddy_mask.nii - | tensor2metric - -fa - | mrregister -force group/fa_template.mif - -mask2 DICOMS/${ID}/eddy_mask.nii -nl_scale 0.5,0.75,1.0 -nl_niter 5,5,15 -nl_warp - /tmp/dummy_file.mif | mrtransform group/fa_template_wm_mask.mif -template DICOMS/${ID}/${ID}_v2preproc_unbiased.mif  -warp - - | dwinormalise DICOMS/${ID}/${ID}_v2preproc_unbiased.mif  - group/0_dwifix/dwi_output/${ID}_v2preproc_unbiased.mif
