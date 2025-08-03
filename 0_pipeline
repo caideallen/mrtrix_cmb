@@ -70,4 +70,4 @@ for ID in $(seq 10002 10150) $(seq 11001 11107); do
 dwi2fod csd dwi_output/${ID}_v2preproc_unbiased.mif group_average_response.txt wmfod/${ID}_wmfod.mif 
 done
 
-population_template wmfod/ -mask_dir eddy_afterants/ wmfod_template1.mif 
+population_template wmfod/ -mask_dir eddy_afterants/ wmfod_template.mif 
