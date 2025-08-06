@@ -11,7 +11,7 @@ dwi2tensor new_subject/dwi_denoised_unringed_preproc_unbiased.mif -mask new_subj
 ## This worked to get ants going
 mamba create -n myENV -c conda-forge python=3.11
 source activate my ENV
-mamba install -c MRtrix3 mrtrix3
+mamba install -c MRtrix3 mrtrix3 
 
 
 
@@ -42,5 +42,5 @@ dwi2tensor 10028/10028_v2preproc_unbiased.mif -mask 10028/eddy_mask.nii - | tens
 dwi2tensor new_subject/dwi_denoised_unringed_preproc_unbiased.mif -mask new_subject/dwi_temp_mask.mif - | tensor2metric - -fa - | mrregister -force ../dwinormalise/fa_template.mif - -mask2 new_subject/dwi_temp_mask.mif -nl_scale 0.5,0.75,1.0 -nl_niter 5,5,15 -nl_warp - /tmp/dummy_file.mif | mrtransform ../dwinormalise/fa_template_wm_mask.mif -template new_subject/dwi_denoised_unringed_preproc_unbiased.mif -warp - - | dwinormalise new_subject/dwi_denoised_unringed_preproc_unbiased.mif - ../dwinormalise/dwi_output/new_subject.mif
 ################################################
 
-mrcat linear_template05_c0.mif $(mrgrid input_transformed_c0/0028.mif regrid -template linear_template05_c0.mif -) -axis 4 - | mrview - -roi.load mask_transformed/0028.mif -roi.opacity 0.3
+mrcat linear_template06_c0.mif $(mrgrid input_transformed_c0/0089.mif regrid -template linear_template05_c0.mif -) -axis 4 - | mrview - -roi.load mask_transformed/0086.mif -roi.opacity 0.3
 mrcat linear_template05_c0.mif $(mrgrid input_transformed_c0/0018.mif regrid -template linear_template05_c0.mif -) -axis 4 - | mrview - -roi.load mask_transformed/0018.mif -roi.opacity 0.3
