@@ -71,3 +71,10 @@ dwi2fod csd dwi_output/${ID}_v2preproc_unbiased.mif group_average_response.txt w
 done
 
 population_template wmfod/ -mask_dir eddy_afterants/ wmfod_template.mif  
+
+# Register to template
+mkdir subj2temp
+mkdir temp2subj
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+mrregister wmfod/${ID}_wmfod.mif -mask1 dwimask/${ID}_dwimask.mif wmfod_template.mif -nl_warp subj2temp/${ID}_subject2template_warp.mif temp2subj/${ID}_template2subject_warp.mif
+done
