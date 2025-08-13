@@ -47,16 +47,16 @@ dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ fa_templa
 # this might be screwy if its normalizing based off the mask. Probably causing more of the contrast issues
 dwinormalise group ants/ mask_input/ dwi_output/ fa_template.mif fa_template_wm_mask.mif 
 
-## you dont need fsl yet but you will
-module unload ants
-ml fsl
+## eddy_afterants was done bc we need it for the poptemplate, and original eddy wasnt normalized
 mkdir wmresponse
 mkdir dwimask
+mkdir eddy_afterants
 ## 
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
     echo "Processing ID: $ID"
     dwi2response tournier dwi_output/${ID}_v2preproc_unbiased.mif wmresponse/${ID}_wm_response.txt 
-    dwi2mask dwi_output/${ID}_v2preproc_unbiased.mif dwimask/${ID}_dwimask.mif        
+    dwi2mask dwi_output/${ID}_v2preproc_unbiased.mif dwimask/${ID}_dwimask.mif 
+    dwi2mask dwi_output/${ID}_v2preproc_unbiased.mif - | maskfilter - dilate - | mrconvert - eddy_afterants/${ID}_eddy_mask.nii -datatype float32 -strides -1,+2,+3 
 done
 
 
@@ -70,4 +70,4 @@ for ID in $(seq 10002 10150) $(seq 11001 11107); do
 dwi2fod csd dwi_output/${ID}_v2preproc_unbiased.mif group_average_response.txt wmfod/${ID}_wmfod.mif 
 done
 
-population_template wmfod/ -mask_dir eddy_afterants/ wmfod_template1.mif -nl_update_smooth 5 -nl_disp_smooth 2 -nl_grad_step 0.25 -nocleanup
+population_template wmfod/ -mask_dir eddy_afterants/ wmfod_template.mif  
