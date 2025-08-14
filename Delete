@@ -1,3 +1,4 @@
 ## checking shit works before I run it as a batch
 
 mrregister wmfod/10002_wmfod.mif -mask1 dwimask/10002_dwimask.mif wmfod_template.mif -nl_warp subj2temp/10002_subject2template_warp.mif temp2subj/10002_template2subject_warp.mif
+mrtransform dwimask/10002_dwimask.mif -warp subj2temp/10002_subject2template_warp.mif -interp nearest -datatype bit maskintemp/10002_maskintemp.mif
