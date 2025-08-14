@@ -15,3 +15,5 @@ done
 mrtransform wmfod/10002_wmfod.mif -warp subj2temp/10002_subject2template_warp.mif -reorient_fod no fodintemp_not_reoriented/10002_fodintemp_NOT_REORIENTED.mif
 
 fod2fixel -mask template_mask.mif fodintemp_not_reoriented/10002_fodintemp_NOT_REORIENTED.mif fixelintemp_not_reoriented/10002_fixel_in_template_space_NOT_REORIENTED -afd 10002_fd.mif
+fixelreorient fixelintemp_not_reoriented/10002_fixel_in_template_space_NOT_REORIENTED subj2temp/10002_subject2template_warp.mif fixel_in_temp/10002_fixel_in_template_space
+fixelcorrespondence fixel_in_temp/10002_fixel_in_template_space/10002_fd.mif fixel_mask fd/10002 10002.mif
