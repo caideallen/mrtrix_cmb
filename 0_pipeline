@@ -104,5 +104,5 @@ done
 
 mkdir fc
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
-warp2metric subj2temp/${ID}_subject2template_warp.mif -fc fixel_mask fc/${ID}.mif
+warp2metric subj2temp/${ID}_subject2template_warp.mif -fc fixel_mask fc/${ID} ${ID}.mif
 done
