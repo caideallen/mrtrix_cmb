@@ -90,3 +90,13 @@ mkdir fodintemp_not_reoriented
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
 mrtransform wmfod/${ID}_wmfod.mif -warp subj2temp/${ID}_subject2template_warp.mif -reorient_fod no fodintemp_not_reoriented/${ID}_fodintemp_NOT_REORIENTED.mif
 done
+
+# fixel reorient and fixel to template
+mkdir fixel_in_temp
+mkdir fixelintemp_not_reoriented
+mkdir fd
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+fod2fixel -mask template_mask.mif fodintemp_not_reoriented/${ID}_fodintemp_NOT_REORIENTED.mif fixelintemp_not_reoriented/${ID}_fixel_in_template_space_NOT_REORIENTED -afd fd/${ID}_fd.mif
+fixelreorient fixelintemp_not_reoriented/${ID}_fixel_in_template_space_NOT_REORIENTED subj2temp/${ID}_subject2template_warp.mif fixel_in_temp/fixel_in_template_space
+fixelcorrespondence IN/fixel_in_template_space/fd.mif ../template/fixel_mask fd/ PRE.mif
+done
