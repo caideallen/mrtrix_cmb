@@ -75,6 +75,10 @@ population_template wmfod/ -mask_dir eddy_afterants/ wmfod_template.mif
 # Register to template
 mkdir subj2temp
 mkdir temp2subj
+mkdir maskintemp
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
 mrregister wmfod/${ID}_wmfod.mif -mask1 dwimask/${ID}_dwimask.mif wmfod_template.mif -nl_warp subj2temp/${ID}_subject2template_warp.mif temp2subj/${ID}_template2subject_warp.mif
+mrtransform dwimask/${ID}_dwimask.mif -warp subj2temp/${ID}_subject2template_warp.mif -interp nearest -datatype bit maskintemp/${ID}_maskintemp.mif
 done
+
+mrmath maskintemp/* min template_mask.mif -datatype bit
