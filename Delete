@@ -18,3 +18,8 @@ fod2fixel -mask template_mask.mif fodintemp_not_reoriented/10002_fodintemp_NOT_R
 fixelreorient fixelintemp_not_reoriented/10002_fixel_in_template_space_NOT_REORIENTED subj2temp/10002_subject2template_warp.mif fixel_in_temp/10002_fixel_in_template_space
 fixelcorrespondence fixel_in_temp/10002_fixel_in_template_space/10002_fd.mif fixel_mask fd/10002 10002.mif
 warp2metric subj2temp/10002_subject2template_warp.mif -fc fixel_mask fc/10002 10002.mif
+
+cd log_fc/
+for ID in $(seq 10003 10150) $(seq 11001 11107); do
+rm ${ID}/${ID}.mif
+done
