@@ -76,9 +76,17 @@ population_template wmfod/ -mask_dir eddy_afterants/ wmfod_template.mif
 mkdir subj2temp
 mkdir temp2subj
 mkdir maskintemp
+# masks to template 
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
 mrregister wmfod/${ID}_wmfod.mif -mask1 dwimask/${ID}_dwimask.mif wmfod_template.mif -nl_warp subj2temp/${ID}_subject2template_warp.mif temp2subj/${ID}_template2subject_warp.mif
 mrtransform dwimask/${ID}_dwimask.mif -warp subj2temp/${ID}_subject2template_warp.mif -interp nearest -datatype bit maskintemp/${ID}_maskintemp.mif
 done
-
+# calculate intersections of all masks
 mrmath maskintemp/* min template_mask.mif -datatype bit
+# Fixel mask
+fod2fixel -mask template_mask.mif -fmls_peak_value 0.10 wmfod_template.mif fixel_mask
+
+mkdir fodintemp_not_reoriented
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+mrtransform wmfod/${ID}_wmfod.mif -warp subj2temp/${ID}_subject2template_warp.mif -reorient_fod no fodintemp_not_reoriented/${ID}_fodintemp_NOT_REORIENTED.mif
+done
