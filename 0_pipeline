@@ -94,15 +94,15 @@ done
 # fixel reorient and fixel to template
 mkdir fixel_in_temp
 mkdir fixelintemp_not_reoriented
-mkdir fd
-mkdir fc
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
 fod2fixel -mask template_mask.mif fodintemp_not_reoriented/${ID}_fodintemp_NOT_REORIENTED.mif fixelintemp_not_reoriented/${ID}_fixel_in_template_space_NOT_REORIENTED -afd ${ID}_fd.mif
 fixelreorient fixelintemp_not_reoriented/${ID}_fixel_in_template_space_NOT_REORIENTED subj2temp/${ID}_subject2template_warp.mif fixel_in_temp/${ID}_fixel_in_template_space
-fixelcorrespondence fixel_in_temp/${ID}_fixel_in_template_space/${ID}_fd.mif fixel_mask fd/${ID} ${ID}.mif
 done
 
+# calculate fd and fc for statistical analysis
+mkdir fd
 mkdir fc
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
+fixelcorrespondence fixel_in_temp/${ID}_fixel_in_template_space/${ID}_fd.mif fixel_mask fd/${ID} ${ID}.mif
 warp2metric subj2temp/${ID}_subject2template_warp.mif -fc fixel_mask fc/${ID} ${ID}.mif
 done
