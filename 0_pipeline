@@ -118,3 +118,6 @@ done
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
  mrcalc fc/${ID}/${ID}.mif -log log_fc/${ID}/${ID}.mif
 done
+
+mkdir fdc
+cp -r fc/* fdc
