@@ -106,3 +106,15 @@ for ID in $(seq 10002 10150) $(seq 11001 11107); do
 fixelcorrespondence fixel_in_temp/${ID}_fixel_in_template_space/${ID}_fd.mif fixel_mask fd/${ID} ${ID}.mif
 warp2metric subj2temp/${ID}_subject2template_warp.mif -fc fixel_mask fc/${ID} ${ID}.mif
 done
+
+# calculate log fc, I copied the files from fc to log_fc with SOLs gooey interface instead of shell cause i had to check shit anyway, so I'll add that as code later fuck you
+mkdir log_fc/
+cd log_fc/
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+rm ${ID}/${ID}.mif
+done
+
+## Calculate logfc
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+ mrcalc fc/${ID}/${ID}.mif -log log_fc/${ID}/${ID}.mif
+done
