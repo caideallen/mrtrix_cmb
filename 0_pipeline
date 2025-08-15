@@ -40,14 +40,14 @@ dwibiascorrect {ID}_v2preproc.mif ${ID}_v2preproc_unbiased.mif
 cd ..
 done
 
-## FIRST I GOTTA LINK STUFF INTO A FOLDER
+# FIRST I GOTTA LINK STUFF INTO A FOLDER
 dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ fa_template.mif fa_template_wm_mask.mif 
 
 
 # this might be screwy if its normalizing based off the mask. Probably causing more of the contrast issues
 dwinormalise group ants/ mask_input/ dwi_output/ fa_template.mif fa_template_wm_mask.mif 
 
-## eddy_afterants was done bc we need it for the poptemplate, and original eddy wasnt normalized
+# eddy_afterants was done bc we need it for the poptemplate, and original eddy wasnt normalized
 mkdir wmresponse
 mkdir dwimask
 mkdir eddy_afterants
@@ -110,17 +110,23 @@ done
 # calculate log fc, I copied the files from fc to log_fc with SOLs gooey interface instead of shell cause i had to check shit anyway, so I'll add that as code later fuck you
 mkdir log_fc/
 cd log_fc/
+cp -r fc/* log_fc
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
 rm ${ID}/${ID}.mif
 done
 
-## Calculate logfc
+# Calculate logfc
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
  mrcalc fc/${ID}/${ID}.mif -log log_fc/${ID}/${ID}.mif
 done
-
+# fdc setup
 mkdir fdc
 cp -r fc/* fdc
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
-rm ${ID}/${ID}.mif
+rm fdc/${ID}/${ID}.mif
+done
+
+# after all that fuckery now we finally calculate fdc
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+for_each * : mrcalc fd/${ID}/${ID}.mif fc/${ID}/${ID}.mif -mult fdc/${ID}.mif
 done
