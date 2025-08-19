@@ -1,0 +1,5 @@
+## list my files, > just means "put what ur gonna do into this new file"
+ls > output.txt
+
+### what files are on list a and not list b
+diff file1 file2
