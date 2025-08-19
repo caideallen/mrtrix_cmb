@@ -128,5 +128,5 @@ done
 
 # after all that fuckery now we finally calculate fdc
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
-for_each * : mrcalc fd/${ID}/${ID}.mif fc/${ID}/${ID}.mif -mult fdc/${ID}.mif
+mrcalc fd/${ID}/${ID}.mif fc/${ID}/${ID}.mif -mult fdc/${ID}/${ID}_fdc.mif
 done
