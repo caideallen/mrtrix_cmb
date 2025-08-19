@@ -132,7 +132,7 @@ mrcalc fd/${ID}/${ID}.mif fc/${ID}/${ID}.mif -mult fdc/${ID}/${ID}_fdc.mif
 done
 
 ### whole brain tractography
-tckgen -angle 22.5 -maxlen 250 -minlen 10 -power 1.0 wmfod_template.mif -seed_image template_mask.mif -mask template_mask.mif -select 20000000 -cutoff 0.10 tracks_20_million.tcktcksift tracks_20_million.tck wmfod_template.mif tracks_2_million_sift.tck -term_number 2000000
+tckgen -angle 22.5 -maxlen 250 -minlen 10 -power 1.0 wmfod_template.mif -seed_image template_mask.mif -mask template_mask.mif -select 20000000 -cutoff 0.10 tracks_20_million.tck
 tcksift tracks_20_million.tck wmfod_template.mif tracks_2_million_sift.tck -term_number 2000000
 #generate connectivity matrix
 fixelconnectivity fixel_mask/ tracks_2_million_sift.tck matrix/
