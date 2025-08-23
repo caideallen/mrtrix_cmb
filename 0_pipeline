@@ -103,32 +103,28 @@ done
 mkdir fd
 mkdir fc
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
-fixelcorrespondence fixel_in_temp/${ID}_fixel_in_template_space/${ID}_fd.mif fixel_mask fd/${ID} ${ID}.mif
+fixelcorrespondence fixel_in_temp/${ID}_fixel_in_template_space/${ID}_fd.mif fixel_mask fd/ ${ID}.mif
 warp2metric subj2temp/${ID}_subject2template_warp.mif -fc fixel_mask fc/${ID} ${ID}.mif
 done
 
 # calculate log fc, I copied the files from fc to log_fc with SOLs gooey interface instead of shell cause i had to check shit anyway, so I'll add that as code later fuck you
 mkdir log_fc/
-cd log_fc/
-cp -r fc/* log_fc
-for ID in $(seq 10002 10150) $(seq 11001 11107); do
-rm ${ID}/${ID}.mif
-done
+cp fc/index.mif fdc
+cp fc/directions.mif fdc
+
 
 # Calculate logfc
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
- mrcalc fc/${ID}/${ID}.mif -log log_fc/${ID}/${ID}.mif
+ mrcalc fc/${ID}.mif -log log_fc/${ID}.mif
 done
 # fdc setup
 mkdir fdc
-cp -r fc/* fdc
-for ID in $(seq 10002 10150) $(seq 11001 11107); do
-rm fdc/${ID}/${ID}.mif
-done
+cp fc/index.mif fdc
+cp fc/directions.mif fdc
 
 # after all that fuckery now we finally calculate fdc
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
-mrcalc fd/${ID}/${ID}.mif fc/${ID}/${ID}.mif -mult fdc/${ID}/${ID}_fdc.mif
+mrcalc fd/${ID}.mif fc/${ID}.mif -mult fdc/${ID}.mif
 done
 
 ### whole brain tractography
@@ -142,7 +138,10 @@ fixelfilter fd smooth fd_smooth -matrix matrix/
 fixelfilter log_fc smooth log_fc_smooth -matrix matrix/
 fixelfilter fdc smooth fdc_smooth -matrix matrix/
 
+## get the file names, I deleted the direction and index files from the list
+ls fdc_smooth > files.txt
+
 #statistical dicksucking
-fixelcfestats fd_smooth/ files.txt design_matrix.txt contrast_matrix.txt matrix/ stats_fd/
-fixelcfestats log_fc_smooth/ files.txt design_matrix.txt contrast_matrix.txt matrix/ stats_log_fc/
-fixelcfestats fdc_smooth/ files.txt design_matrix.txt contrast_matrix.txt matrix/ stats_fdc/
+fixelcfestats fd_smooth/ files.txt design.txt contrast_group.txt matrix/ stats_fd/
+fixelcfestats log_fc_smooth/ files.txt design.txt contrast_group.txt matrix/ stats_log_fc/
+fixelcfestats fdc_smooth/ files.txt design.txt contrast_group.txt matrix/ stats_fdc/
