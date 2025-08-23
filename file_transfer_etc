@@ -58,3 +58,19 @@ for ID in 10028 10054 10089 10107 10139 10150 11018 11074 11107; do
     DEST_FILE="group/eddy/${ID}_eddymask.nii"
     cp "$SOURCE_FILE" "$DEST_FILE"
 done
+
+#!/bin/bash
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+  src="fc/${ID}/${ID}.mif"
+  dst="fc2/${ID}.mif"
+  if [[ -f "$src" ]]; then
+    cp "$src" "$dst"
+    echo "Copied $src to $dst"
+  else
+    echo "Source file $src does not exist, skipping."
+  fi
+done${ID}/${ID}.mif"
+DEST_DIR="/fc2/${ID}.mif"
+cp "$SOURCE_DIR"* "$DEST_DIR
+fi
+done
