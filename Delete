@@ -23,3 +23,9 @@ cd log_fc/
 for ID in $(seq 10003 10150) $(seq 11001 11107); do
 rm ${ID}/${ID}.mif
 done
+
+for ID in $(seq 10003 10150) $(seq 11001 11107); do
+fixelcorrespondence fixel_in_temp/${ID}_fixel_in_template_space/${ID}_fd.mif fixel_mask fd2 ${ID}_fd.mif
+warp2metric subj2temp/${ID}_subject2template_warp.mif -fc fixel_mask fc2 ${ID}_fc.mif
+done
+fixelcorrespondence fixel_in_temp/10003_fixel_in_template_space/10003_fd.mif fixel_mask fd2 $10003_fd.mif
