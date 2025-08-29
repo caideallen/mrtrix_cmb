@@ -1,0 +1,4 @@
+module load mamba/latest
+mamba create -n <mrtrix3> -c conda-forge -c <channel> <packages>
+
+mamba create -n mrtrix3 -c conda-forge -c Mrtrix3 python=3 mrtrix3
