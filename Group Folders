@@ -340,3 +340,86 @@ find "$BASE_DIR" -mindepth 1 -maxdepth 1 -type d | while read -r participant_fol
 done
 
 echo "Cleanup completed!"
+
+
+
+################ file transfer etc ###########################
+## to sol from co-located -- switch for vice versa
+scp -r  /home/cbayouth/group/v2_tempmask/ cbayouth@sol.asu.edu:/scratch/cbayouth/group/
+
+# check storage space
+du -sh FOLDER_NAME
+
+#!/bin/bash
+
+# Define source and destination directories
+SOURCE_DIR="/scratch/cbayouth/groups/v2preproc_1/"
+DEST_DIR="/scratch/cbayouth/groups/v2preproc/"
+
+# Check if the source directory exists
+if [ ! -d "$SOURCE_DIR" ]; then
+  echo "Source directory does not exist: $SOURCE_DIR"
+  exit 1
+fi
+
+# Create the destination directory if it doesn't exist
+if [ ! -d "$DEST_DIR" ]; then
+  echo "Destination directory does not exist. Creating: $DEST_DIR"
+fi
+
+# Move all files from source to destination
+echo "Moving files from $SOURCE_DIR to $DEST_DIR"
+mv "$SOURCE_DIR"* "$DEST_DIR"
+
+# Check if the operation was successful
+if [ $? -eq 0 ]; then
+  echo "All files moved successfully."
+else
+  echo "An error occurred while moving files."
+  exit 1
+fi
+
+# Moving things to ants 2
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+SOURCE_DIR="/DICOMS/${ID}/${ID}_v2preproc_unbiased.mif"
+DEST_DIR="/group/ants2/${ID}_v2preproc_unbiased.mif"
+mv "$SOURCE_DIR"* "$DEST_DIR
+fi
+done
+
+
+SOURCE_DIR"/DICOMS/${ID}/${ID}_v2preproc_unbiased.mif"
+DEST_DIR="/scratch/cbayouth/groups/v2preproc/"
+
+# Moving things to ants
+
+for ID in 10028 10054 10089 10107 10139 10150 11018 11074 11107; do
+    SOURCE_DIR="DICOMS/${ID}/${ID}_v2preproc_unbiased.mif"
+    DEST_DIR="group/ants/${ID}_v2preproc_unbiased.mif"
+    cp "$SOURCE_DIR" "$DEST_DIR"
+done
+
+for ID in 10028 10054 10089 10107 10139 10150 11018 11074 11107; do
+    SOURCE_FILE="DICOMS/${ID}/eddy_mask.nii"
+    DEST_FILE="group/eddy/${ID}_eddymask.nii"
+    cp "$SOURCE_FILE" "$DEST_FILE"
+done
+
+#!/bin/bash
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+  src="log_fc_old/${ID}/${ID}.mif"
+  dst="log_fc/${ID}.mif"
+  if [[ -f "$src" ]]; then
+    cp "$src" "$dst"
+    echo "Copied $src to $dst"
+  else
+    echo "Source file $src does not exist, skipping."
+  fi
+done
+
+
+${ID}/${ID}.mif"
+DEST_DIR="/fc2/${ID}.mif"
+cp "$SOURCE_DIR"* "$DEST_DIR
+fi
+done
