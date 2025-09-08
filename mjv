@@ -1,3 +1,6 @@
 33345161
 
 seff 33175307
+
+# replace tabs with spaces
+sed -i 's/\t/ /g' design3.txt
