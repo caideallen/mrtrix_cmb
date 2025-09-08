@@ -1,0 +1,8 @@
+### File transfers
+
+
+# Creating my enviorment. I think this is how I did it.
+ml mamba
+mamba create -n myENV -c conda-forge python=3.11
+source activate my ENV
+mamba install -c MRtrix3 mrtrix3 
