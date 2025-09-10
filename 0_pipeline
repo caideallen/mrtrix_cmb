@@ -1,7 +1,8 @@
 # load enviorments
 ml mamba
-source activate mrtrix3
+source activate myENV
 ml fsl
+cd /scratch/cbayouth/group/
 
 # Preproc sequence loop
 for ID in $(seq 10001 10150); do
