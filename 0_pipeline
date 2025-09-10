@@ -142,6 +142,11 @@ fixelfilter fdc smooth fdc_smooth -matrix matrix/
 ls fdc_smooth > files.txt
 
 #statistical dicksucking
-fixelcfestats fd_smooth/ files.txt design.txt contrast_group.txt matrix/ stats_fd/ 
-fixelcfestats log_fc_smooth/ files.txt design.txt contrast_group.txt matrix/ stats_log_fc/ 
-fixelcfestats fdc_smooth/ files.txt design.txt contrast_group.txt matrix/ stats_fdc/ 
+fixelcfestats fd_smooth/ files.txt design_group.txt contrast_group.txt matrix/ stats_fd_nocov/ 
+fixelcfestats log_fc_smooth/ files.txt design_group.txt contrast_group.txt matrix/ stats_logfc_nocov/ 
+fixelcfestats fdc_smooth/ files.txt design_group.txt contrast_group.txt matrix/ stats_fdc_nocov/ 
+
+## Using age as a covariate
+fixelcfestats fd_smooth/ files.txt design_agecov.txt contrast_agecov.txt matrix/ stats_fd_agecov/ 
+fixelcfestats log_fc_smooth/ files.txt design_agecov.txt contrast_agecov.txt matrix/ stats_log_fc_agecov/ 
+fixelcfestats fdc_smooth/ files.txt design_agecov.txt contrast_agecov.txt matrix/ stats_fdc_agecov/ 
