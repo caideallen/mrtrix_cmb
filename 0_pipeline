@@ -163,4 +163,4 @@ tckedit tracks_2_million_sift.tck -num 200000 tracks_200k_sift.tck
 fixel2tsf stats_fd_agecov/fwe_1mpvalue_.mif tracks_200k_sift.tck fd_fwe_pvalue.tsf
 
 ## Hey if I want to see the variance i can do this
-fixelcfestats fd_smooth/ files.txt design_agecov.txt contrast_agecov.txt matrix/ stats_fd_agecov/ -fonly
+fixelcfestats fd_smooth/ files.txt design_agecov.txt contrast_agecov.txt matrix/ stats_fd_agecov/ -ftests ftest.txt -fonly
