@@ -3,7 +3,7 @@ source activate myENV
 cd /scratch/cbayouth/group/
 
 # Create mask based off areas of significance 
-mrthreshold stats_fd_agecov/ fwe_1mpvalue_t2.mif significance_mask.mif -abs 0.95
+mrthreshold stats_fd_agecov/fwe_1mpvalue_t2.mif significance_mask.mif -abs 0.95
 
 # Look to see if it worked. try overlay.load image [image] if this is fucky
 mrview wmfod_template.mif -overlay.load significance_mask.mif
