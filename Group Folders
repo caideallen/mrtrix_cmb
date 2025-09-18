@@ -1,4 +1,12 @@
-#!/bin/bash
+################################################# DICOM_cleanup #############################################
+for ID in $(seq 10001 10150) $(seq 11001 11105); do
+rm -r ${ID}/eWIP/
+rm -r ${ID}/dWIP/
+rm -r ${ID}/faWIP/
+rm -r ${ID}/DTI32/
+rm -r ${ID}/fixel_mask/
+rm -r ${ID}/fixel_space/
+done
 
 # v2preproc shit
 SOURCE_BASE="/home/cbayouth/DICOMS_5"
@@ -204,10 +212,13 @@ done
 
 
 ################################################# DICOM_cleanup #############################################
-for ID in $(seq 10001 10150); do
+for ID in $(seq 10001 10150) $(seq 11001 11105); do
 rm -r ${ID}/eWIP/
 rm -r ${ID}/dWIP/
 rm -r ${ID}/faWIP/
+rm -r ${ID}/DTI32/
+rm -r ${ID}/fixel_mask/
+rm -r ${ID}/fixel_space/
 done
 
 %s/\/scratch\/cbayouth\/group\/template3\///g
