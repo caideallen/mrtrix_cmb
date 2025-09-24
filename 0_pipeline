@@ -164,3 +164,13 @@ fixel2tsf stats_fd_agecov/fwe_1mpvalue_.mif tracks_200k_sift.tck fd_fwe_pvalue.t
 
 ## Hey if I want to see the variance i can do this
 fixelcfestats fd_smooth/ files.txt design_agecov.txt contrast_agecov.txt matrix/ stats_fd_agecov/ -ftests ftest.txt -fonly
+
+## Expressing effect size relative to controls
+mrmath fd_smooth_control 
+mrcalc stats_fd/abs_effect_t2.mif stats_fd/beta2.mif -div 100 -mult stats_fd/percentage_effect.mif
+
+# using my ROI mask, calculate mean fd? Need to seperate ASD and controls, filter em, and calculate the sums. Then means.
+## could use this on all individuals? Do that for behavioral measures shit. 
+mkdir fd_means
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+mrmath fd_smooth/${ID}.mif mean fd_means/${ID}.mif
