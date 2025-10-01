@@ -13,3 +13,6 @@ tckedit in.tck out.tck -include ROI1.mif -include ROI2.mif -minlength 25
 
 ## or 
 mrdump -mask ROI_first_try.mif fd_smooth/10002.mif 10002_stats.txt
+
+## Okay so I need a tck image. Or shit lets try to get out roi mask into fixel space
+voxel2fixel ROI_first_try.mif fd_smooth fd_smooth ROI_fixel.mif
