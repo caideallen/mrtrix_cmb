@@ -2,12 +2,38 @@ ml mamba
 source activate myENV
 cd /scratch/cbayouth/group/
 
-# Create mask based off areas of significance 
+#Everything below a certain point didnt work, heres what did
+
+# take the ROI I drew in mrveiw, in voxel space, and put it in fixel space
+voxel2fixel ROI_first_try.mif fd_smooth fd_smooth ROI_fixel.mif
+mkdir fdtxt_mean
+mkdir fdtxt_median
+mkdir fdtxt_std
+
+# get the info in a text file
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+mrstats -output mean -mask fd_smooth/ROI_fixel.mif fd_smooth/${ID}.mif > fdtxt_mean/${ID}_stats.txt -force
+mrstats -output median -mask fd_smooth/ROI_fixel.mif fd_smooth/${ID}.mif > fdtxt_median/${ID}_stats.txt -force
+mrstats -output std -mask fd_smooth/ROI_fixel.mif fd_smooth/${ID}.mif > fdtxt_std/${ID}_stats.txt -force
+done
+
+mrstats -mask fd_smooth/ROI_fixel.mif fd_smooth/11107.mif > txtstats_fd/11107_stats.txt -force
+
+
+
+
+
+
+
+
+
+
+### This was all fucky
+# Create mask based off areas of significance
 mrthreshold stats_fd_agecov/fwe_1mpvalue_t2.mif significance_mask.mif -abs 0.95
 
 # Look to see if it worked. try overlay.load image [image] if this is fucky
 mrview wmfod_template.mif -overlay.load significance_mask.mif
-
 ## using tckedit to get streamlines only within the roi mask
 tckedit in.tck out.tck -include ROI1.mif -include ROI2.mif -minlength 25
 
