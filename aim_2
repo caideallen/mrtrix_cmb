@@ -12,10 +12,14 @@ mkdir fdtxt_std
 
 # get the info in a text file
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
-mrstats -output mean -mask fd_smooth/ROI_fixel.mif fd_smooth/${ID}.mif > fdtxt_mean/${ID}_stats.txt -force
-mrstats -output median -mask fd_smooth/ROI_fixel.mif fd_smooth/${ID}.mif > fdtxt_median/${ID}_stats.txt -force
-mrstats -output std -mask fd_smooth/ROI_fixel.mif fd_smooth/${ID}.mif > fdtxt_std/${ID}_stats.txt -force
+mrstats -output mean -mask fd_smooth/ROI_fixel.mif fd_smooth/${ID}.mif > fdtxt_mean/${ID}_stats.txt
+mrstats -output median -mask fd_smooth/ROI_fixel.mif fd_smooth/${ID}.mif > fdtxt_median/${ID}_stats.txt 
+mrstats -output std -mask fd_smooth/ROI_fixel.mif fd_smooth/${ID}.mif > fdtxt_std/${ID}_stats.txt
 done
+
+cat fdtxt_mean/* > fdtxt_mean.txt
+cat fdtxt_median/* > fdtxt_median.txt
+cat fdtxt_std/* > fdtxt_std.txt
 
 mrstats -mask fd_smooth/ROI_fixel.mif fd_smooth/11107.mif > txtstats_fd/11107_stats.txt -force
 
