@@ -4,5 +4,7 @@ ls > output.txt
 ### what files are on list a and not list b
 diff file1 file2
 
+sed '1 ~ 2d' combined.txt
+
 ## if youre having issues with population template (large shears) use this to check the mask alignment. Change files as nessicary
 mrcat linear_template06_c0.mif $(mrgrid input_transformed_c0/0089.mif regrid -template linear_template05_c0.mif -) -axis 4 - | mrview - -roi.load mask_transformed/0089.mif -roi.opacity 0.3
