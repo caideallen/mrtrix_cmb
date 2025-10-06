@@ -10,18 +10,26 @@ mkdir fdtxt_mean
 mkdir fdtxt_median
 mkdir fdtxt_std
 
+# try2
+voxel2fixel ROI_try2.mif fd_smooth fd_smooth ROI_fixel_2.mif
+mkdir fdtxt_mean_2
+mkdir fdtxt_median_2
+mkdir fdtxt_std_2
+
 # get the info in a text file
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
-mrstats -output mean -mask fd_smooth/ROI_fixel.mif fd_smooth/${ID}.mif > fdtxt_mean/${ID}_stats.txt
-mrstats -output median -mask fd_smooth/ROI_fixel.mif fd_smooth/${ID}.mif > fdtxt_median/${ID}_stats.txt 
-mrstats -output std -mask fd_smooth/ROI_fixel.mif fd_smooth/${ID}.mif > fdtxt_std/${ID}_stats.txt
+mrstats -output mean -mask fd_smooth/ROI_fixel_2.mif fd_smooth/${ID}.mif > fdtxt_mean_2/${ID}_stats.txt
+mrstats -output median -mask fd_smooth/ROI_fixel_2.mif fd_smooth/${ID}.mif > fdtxt_median_2/${ID}_stats.txt 
+mrstats -output std -mask fd_smooth/ROI_fixel_2.mif fd_smooth/${ID}.mif > fdtxt_std_2/${ID}_stats.txt
 done
 
-cat fdtxt_mean/* > fdtxt_mean.txt
-cat fdtxt_median/* > fdtxt_median.txt
-cat fdtxt_std/* > fdtxt_std.txt
+cat fdtxt_mean_2/* > fdtxt_mean_2.txt
+cat fdtxt_median_2/* > fdtxt_median_2.txt
+cat fdtxt_std_2/* > fdtxt_std_2.txt
 
 mrstats -mask fd_smooth/ROI_fixel.mif fd_smooth/11107.mif > txtstats_fd/11107_stats.txt -force
+
+mrstats -output mean -mask fd_smooth/ROI_fixel_2.mif fd_smooth/10002.mif > fdtxt_mean_2/${ID}_stats.txt
 
 
 
