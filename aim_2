@@ -23,10 +23,12 @@ mrstats -output median -mask fd_smooth/ROI_fixel_2.mif fd_smooth/${ID}.mif > fdt
 mrstats -output std -mask fd_smooth/ROI_fixel_2.mif fd_smooth/${ID}.mif > fdtxt_std_2/${ID}_stats.txt
 done
 
+#cropped fixel images
 fixelcrop fd_smooth/ fd_smooth/ROI_fixel_2.mif cropped/
+mrstats -output count cropped/10004.mif 
 
 for ID in $(seq 10002 10150) $(seq 11001 11107); do
-mrstats -output count -mask fd_smooth/ROI_fixel_2.mif fd_smooth/${ID}.mif > counts/${ID}_stats.txt
+mrstats -output count cropped/${ID}.mif > counts/${ID}_stats.txt
 done
 
 cat fdtxt_mean_2/* > fdtxt_mean_2.txt
