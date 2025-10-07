@@ -22,6 +22,9 @@ mrstats -output mean -mask fd_smooth/ROI_fixel_2.mif fd_smooth/${ID}.mif > fdtxt
 mrstats -output median -mask fd_smooth/ROI_fixel_2.mif fd_smooth/${ID}.mif > fdtxt_median_2/${ID}_stats.txt 
 mrstats -output std -mask fd_smooth/ROI_fixel_2.mif fd_smooth/${ID}.mif > fdtxt_std_2/${ID}_stats.txt
 done
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+mrstats -output count -mask fd_smooth/ROI_fixel_2.mif fd_smooth/${ID}.mif > counts/${ID}_stats.txt
+done
 
 cat fdtxt_mean_2/* > fdtxt_mean_2.txt
 cat fdtxt_median_2/* > fdtxt_median_2.txt
