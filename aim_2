@@ -27,9 +27,9 @@ cat fdtxt_mean_2/* > fdtxt_mean_2.txt
 cat fdtxt_median_2/* > fdtxt_median_2.txt
 cat fdtxt_std_2/* > fdtxt_std_2.txt
 
-mrstats -mask fd_smooth/ROI_fixel.mif fd_smooth/11107.mif > txtstats_fd/11107_stats.txt -force
-
-mrstats -output mean -mask fd_smooth/ROI_fixel_2.mif fd_smooth/10002.mif > fdtxt_mean_2/${ID}_stats.txt
+# figure out how many fixels are in each dealio
+mkdir counts
+fixel2voxel  -mask fd_smooth/ROI_fixel_2.mif fd_smooth/10002.mif count counts/10002.mif
 
 
 
