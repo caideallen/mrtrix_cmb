@@ -1,0 +1,15 @@
+# Main folder for the whole project
+export EXPERIMENT_DIR=3dbrain
+
+# Path to the FreeSurfer folder
+export SUBJECTS_DIR=$EXPERIMENT_DIR/freesurfer
+
+# Name of the subject
+export subject=cbay
+
+# Path to the structural image
+export subjT1=$EXPERIMENT_DIR/${subject}/mybrain.nii.gz
+
+mkdir -p $SUBJECTS_DIR/${subject}/mri/orig
+mri_convert ${subjT1} $SUBJECTS_DIR/${subject}/mri/orig/001.mgz
+recon-all -subjid ${subject} -all -time -log logfile -nuintensitycor-3T -sd $SUBJECTS_DIR -parallel
