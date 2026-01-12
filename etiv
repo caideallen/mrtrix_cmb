@@ -1,9 +1,9 @@
 
 
 # Loop through the range of IDs
-for ID in {10133 10137 10138 10139 10140 10142 10144 10145 10147 10148 10149 10150 11022 11052 11081 11082 11087 11090 11091 11092 11093 11096 11105 11107}; do
+for ID in 10133 10137 10138 10139 10140 10142 10144 10145 10147 10148 10149 10150 11022 11052 11081 11082 11087 11090 11091 11092 11093 11096 11105 11107; do
     # Construct the source file path
-    cp - r /storage/Aging/Aging_In_ASD/Dicoms/sub-${ID}/ses-01/MPRAGE_SENSE2_601 /home/cbayouth/ETIV/${ID}_
+    cp -r /storage/Aging/Aging_In_ASD/Dicoms/sub-${ID}/ses-01/MPRAGE_SENSE2_601 /home/cbayouth/ETIV/${ID}/
 done
 
 
