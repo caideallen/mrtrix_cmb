@@ -1,0 +1,23 @@
+
+##
+## This script iterates over folders within SUBJ_DIR, iteratively adding jobs to Agave to run Freesurfer_Recon_All.sh
+## Run using 'sh' command (e.g. 'sh program.sh'), NOT 'sbatch' on Agave.
+##
+
+## Set full path Directory for Subjects (.nii files location)
+SUBJ_DIR=/subjects
+
+## Make Directory for outputs (sbatch OUT files, ERR files, and Freesurfer outputs) 
+mkdir "$SUBJ_DIR/output"
+
+## Make directory for Agave outputs within outputs directory
+mkdir "$SUBJ_DIR/output/SOL"
+
+## For loop to call sbatch on each .nii file in SUBJ_DIR
+## Passes arguments "$FILE_NAME" "$SUBJ_DIR" "$SUBJ_DIR/output" "${1%.*}" into Freesurfer.sh
+for file in $SUBJ_DIR/*.nii;
+do 
+	FILE_NAME="${file##*/}"
+	echo "Running $FILE_NAME ... " 
+	sbatch Freesurfer_Recon_All.sh "$FILE_NAME" "$SUBJ_DIR" "$SUBJ_DIR/output" 
+done
