@@ -2,4 +2,10 @@ for ID in 10133 10137 10138 10139 10140 10142 10144 10145 10147 10148 10149 1015
 mrconvert ${ID}/MPRAGE_SENSE2_601/ ${ID}/${ID}.nii
 done
 
-mri_segstats --subject subjid --etiv-only
+export EXPERIMENT_DIR=freesurfer
+export SUBJECTS_DIR=$EXPERIMENT_DIR/subjects
+export subject=11107
+
+recon-all -s 11107 -i 11107.nii -all
+ls *.nii | parallel --jobs 8 recon-all -s {.} -i {} -all -qcache
+
