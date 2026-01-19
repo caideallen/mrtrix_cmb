@@ -1,0 +1,18 @@
+
+## This script is passed external arguments (parameters), including "$FILE_NAME" (.nii file), "$SUBJ_DIR", "$SUBJ_DIR/output" ($1, $2, $3, respectively)
+## These arguments are passed into the recon-all command for Freesurfer.
+##
+ 
+
+## Load freesurfer/6.0.0
+module load freesurfer
+
+## Set output directory (SUBJECTS_DIR)
+export SUBJECTS_DIR="$3" 
+
+## Set subject path 
+export SUBJ_PATH="$2"
+
+## Run recon-all command, '-i', '-s', '-all' - signifies input, subject identification, and recon directives, set parallelization and openMP <NUM_CORES>
+##   $1 = argument 1 passed into script
+recon-all -i $SUBJ_PATH/$1 -s ${1%.*}"_"OUT -all -parallel -openmp 4
