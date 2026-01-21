@@ -6,7 +6,12 @@ for ID in 10133 10137 10138 10139 10140 10142 10144 10145 10147 10148 10149 1015
     cp -r /storage/Aging/Aging_In_ASD/Dicoms/sub-${ID}/ses-01/MPRAGE_SENSE2_601 /home/cbayouth/ETIV/${ID}/
 done
 
+mrconvert ETIV/10137/MPRAGE_SENSE2_601/ ETIV/nifti/10137.nii
 
+
+for ID in 10133 10137 10138 10139 10140 10142 10144 10145 10147 10148 10149 10150 11022 11052 11081 11082 11087 11090 11091 11092 11093 11096 11105 11107; do
+mrconvert ETIV/${ID}/MPRAGE_SENSE2_601/ ETIV/nifti/${ID}.nii
+done
 
     # Construct the destination file path with the new name
     DESTINATION_FILE="$DESTINATION_BASE/${i}_v2preproc.mif"
