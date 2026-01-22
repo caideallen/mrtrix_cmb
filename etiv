@@ -1,13 +1,25 @@
-
+cd /scratch/cbayouth/group/ETIV/
+ls
+ml freesurfer 7
 
 # Loop through the range of IDs
 for ID in 10133 10137 10138 10139 10140 10142 10144 10145 10147 10148 10149 10150 11022 11052 11081 11082 11087 11090 11091 11092 11093 11096 11105 11107; do
     # Construct the source file path
-    cp -r /storage/Aging/Aging_In_ASD/Dicoms/sub-${ID}/ses-01/MPRAGE_SENSE2_601 /home/cbayouth/ETIV/${ID}/
+    mkdir ETIV/${ID}/output
 done
+
+ETIV/nifti
+
+# Loop through the range of IDs
+for ID in 10133 10137 10138 10139 10140 10142 10144 10145 10147 10148 10149 10150 11022 11052 11081 11082 11087 11090 11091 11092 11093 11096 11105 11107; do
+    # Construct the source file path
+    cp -r ETIV/nifti/${ID}.nii ETIV/${ID}/output
+doneETIV/nifti
 
 mrconvert ETIV/10137/MPRAGE_SENSE2_601/ ETIV/nifti/10137.nii
 
+for ID in 10133 10137 10138 10139 10140 10142 10144 10145 10147 10148 10149 10150 11022 11052 11081 11082 11087 11090 11091 11092 11093 11096 11105 11107; do
+recon-all -i ETIV/${ID}/${ID}.nii -s ETIV/${ID}/output/ all -parallel -o
 
 for ID in 10133 10137 10138 10139 10140 10142 10144 10145 10147 10148 10149 10150 11022 11052 11081 11082 11087 11090 11091 11092 11093 11096 11105 11107; do
 mrconvert ETIV/${ID}/MPRAGE_SENSE2_601/ ETIV/nifti/${ID}.nii
@@ -26,4 +38,6 @@ done
     fi
 done
 
+## Run recon-all command, '-i', '-s', '-all' - signifies input, subject identification, and recon directives, set parallelization and openMP <NUM_CORES>
+recon-all -i $SUBJ_PATH/10142 -s 10142 -all -parallel -openmp 8
 
