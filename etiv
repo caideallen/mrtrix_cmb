@@ -4,21 +4,20 @@ ml freesurfer 7
 
 # Loop through the range of IDs
 for ID in 10133 10137 10138 10139; do
-    # Construct the source file path
     cd ../${ID}
     SUBJECTS_DIR=`pwd`
-    recon-all -i 11096.nii -s 11096
+    recon-all -i ${ID}.nii -s ${ID}
     recon-all -s ${ID} -all
 done
 
 # Loop through the range of IDs
 for ID in 10140 10142 10144 10145 10147 10148 10149 10150 11022 11052 11081 11082 11087 11090 11091 11093; do
-    # Construct the source file path
-    cd ../${ID}
+      cd ../${ID}
     SUBJECTS_DIR=`pwd`
-    recon-all -i 11096.nii -s 11096
+    recon-all -i ${ID}.nii -s ${ID}
     recon-all -s ${ID} -all
 done
+
 
 ETIV/nifti
 
