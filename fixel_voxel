@@ -19,9 +19,4 @@ fixel2voxel log_fc_smooth/{ID}.mif mean log_fc_smooth_mean/${ID}.mif
 fixel2voxel log_fc_smooth/{ID}.mif count log_fc_smooth_count/${ID}.mif
 done
 
-## test
-for ID in $(seq 10003 10005); do
-fixel2voxel fd_smooth/${ID}.mif mean fd_smooth_mean/${ID}.mif
-fixel2voxel fd_smooth/${ID}.mif count fd_smooth_count/${ID}.mif
-done
 
