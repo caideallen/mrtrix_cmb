@@ -8,15 +8,15 @@ done
 mkdir fdc_smooth_count 
 mkdir fdc_smooth_mean 
 for ID in $(seq 10002 10150) $(seq 11001 11107); do 
-fixel2voxel fdc_smooth/{ID}.mif mean fdc_smooth_mean/${ID}.mif
-fixel2voxel fdc_smooth/{ID}.mif count fdc_smooth_count/${ID}.mif
+fixel2voxel fdc_smooth/${ID}.mif mean fdc_smooth_mean/${ID}.mif
+fixel2voxel fdc_smooth/${ID}.mif count fdc_smooth_count/${ID}.mif
 done
 
 mkdir log_fc_smooth_count
 mkdir log_fc_smooth_mean  
 for ID in $(seq 10002 10150) $(seq 11001 11107); do 
-fixel2voxel log_fc_smooth/{ID}.mif mean log_fc_smooth_mean/${ID}.mif
-fixel2voxel log_fc_smooth/{ID}.mif count log_fc_smooth_count/${ID}.mif
+fixel2voxel log_fc_smooth/${ID}.mif mean log_fc_smooth_mean/${ID}.mif
+fixel2voxel log_fc_smooth/${ID}.mif count log_fc_smooth_count/${ID}.mif
 done
 
 
