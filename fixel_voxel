@@ -1,0 +1,6 @@
+mkdir fd_smooth_count
+mkdir fd_smooth_mean
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+fixel2voxel fd_smooth/${ID}.mif mean fd_smooth_mean/${ID}.mif
+fixel2voxel fd_smooth/${ID}.mif count fd_smooth_count/${ID}.mif
+done
