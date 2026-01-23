@@ -18,6 +18,13 @@ for ID in 10140 10142 10144 10145 10147 10148 10149 10150 11022 11052 11081 1108
     recon-all -s ${ID} -all
 done
 
+for ID in 10150 11022 11052 11081 11082 11087 11090 11091 11093; do
+      cd ../${ID}
+    SUBJECTS_DIR=`pwd`
+    recon-all -i ${ID}.nii -s ${ID}
+    recon-all -s ${ID} -all
+done
+
 
 ETIV/nifti
 
