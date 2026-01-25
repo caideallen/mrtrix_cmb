@@ -59,3 +59,28 @@ done
 ## Run recon-all command, '-i', '-s', '-all' - signifies input, subject identification, and recon directives, set parallelization and openMP <NUM_CORES>
 recon-all -i $SUBJ_PATH/10142 -s 10142 -all -parallel -openmp 8
 
+
+SOURCE_BASE="/home/cbayouth/DICOMS_5"
+DESTINATION_BASE="/home/cbayouth/group/v2fod"
+
+# Create the destination folder if it doesn't exist
+mkdir -p "$DESTINATION_BASE"
+
+# Loop through the range of IDs 
+for i in 10133 10137 10138 10139 10140 10142 10144 10145 10147 10148 10149 10150 11022 11052 11081 11082 11087 11090 11091 11092 11093 11096 11105 11107; do
+    # Construct the source file path
+    SOURCE_FILE="$i/$i/stats/aseg.stats"
+
+    # Construct the destination file path with the new name
+    DESTINATION_FILE="aseg_stats/${i}_aseg.stats"
+
+    # Check if the source file exists before copying
+    if [[ -f "$SOURCE_FILE" ]]; then
+        # Copy and rename the file
+        cp "$SOURCE_FILE" "$DESTINATION_FILE"
+        echo "Copied: $SOURCE_FILE to $DESTINATION_FILE"
+    else
+        echo "Source file does not exist: $SOURCE_FILE"
+    fi
+done
+
