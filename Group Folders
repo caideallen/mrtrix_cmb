@@ -8,6 +8,9 @@ rm -r ${ID}/fixel_mask/
 rm -r ${ID}/fixel_space/
 done
 
+SOURCE_BASE="/Nifti-2.23.26"
+DESTINATION_BASE="/RA_t1"
+
 # v2preproc shit
 SOURCE_BASE="/home/cbayouth/DICOMS_5"
 DESTINATION_BASE="/home/cbayouth/group/v2preproc_1"
