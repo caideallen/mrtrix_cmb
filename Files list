@@ -1,5 +1,6 @@
 sed -i '/_Base$/d' freesurfer.txt
 sed -E 's#/sub-[0-9]{5}_ses-0([1-4])_t1w_OUT#/ses-0\1#g' freesurfer.txt > freesurfer_ses_clean.txt
+grep -Fxv -f freesurfer.txt nifti.txt
 
 
 /sub-10050
