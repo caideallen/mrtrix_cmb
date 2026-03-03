@@ -3,7 +3,10 @@ source activate myENV
 cd /scratch/cbayouth/group/
 
 mkdir fd_mean_txt
-for_each * mrstats -output mean fd_smooth_mean/*.nii > fd_mean_tx/*_stats.txt
+for ID in $(seq 10002 10150) $(seq 11001 11107); do
+mrstats -output mean fd_smooth_mean/${ID}.nii > fd_mean_tx/${ID}_stats.txt
+done
+
 
 #Everything below a certain point didnt work, heres what did
 
