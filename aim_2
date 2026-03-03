@@ -2,6 +2,9 @@ ml mamba
 source activate myENV
 cd /scratch/cbayouth/group/
 
+mkdir fd_mean_txt
+for_each * mrstats -output mean fdsmooth/* > fd_mean_tx/*_stats.txt
+
 #Everything below a certain point didnt work, heres what did
 
 # take the ROI I drew in mrveiw, in voxel space, and put it in fixel space
