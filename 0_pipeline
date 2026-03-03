@@ -1,52 +1,49 @@
-# load enviorments
-ml mamba
+#create the enviorment to work in
+mamba create -n myENV -c conda-forge python=3.11
 source activate myENV
+mamba install -c MRtrix3 mrtrix3
 ml fsl
-cd /scratch/cbayouth/group/
+cd /scratch/cbayouth/subject_data/
 
 # Preproc sequence loop
 for ID in $(seq 10001 10150); do
   echo "Processing subject $ID"
-
- # Navigate to the subject directory
+# Navigate to the subject directory
   cd "$ID" || { echo "Directory $ID not found! Skipping."; continue; }
-  #compress to image file
+#compress to image file
   mrconvert DTI32/ ${ID}.nii
   mrconvert ${ID}.nii ${ID}.mif
-
-  # format DICOMs into mif file voxel size 2
+# format DICOMs into mif file voxel size 2
   mrconvert DTI32/ ${ID}_vox.mif -vox 2 -coord 3 '0:1:32' -grad -export_grad_mrtrix path -export_grad_fsl bvecs_path bvals_path
-  #denoise images
+# denoise images
   dwidenoise ${ID}_vox.mif v2vox.mif -noise v2_denoised.mif
-  # calculate residuals
+# calculate residuals
   mrcalc v2_denoised.mif v2vox.mif -subtract v2_res.mif
-  
-  # fsl preprocessing
+# fsl preprocessing
   dwifslpreproc v2vox.mif ${ID}_v2preproc.mif -rpe_none -pe_dir AP -readout_time 0.1 -eddy_options " --slm=linear "
-  #this badboy is causing clipping issues PFC etc, probably due to denoising 
-  dwi2mask ${ID}_v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_mask.nii -datatype float32 -strides -1,+2,+3 
-  cd ..
+  cd ../
   done
+
+mkdir eddy_tempmask
+for ID in $(seq 10002 10150) $(seq 11001 11105); do
+#this badboy is causing clipping issues PFC etc, probably due to denoising 
+  dwi2mask ${ID}/${ID}_v2preproc.mif - | maskfilter - dilate - | mrconvert - eddy_tempmask/eddy_mask.nii -datatype float32 -strides -1,+2,+3 
 
 module unload fsl
 ml ants
+
 # bias correction for all subjects which is causing contrast issues
-mkdir eddy_afterants
+mkdir ants
 for ID in $(seq 10002 10150) $(seq 11001 11105); do
     echo "Processing sucject: ${ID}"  
   cd "$ID" || { echo "Directory $ID not found! Skipping."; continue; }
 # this deals with the shimming. bright white areas
-dwibiascorrect {ID}_v2preproc.mif ${ID}_v2preproc_unbiased.mif
-
+dwibiascorrect ${ID}/${ID}_v2preproc.mif ants/${ID}_v2preproc_unbiased.mif
 cd ..
 done
 
-# FIRST I GOTTA LINK STUFF INTO A FOLDER
-dwinormalise group ants/ template/mask_input/ dwinormalise/dwi_output/ fa_template.mif fa_template_wm_mask.mif 
-
-
-# this might be screwy if its normalizing based off the mask. Probably causing more of the contrast issues
-dwinormalise group ants/ mask_input/ dwi_output/ fa_template.mif fa_template_wm_mask.mif 
+# comment
+dwinormalise group ants/ eddy_tempmask/ dwi_output/ fa_template.mif fa_template_wm_mask.mif 
 
 # eddy_afterants was done bc we need it for the poptemplate, and original eddy wasnt normalized
 mkdir wmresponse
@@ -59,7 +56,6 @@ for ID in $(seq 10002 10150) $(seq 11001 11107); do
     dwi2mask dwi_output/${ID}_v2preproc_unbiased.mif dwimask/${ID}_dwimask.mif 
     dwi2mask dwi_output/${ID}_v2preproc_unbiased.mif - | maskfilter - dilate - | mrconvert - eddy_afterants/${ID}_eddy_mask.nii -datatype float32 -strides -1,+2,+3 
 done
-
 
 ## generate average wm response
 responsemean wmresponse/*_wm_response.txt group_average_response.txt
