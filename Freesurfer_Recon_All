@@ -6,6 +6,8 @@
 
 ## Load freesurfer/6.0.0
 module load freesurfer
+/packages/modulefiles/apps
+
 
 ## Set output directory (SUBJECTS_DIR)
 export SUBJECTS_DIR="$3" 
